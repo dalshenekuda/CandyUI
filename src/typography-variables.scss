@@ -1,0 +1,169 @@
+// Typography tokens – Desktop, Mobile, Button
+// Use: @use 'typography-variables' as *; then @include typo-desktop-h1 or $typo-desktop-h1-size
+// Breakpoint: mobile first, desktop from $typo-desktop-min
+
+$typo-desktop-min: 992px;
+$typo-font-weight-light: 300;
+$typo-font-weight-regular: 400;
+$typo-font-weight-medium: 500;
+$typo-font-weight-semibold: 600;
+$typo-font-weight-bold: 700;
+$typo-font-weight-black: 900;
+
+:root {
+  --font-weight-light:    #{$typo-font-weight-light};
+  --font-weight-regular:  #{$typo-font-weight-regular};
+  --font-weight-medium:   #{$typo-font-weight-medium};
+  --font-weight-semibold: #{$typo-font-weight-semibold};
+  --font-weight-bold:     #{$typo-font-weight-bold};
+  --font-weight-black:    #{$typo-font-weight-black};
+}
+
+// Letter-spacing from guide (0, 1, 2)
+$typo-spacing-0: 0;
+$typo-spacing-1: 1px;
+$typo-spacing-2: 2px;
+
+// ─── Desktop ─────────────────────────────────────────────────────────────
+// Headlines
+$typo-desktop-h1-size: 61px;
+$typo-desktop-h1-line: 67px;
+$typo-desktop-h1-weight: $typo-font-weight-bold;
+$typo-desktop-h1-spacing: $typo-spacing-0;
+
+$typo-desktop-h2-size: 49px;
+$typo-desktop-h2-line: 54px;
+$typo-desktop-h2-weight: $typo-font-weight-bold;
+$typo-desktop-h2-spacing: $typo-spacing-0;
+
+$typo-desktop-h3-size: 39px;
+$typo-desktop-h3-line: 47px;
+$typo-desktop-h3-weight: $typo-font-weight-bold;
+$typo-desktop-h3-spacing: $typo-spacing-0;
+
+$typo-desktop-h4-size: 31px;
+$typo-desktop-h4-line: 37px;
+$typo-desktop-h4-weight: $typo-font-weight-bold;
+$typo-desktop-h4-spacing: $typo-spacing-0;
+
+// Subtitles
+$typo-desktop-s1-size: 25px;
+$typo-desktop-s1-line: 30px;
+$typo-desktop-s1-weight: $typo-font-weight-light;
+$typo-desktop-s1-spacing: $typo-spacing-0;
+
+$typo-desktop-s2-size: 20px;
+$typo-desktop-s2-line: 24px;
+$typo-desktop-s2-weight: $typo-font-weight-regular;
+$typo-desktop-s2-spacing: $typo-spacing-0;
+
+// Body
+$typo-desktop-b1-size: 18px;
+$typo-desktop-b1-line: 21px;
+$typo-desktop-b1-weight: $typo-font-weight-light;
+$typo-desktop-b1-spacing: $typo-spacing-0;
+
+$typo-desktop-b2-size: 16px;
+$typo-desktop-b2-line: 21px;
+$typo-desktop-b2-weight: $typo-font-weight-light;
+$typo-desktop-b2-spacing: $typo-spacing-0;
+
+$typo-desktop-b3-size: 14px;
+$typo-desktop-b3-line: 18px;
+$typo-desktop-b3-weight: $typo-font-weight-light;
+$typo-desktop-b3-spacing: $typo-spacing-0;
+
+// Caption
+$typo-desktop-c1-size: 13px;
+$typo-desktop-c1-line: 16px;
+$typo-desktop-c1-weight: $typo-font-weight-light;
+$typo-desktop-c1-spacing: $typo-spacing-0;
+
+// Caption 2
+$typo-desktop-c2-size: 12px;
+$typo-desktop-c2-line: 16px;
+$typo-desktop-c2-weight: $typo-font-weight-light;
+$typo-desktop-c2-spacing: $typo-spacing-0;
+
+// Credit
+$typo-desktop-credit-size: 10px;
+$typo-desktop-credit-line: 18px;
+$typo-desktop-credit-weight: $typo-font-weight-medium;
+$typo-desktop-credit-spacing: $typo-spacing-2;
+
+// ─── Mobile ───────────────────────────────────────────────────────────────
+$typo-mobile-h1-size: 42px;
+$typo-mobile-h1-line: 46px;
+$typo-mobile-h1-weight: $typo-font-weight-bold;
+$typo-mobile-h1-spacing: $typo-spacing-0;
+
+$typo-mobile-h2-size: 35px;
+$typo-mobile-h2-line: 35px;
+$typo-mobile-h2-weight: $typo-font-weight-bold;
+$typo-mobile-h2-spacing: $typo-spacing-0;
+
+$typo-mobile-h3-size: 29px;
+$typo-mobile-h3-line: 32px;
+$typo-mobile-h3-weight: $typo-font-weight-bold;
+$typo-mobile-h3-spacing: $typo-spacing-0;
+
+$typo-mobile-h4-size: 24px;
+$typo-mobile-h4-line: 28px;
+$typo-mobile-h4-weight: $typo-font-weight-bold;
+$typo-mobile-h4-spacing: $typo-spacing-0;
+
+$typo-mobile-s1-size: 20px;
+$typo-mobile-s1-line: 24px;
+$typo-mobile-s1-weight: $typo-font-weight-light;
+$typo-mobile-s1-spacing: $typo-spacing-0;
+
+$typo-mobile-s2-size: 17px;
+$typo-mobile-s2-line: 20px;
+$typo-mobile-s2-weight: $typo-font-weight-regular;
+$typo-mobile-s2-spacing: $typo-spacing-0;
+
+$typo-mobile-b1-size: 15px;
+$typo-mobile-b1-line: 20px;
+$typo-mobile-b1-weight: $typo-font-weight-light;
+$typo-mobile-b1-spacing: $typo-spacing-1;
+
+$typo-mobile-b2-size: 14px;
+$typo-mobile-b2-line: 18px;
+$typo-mobile-b2-weight: $typo-font-weight-light;
+$typo-mobile-b2-spacing: $typo-spacing-1;
+
+$typo-mobile-b3-size: 13px;
+$typo-mobile-b3-line: 17px;
+$typo-mobile-b3-weight: $typo-font-weight-light;
+$typo-mobile-b3-spacing: $typo-spacing-1;
+
+$typo-mobile-c1-size: 12px;
+$typo-mobile-c1-line: 16px;
+$typo-mobile-c1-weight: $typo-font-weight-regular;
+$typo-mobile-c1-spacing: $typo-spacing-1;
+
+$typo-mobile-c2-size: 12px;
+$typo-mobile-c2-line: 16px;
+$typo-mobile-c2-weight: $typo-font-weight-regular;
+$typo-mobile-c2-spacing: $typo-spacing-1;
+
+$typo-mobile-credit-size: 10px;
+$typo-mobile-credit-line: 13px;
+$typo-mobile-credit-weight: $typo-font-weight-medium;
+$typo-mobile-credit-spacing: $typo-spacing-2;
+
+// ─── Button font (same for Desktop & Mobile) ──────────────────────────────
+$typo-button-large-size: 16px;
+$typo-button-large-line: 20px;
+$typo-button-large-weight: $typo-font-weight-semibold;
+$typo-button-large-spacing: $typo-spacing-0;
+
+$typo-button-medium-size: 14px;
+$typo-button-medium-line: 16px;
+$typo-button-medium-weight: $typo-font-weight-semibold;
+$typo-button-medium-spacing: $typo-spacing-0;
+
+$typo-button-small-size: 12px;
+$typo-button-small-line: 16px;
+$typo-button-small-weight: $typo-font-weight-semibold;
+$typo-button-small-spacing: $typo-spacing-0;

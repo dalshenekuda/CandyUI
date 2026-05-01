@@ -1,0 +1,119 @@
+// Brand color tokens – single source of truth
+// Use in SCSS: @use 'brand-variables' as *; then $primary-color-1
+
+// Primary
+$primary-color-1: #002349;
+$primary-color-2: #7FBFF5;
+$primary-color-3: #005BAB;
+$primary-color-4: #FAF8F8;
+$primary-color-5: #A3D5FF;
+$primary-color-6: #E4F2FD;
+
+// Secondary 1–6 (dark, base, light)
+$secondary-color-1-dark: #4D1634;
+$secondary-color-1-base: #81224D;
+$secondary-color-1-light: #BA7497;
+
+$secondary-color-2-dark: #721A14;
+$secondary-color-2-base: #BD2624;
+$secondary-color-2-light: #EC8B8B;
+
+$secondary-color-3-dark: #B72B3A;
+$secondary-color-3-base: #E25D5F;
+$secondary-color-3-light: #F3A7A8;
+
+$secondary-color-4-dark: #DE560F;
+$secondary-color-4-base: #F37A31;
+$secondary-color-4-light: #FAC486;
+
+$secondary-color-5-dark: #FBA40E;
+$secondary-color-5-base: #F6C641;
+$secondary-color-5-light: #FEEA94;
+
+$secondary-color-6-dark: #1A6913;
+$secondary-color-6-base: #9CB645;
+$secondary-color-6-light: #D4DD7D;
+
+// System Colors – Grey (1000 = darkest, 100 = lightest) & White (alpha %)
+$grey-1000: #4a4c54;
+$grey-900: #6A6C77;
+$grey-800: #787b85;
+$grey-700: #848484;
+$grey-600: #9a9ca3;
+$grey-500: #aeb1b4;
+$grey-400: #C1C7C9;
+$grey-300: #d6d9db;
+$grey-200: #e8e9ea;
+$grey-100: #ECEEEF;
+
+// Semantic aliases matching design spec (note: "Primery" is intentional per design)
+$primery-colors-ice: $primary-color-4;
+$primery-colors-gray-deep-gray: $grey-700; // #848484
+$primery-colors-teal: #005d6e;
+$semantic-alert-bg: #FDECEC;
+
+$white-alpha-100: rgba(255, 255, 255, 1);
+$white-alpha-90: rgba(255, 255, 255, 0.9);
+$white-alpha-80: rgba(255, 255, 255, 0.8);
+$white-alpha-70: rgba(255, 255, 255, 0.7);
+$white-alpha-60: rgba(255, 255, 255, 0.6);
+$white-alpha-50: rgba(255, 255, 255, 0.5);
+$white-alpha-40: rgba(255, 255, 255, 0.4);
+$white-alpha-30: rgba(255, 255, 255, 0.3);
+$white-alpha-20: rgba(255, 255, 255, 0.2);
+$white-alpha-10: rgba(255, 255, 255, 0.1);
+
+// Expose all brand colors as CSS custom properties
+:root {
+  --primary-color-1: #{$primary-color-1};
+  --primary-color-2: #{$primary-color-2};
+  --primary-color-3: #{$primary-color-3};
+  --primary-color-4: #{$primary-color-4};
+  --primary-color-5: #{$primary-color-5};
+  --primary-color-6: #{$primary-color-6};
+  --Primery-Colors-Ice: #{$primery-colors-ice};
+  --Primery-Colors-Gray-Deep-Gray: #{$primery-colors-gray-deep-gray};
+  --Primery-Colors-Teal: #{$primery-colors-teal};
+  --semantic-alert-bg: #{$semantic-alert-bg};
+
+  --secondary-color-1-dark: #{$secondary-color-1-dark};
+  --secondary-color-1-base: #{$secondary-color-1-base};
+  --secondary-color-1-light: #{$secondary-color-1-light};
+  --secondary-color-2-dark: #{$secondary-color-2-dark};
+  --secondary-color-2-base: #{$secondary-color-2-base};
+  --secondary-color-2-light: #{$secondary-color-2-light};
+  --secondary-color-3-dark: #{$secondary-color-3-dark};
+  --secondary-color-3-base: #{$secondary-color-3-base};
+  --secondary-color-3-light: #{$secondary-color-3-light};
+  --secondary-color-4-dark: #{$secondary-color-4-dark};
+  --secondary-color-4-base: #{$secondary-color-4-base};
+  --secondary-color-4-light: #{$secondary-color-4-light};
+  --secondary-color-5-dark: #{$secondary-color-5-dark};
+  --secondary-color-5-base: #{$secondary-color-5-base};
+  --secondary-color-5-light: #{$secondary-color-5-light};
+  --secondary-color-6-dark: #{$secondary-color-6-dark};
+  --secondary-color-6-base: #{$secondary-color-6-base};
+  --secondary-color-6-light: #{$secondary-color-6-light};
+
+  --grey-1000: #{$grey-1000};
+  --grey-900: #{$grey-900};
+  --grey-800: #{$grey-800};
+  --grey-700: #{$grey-700};
+  --grey-600: #{$grey-600};
+  --grey-500: #{$grey-500};
+  --grey-400: #{$grey-400};
+  --grey-300: #{$grey-300};
+  --grey-200: #{$grey-200};
+  --grey-100: #{$grey-100};
+
+  --white-alpha-100: #{$white-alpha-100};
+  --white-alpha-90: #{$white-alpha-90};
+  --white-alpha-80: #{$white-alpha-80};
+  --white-alpha-70: #{$white-alpha-70};
+  --white-alpha-60: #{$white-alpha-60};
+  --white-alpha-50: #{$white-alpha-50};
+  --white-alpha-40: #{$white-alpha-40};
+  --white-alpha-30: #{$white-alpha-30};
+  --white-alpha-20: #{$white-alpha-20};
+  --white-alpha-10: #{$white-alpha-10};
+}

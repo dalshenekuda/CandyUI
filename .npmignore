@@ -1,0 +1,35 @@
+# Source files
+src/
+.storybook/
+
+# Config files
+vite.config.ts
+tsconfig.json
+tsconfig.node.json
+
+# Development files
+index.html
+*.log
+*.md
+!README.md
+
+# Node modules
+node_modules/
+
+# Build artifacts
+.vite/
+storybook-static/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+

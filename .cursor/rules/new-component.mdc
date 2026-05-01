@@ -1,0 +1,179 @@
+---
+description: Conventions for adding new components to @boaideas/ui-kit
+alwaysApply: true
+---
+
+# @boaideas/ui-kit — Adding New Components
+
+## 1. Where to place a component
+
+| Type | Location |
+|------|----------|
+| Simple presentational (Text, Button, Tag) | `primitives/` — `<style lang="scss">` only, no Tailwind |
+| Complex interactive / animated (Modal, Tooltip) | `patterns/` — Tailwind + Reka UI (already bundled) |
+| Business-domain atoms/molecules | `domain-level/entity/<domain>/ui/<Name>/` |
+| Business-domain composite widgets | `domain-level/widgets/<Name>/` |
+
+## 2. Component Folder Structure (Mandatory)
+
+Every component (Primitive, Pattern, Entity UI, Icon, or Widget) must reside in its own directory.
+
+```
+path/to/<ComponentName>/
+  <ComponentName>.vue        ← component logic and template
+  types.ts                  ← prop, emit, and translation interfaces
+  index.ts                  ← clean exports (component + types)
+  <ComponentName>.stories.ts ← (optional) Storybook stories
+  assets/                   ← (optional) component-specific images/icons
+```
+
+### index.ts pattern:
+```ts
+export { default as <ComponentName> } from './<ComponentName>.vue';
+export * from './types';
+```
+
+### types.ts guidelines:
+- Name the file `types.ts` exactly.
+- **Always use `@/` alias** for all imports — both in `.vue` files and `.ts` files (e.g., `import type { Price } from '@/domain-level/types'`). Never use deep relative paths like `../../../../types`.
+- **No Duplication:** Do not redefine common interfaces (like `Price`, `Variant`). Import them from `@/domain-level/types`.
+- **`tsconfig.build.json` must mirror the alias:** The build tsconfig must include `"baseUrl": "."` and `"paths": { "@/*": ["src/*"] }` so that `tsc -p tsconfig.build.json` can resolve `@/` in plain `.ts` files. Without this, `tsc` fails even though Vite and `vite-plugin-dts` handle it correctly via `vite.config.ts`.
+
+
+## 3. Styling — NEVER use Bootstrap or hardcoded values
+
+**No Bootstrap classes** (`d-flex`, `col-*`, `px-3`, `mb-2`, etc.) — use Tailwind utilities instead.
+**No custom `@media` queries** in SCSS — use Tailwind breakpoints defined in `tailwind.preset.js` (e.g., `desktop:`).
+- **Mobile First:** The default view is considered mobile up to `991px`.
+- **Desktop Breakpoint:** From `992px` and above, the view is considered desktop. Use the `desktop:` prefix (e.g., `desktop:flex-row`).
+
+| What | Do | Never |
+|------|----|-------|
+| Colors | `var(--primary-color-1)` or `text-primary-1` | `#002349` or Bootstrap `text-primary` |
+| Spacing | `var(--spacing-m)` or Tailwind `p-m` | `16px` or Bootstrap `p-3` |
+| Font size | `<Text variant="b2">` or `@include typo-b2` | `font-size: 16px` |
+| Font weight | `var(--font-weight-semibold)` or `font-semibold` | `font-weight: 600` |
+| Border radius | `var(--radius-md)` or `rounded-md` | `12px` |
+| Transitions | `var(--transition-base)` or `duration-base` | `200ms` |
+| Breakpoints | `desktop:max-w-[345px]` or `desktop:block` | `@media (min-width: 992px)` in `<style>` |
+
+Tailwind is for **layout** (`flex`, `gap-s`, `px-m`, `items-center`).
+SCSS mixins (`@include typo-b2`) are for **typography** in `<style>` blocks.
+
+## 4. Token flow — single source of truth
+
+```
+src/brand-variables.scss      ← hex values ONLY here
+src/spacing-variables.scss    ← spacing scale ONLY here
+src/typography-variables.scss ← font sizes/weights ONLY here
+src/styles/style.css          ← radius + transitions ONLY here
+```
+
+Never add raw values to `design-tokens.ts` or `ui/tokens/` — those files contain **type names only**.
+
+## 5. API Design & Prop Naming
+
+**State Props:** Avoid abstract names like `modelValue` for UI components (modals, alerts, dropdowns) unless it's a form input.
+- **Do:** Use semantic names like `visible`, `isOpen`, `isActive` and emit matching events (`update:visible`).
+- **Never:** Use `modelValue` for visibility toggles.
+
+## 6. Text component API
+
+```vue
+<Text variant="b2" weight="semibold" color="primary-color-1" as="span">
+  Label
+</Text>
+```
+
+- `variant` → `h1–h4`, `s1–s2`, `b1–b3`, `body`, `caption`, `credit`
+- `color` → any key from `src/ui/tokens/colors.ts` (e.g. `primary-color-1`, `grey-700`)
+- `weight` → `light` | `regular` | `medium` | `semibold` | `bold`
+- `as` → overrides HTML tag; use `as="span"` for inline, `as="s"` for strikethrough
+
+Use `<Text>` for all visible text in domain-level components. Never use raw `<span>` or `<p>` with hardcoded styles.
+
+## 6. ContentPlate
+
+Use `ContentPlate` from `@/primitives/ContentPlate/ContentPlate.vue` as the card background.
+
+Embed it **inside** the component when the card appearance is part of the component contract:
+
+```vue
+<ContentPlate>
+  <div class="flex flex-col gap-s px-m py-s">
+    <!-- content -->
+  </div>
+</ContentPlate>
+```
+
+## 7. Exports — mandatory after adding a component
+
+1. Export from the relevant barrel — component default + named types:
+
+```ts
+// domain-level/widgets/index.ts
+export * from './MyWidget';
+```
+
+2. Register in `install()` in `src/index.ts`:
+
+```ts
+app.component('MyWidget', MyWidget);
+```
+
+## 9. Stories structure & Documentation
+
+Every component MUST have comprehensive documentation in its `.stories.ts` file via the `meta` object:
+1. **Component Description:** Add `parameters.docs.description.component` explaining its purpose and responsive behavior.
+2. **Prop Definitions:** Provide detailed descriptions in `argTypes`, categorized via `table.category` ('Data' | 'Appearance' | 'State').
+3. **Events (Emits):** Document all emitted events in `argTypes` under the 'Emits' category. Include an `action` and specify the payload type using `table.type.summary` (e.g., `void`, `boolean`).
+4. **Slots:** Document supported slots in `argTypes` under the 'Slots' category.
+
+```ts
+const meta: Meta<typeof MyWidget> = {
+  title: 'Domain/Widgets/MyWidget',
+  component: MyWidget,
+  tags: ['autodocs'],
+  decorators: [cardDecorator],
+  parameters: {
+    docs: {
+      description: { component: 'Describe what it is and how it behaves responsively.' },
+    },
+  },
+  argTypes: {
+    visible: { 
+      description: 'Controls component visibility.', 
+      table: { category: 'State' } 
+    },
+    'onUpdate:visible': { 
+      action: 'update:visible', 
+      description: 'Fired on close.', 
+      table: { category: 'Emits', type: { summary: 'boolean' } } 
+    },
+    default: { 
+      description: 'Default content slot.', 
+      table: { category: 'Slots', type: { summary: 'VNode | string' } } 
+    }
+  },
+};
+```
+
+- One named export per meaningful state (e.g. `WithDiscount`, `NoDiscount`)
+- JSDoc comment above each story explaining what it demonstrates
+- All mock data in named constants at the top of the file (amounts in **cents/minor units**)
+- `translations` object in a named `TRANSLATIONS` constant
+
+## 10. Money formatting
+
+Always use `moneyDisplay` from `@/domain-level/utils/money` — never format amounts manually.
+All price values are in **minor units (cents)**: `1699` → `$16.99`.
+
+## 11. What NOT to do
+
+- ALL code comments MUST be in English
+- Do not hardcode hex colors, px sizes, ms durations in `<style>` blocks
+- Do not use Bootstrap (`d-flex`, `col-*`, `px-3`, `mb-2`, etc.) anywhere
+- Do not add raw token values to `design-tokens.ts` or `ui/tokens/*.ts`
+- Do not add font sizes in component CSS — use `@include typo-*`
+- Do not add `reka-ui` to `peerDependencies` (it is intentionally bundled)
+- Do not use `<span style="font-size: 14px">` — use `<Text variant="b3">`
