@@ -1,0 +1,29 @@
+// Usage in SCSS: @use 'spacing-variables' as *; then $spacing-m
+// Usage in CSS:  var(--spacing-m)
+// Usage in Tailwind: p-m, gap-s, mt-l, etc.
+
+$spacing-none:  0px;
+$spacing-4xs:  2px;
+$spacing-xxxs:  4px;   //  1 × 4
+$spacing-xxs:   8px;   //  2 × 4
+$spacing-xs:   12px;   //  3 × 4
+$spacing-s:    16px;   //  4 × 4
+$spacing-m:    24px;   //  6 × 4
+$spacing-l:    32px;   //  8 × 4
+$spacing-xl:   40px;   // 10 × 4
+$spacing-xxl:  48px;   // 12 × 4
+$spacing-xxxl: 56px;   // 14 × 4
+
+:root {
+  --spacing-none: #{$spacing-none};
+  --spacing-4xs:  #{$spacing-4xs};
+  --spacing-xxxs: #{$spacing-xxxs};
+  --spacing-xxs:  #{$spacing-xxs};
+  --spacing-xs:   #{$spacing-xs};
+  --spacing-s:    #{$spacing-s};
+  --spacing-m:    #{$spacing-m};
+  --spacing-l:    #{$spacing-l};
+  --spacing-xl:   #{$spacing-xl};
+  --spacing-xxl:  #{$spacing-xxl};
+  --spacing-xxxl: #{$spacing-xxxl};
+}

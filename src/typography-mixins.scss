@@ -1,0 +1,58 @@
+// Typography mixins – apply styles by role and viewport
+// @use 'typography-variables' as *; @use 'typography-mixins' as *;
+
+@use 'typography-variables' as *;
+
+@mixin _typo($size, $line, $weight, $spacing) {
+  font-size: $size;
+  line-height: $line;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+}
+
+// ─── Desktop (use inside min-width media query or as default for desktop-first) ───
+@mixin typo-desktop-h1 { @include _typo($typo-desktop-h1-size, $typo-desktop-h1-line, $typo-desktop-h1-weight, $typo-desktop-h1-spacing); }
+@mixin typo-desktop-h2 { @include _typo($typo-desktop-h2-size, $typo-desktop-h2-line, $typo-desktop-h2-weight, $typo-desktop-h2-spacing); }
+@mixin typo-desktop-h3 { @include _typo($typo-desktop-h3-size, $typo-desktop-h3-line, $typo-desktop-h3-weight, $typo-desktop-h3-spacing); }
+@mixin typo-desktop-h4 { @include _typo($typo-desktop-h4-size, $typo-desktop-h4-line, $typo-desktop-h4-weight, $typo-desktop-h4-spacing); }
+@mixin typo-desktop-s1 { @include _typo($typo-desktop-s1-size, $typo-desktop-s1-line, $typo-desktop-s1-weight, $typo-desktop-s1-spacing); }
+@mixin typo-desktop-s2 { @include _typo($typo-desktop-s2-size, $typo-desktop-s2-line, $typo-desktop-s2-weight, $typo-desktop-s2-spacing); }
+@mixin typo-desktop-b1 { @include _typo($typo-desktop-b1-size, $typo-desktop-b1-line, $typo-desktop-b1-weight, $typo-desktop-b1-spacing); }
+@mixin typo-desktop-b2 { @include _typo($typo-desktop-b2-size, $typo-desktop-b2-line, $typo-desktop-b2-weight, $typo-desktop-b2-spacing); }
+@mixin typo-desktop-b3 { @include _typo($typo-desktop-b3-size, $typo-desktop-b3-line, $typo-desktop-b3-weight, $typo-desktop-b3-spacing); }
+@mixin typo-desktop-c1 { @include _typo($typo-desktop-c1-size, $typo-desktop-c1-line, $typo-desktop-c1-weight, $typo-desktop-c1-spacing); }
+@mixin typo-desktop-c2 { @include _typo($typo-desktop-c2-size, $typo-desktop-c2-line, $typo-desktop-c2-weight, $typo-desktop-c2-spacing); }
+@mixin typo-desktop-credit { @include _typo($typo-desktop-credit-size, $typo-desktop-credit-line, $typo-desktop-credit-weight, $typo-desktop-credit-spacing); }
+
+// ─── Mobile ───
+@mixin typo-mobile-h1 { @include _typo($typo-mobile-h1-size, $typo-mobile-h1-line, $typo-mobile-h1-weight, $typo-mobile-h1-spacing); }
+@mixin typo-mobile-h2 { @include _typo($typo-mobile-h2-size, $typo-mobile-h2-line, $typo-mobile-h2-weight, $typo-mobile-h2-spacing); }
+@mixin typo-mobile-h3 { @include _typo($typo-mobile-h3-size, $typo-mobile-h3-line, $typo-mobile-h3-weight, $typo-mobile-h3-spacing); }
+@mixin typo-mobile-h4 { @include _typo($typo-mobile-h4-size, $typo-mobile-h4-line, $typo-mobile-h4-weight, $typo-mobile-h4-spacing); }
+@mixin typo-mobile-s1 { @include _typo($typo-mobile-s1-size, $typo-mobile-s1-line, $typo-mobile-s1-weight, $typo-mobile-s1-spacing); }
+@mixin typo-mobile-s2 { @include _typo($typo-mobile-s2-size, $typo-mobile-s2-line, $typo-mobile-s2-weight, $typo-mobile-s2-spacing); }
+@mixin typo-mobile-b1 { @include _typo($typo-mobile-b1-size, $typo-mobile-b1-line, $typo-mobile-b1-weight, $typo-mobile-b1-spacing); }
+@mixin typo-mobile-b2 { @include _typo($typo-mobile-b2-size, $typo-mobile-b2-line, $typo-mobile-b2-weight, $typo-mobile-b2-spacing); }
+@mixin typo-mobile-b3 { @include _typo($typo-mobile-b3-size, $typo-mobile-b3-line, $typo-mobile-b3-weight, $typo-mobile-b3-spacing); }
+@mixin typo-mobile-c1 { @include _typo($typo-mobile-c1-size, $typo-mobile-c1-line, $typo-mobile-c1-weight, $typo-mobile-c1-spacing); }
+@mixin typo-mobile-c2 { @include _typo($typo-mobile-c2-size, $typo-mobile-c2-line, $typo-mobile-c2-weight, $typo-mobile-c2-spacing); }
+@mixin typo-mobile-credit { @include _typo($typo-mobile-credit-size, $typo-mobile-credit-line, $typo-mobile-credit-weight, $typo-mobile-credit-spacing); }
+
+// ─── Responsive (mobile first: mobile by default, desktop from $typo-desktop-min) ───
+@mixin typo-h1 { @include typo-mobile-h1; @media (min-width: $typo-desktop-min) { @include typo-desktop-h1; } }
+@mixin typo-h2 { @include typo-mobile-h2; @media (min-width: $typo-desktop-min) { @include typo-desktop-h2; } }
+@mixin typo-h3 { @include typo-mobile-h3; @media (min-width: $typo-desktop-min) { @include typo-desktop-h3; } }
+@mixin typo-h4 { @include typo-mobile-h4; @media (min-width: $typo-desktop-min) { @include typo-desktop-h4; } }
+@mixin typo-s1 { @include typo-mobile-s1; @media (min-width: $typo-desktop-min) { @include typo-desktop-s1; } }
+@mixin typo-s2 { @include typo-mobile-s2; @media (min-width: $typo-desktop-min) { @include typo-desktop-s2; } }
+@mixin typo-b1 { @include typo-mobile-b1; @media (min-width: $typo-desktop-min) { @include typo-desktop-b1; } }
+@mixin typo-b2 { @include typo-mobile-b2; @media (min-width: $typo-desktop-min) { @include typo-desktop-b2; } }
+@mixin typo-b3 { @include typo-mobile-b3; @media (min-width: $typo-desktop-min) { @include typo-desktop-b3; } }
+@mixin typo-c1 { @include typo-mobile-c1; @media (min-width: $typo-desktop-min) { @include typo-desktop-c1; } }
+@mixin typo-c2 { @include typo-mobile-c2; @media (min-width: $typo-desktop-min) { @include typo-desktop-c2; } }
+@mixin typo-credit { @include typo-mobile-credit; @media (min-width: $typo-desktop-min) { @include typo-desktop-credit; } }
+
+// ─── Button ───
+@mixin typo-button-large { @include _typo($typo-button-large-size, $typo-button-large-line, $typo-button-large-weight, $typo-button-large-spacing); }
+@mixin typo-button-medium { @include _typo($typo-button-medium-size, $typo-button-medium-line, $typo-button-medium-weight, $typo-button-medium-spacing); }
+@mixin typo-button-small { @include _typo($typo-button-small-size, $typo-button-small-line, $typo-button-small-weight, $typo-button-small-spacing); }
