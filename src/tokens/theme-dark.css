@@ -1,0 +1,46 @@
+/* ─── Semantic tokens — Dark theme ──────────────────────────────────────────
+   Overrides --color-* for dark mode. Activate by adding class "dark" to <html>:
+     document.documentElement.classList.toggle('dark')
+   Same token names as theme-light.css — only values change.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.dark {
+  /* Backgrounds */
+  --color-bg:             var(--palette-dark-base);
+  --color-surface:        var(--palette-dark-surface);
+  --color-surface-raised: var(--palette-dark-raised);
+
+  /* Text */
+  --color-text:           var(--palette-grey-100);
+  --color-text-muted:     var(--palette-grey-400);
+  --color-text-subtle:    var(--palette-grey-500);
+  --color-text-on-brand:  var(--palette-cream-50);
+
+  /* Brand (teal — brighter to contrast against dark base) */
+  --color-brand:          var(--palette-teal-light);
+  --color-brand-dark:     var(--palette-teal-400);
+  --color-brand-light:    var(--palette-teal-200);
+
+  /* Accent (coral — slightly muted on dark) */
+  --color-accent:         var(--palette-coral-muted);
+  --color-accent-dark:    var(--palette-coral-700);
+  --color-accent-light:   var(--palette-coral-300);
+
+  /* Warm accent (amber — muted) */
+  --color-accent-warm:    var(--palette-amber-muted);
+
+  /* Borders */
+  --color-border:         var(--palette-dark-border);
+  --color-border-subtle:  var(--palette-dark-border-subtle);
+
+  /* Status */
+  --color-danger:         var(--palette-coral-500);
+  --color-danger-bg:      var(--palette-wine-700);
+  --color-success:        var(--palette-olive-muted);
+  --color-success-bg:     var(--palette-sage-700);
+  --color-warning:        var(--palette-amber-muted);
+  --color-warning-bg:     var(--palette-amber-700);
+
+  /* Overlay */
+  --color-overlay:        rgba(10, 6, 2, 0.65);
+}

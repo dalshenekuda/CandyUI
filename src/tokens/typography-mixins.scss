@@ -1,0 +1,58 @@
+// Typography mixins – apply styles by role and viewport
+// Usage: @use 'typography-mixins' as *; then @include typo-heading-xl
+
+@use 'typography-variables' as *;
+
+@mixin _typo($size, $line, $weight, $spacing) {
+  font-size: $size;
+  line-height: $line;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+}
+
+// ─── Desktop ─────────────────────────────────────────────────────────────
+@mixin typo-desktop-heading-xl  { @include _typo($typo-desktop-heading-xl-size,  $typo-desktop-heading-xl-line,  $typo-desktop-heading-xl-weight,  $typo-desktop-heading-xl-spacing); }
+@mixin typo-desktop-heading-lg  { @include _typo($typo-desktop-heading-lg-size,  $typo-desktop-heading-lg-line,  $typo-desktop-heading-lg-weight,  $typo-desktop-heading-lg-spacing); }
+@mixin typo-desktop-heading-md  { @include _typo($typo-desktop-heading-md-size,  $typo-desktop-heading-md-line,  $typo-desktop-heading-md-weight,  $typo-desktop-heading-md-spacing); }
+@mixin typo-desktop-heading-sm  { @include _typo($typo-desktop-heading-sm-size,  $typo-desktop-heading-sm-line,  $typo-desktop-heading-sm-weight,  $typo-desktop-heading-sm-spacing); }
+@mixin typo-desktop-subtitle-lg { @include _typo($typo-desktop-subtitle-lg-size, $typo-desktop-subtitle-lg-line, $typo-desktop-subtitle-lg-weight, $typo-desktop-subtitle-lg-spacing); }
+@mixin typo-desktop-subtitle-md { @include _typo($typo-desktop-subtitle-md-size, $typo-desktop-subtitle-md-line, $typo-desktop-subtitle-md-weight, $typo-desktop-subtitle-md-spacing); }
+@mixin typo-desktop-body-lg     { @include _typo($typo-desktop-body-lg-size,     $typo-desktop-body-lg-line,     $typo-desktop-body-lg-weight,     $typo-desktop-body-lg-spacing); }
+@mixin typo-desktop-body-md     { @include _typo($typo-desktop-body-md-size,     $typo-desktop-body-md-line,     $typo-desktop-body-md-weight,     $typo-desktop-body-md-spacing); }
+@mixin typo-desktop-body-sm     { @include _typo($typo-desktop-body-sm-size,     $typo-desktop-body-sm-line,     $typo-desktop-body-sm-weight,     $typo-desktop-body-sm-spacing); }
+@mixin typo-desktop-caption-md  { @include _typo($typo-desktop-caption-md-size,  $typo-desktop-caption-md-line,  $typo-desktop-caption-md-weight,  $typo-desktop-caption-md-spacing); }
+@mixin typo-desktop-caption-sm  { @include _typo($typo-desktop-caption-sm-size,  $typo-desktop-caption-sm-line,  $typo-desktop-caption-sm-weight,  $typo-desktop-caption-sm-spacing); }
+@mixin typo-desktop-overline    { @include _typo($typo-desktop-overline-size,    $typo-desktop-overline-line,    $typo-desktop-overline-weight,    $typo-desktop-overline-spacing); }
+
+// ─── Mobile ───────────────────────────────────────────────────────────────
+@mixin typo-mobile-heading-xl  { @include _typo($typo-mobile-heading-xl-size,  $typo-mobile-heading-xl-line,  $typo-mobile-heading-xl-weight,  $typo-mobile-heading-xl-spacing); }
+@mixin typo-mobile-heading-lg  { @include _typo($typo-mobile-heading-lg-size,  $typo-mobile-heading-lg-line,  $typo-mobile-heading-lg-weight,  $typo-mobile-heading-lg-spacing); }
+@mixin typo-mobile-heading-md  { @include _typo($typo-mobile-heading-md-size,  $typo-mobile-heading-md-line,  $typo-mobile-heading-md-weight,  $typo-mobile-heading-md-spacing); }
+@mixin typo-mobile-heading-sm  { @include _typo($typo-mobile-heading-sm-size,  $typo-mobile-heading-sm-line,  $typo-mobile-heading-sm-weight,  $typo-mobile-heading-sm-spacing); }
+@mixin typo-mobile-subtitle-lg { @include _typo($typo-mobile-subtitle-lg-size, $typo-mobile-subtitle-lg-line, $typo-mobile-subtitle-lg-weight, $typo-mobile-subtitle-lg-spacing); }
+@mixin typo-mobile-subtitle-md { @include _typo($typo-mobile-subtitle-md-size, $typo-mobile-subtitle-md-line, $typo-mobile-subtitle-md-weight, $typo-mobile-subtitle-md-spacing); }
+@mixin typo-mobile-body-lg     { @include _typo($typo-mobile-body-lg-size,     $typo-mobile-body-lg-line,     $typo-mobile-body-lg-weight,     $typo-mobile-body-lg-spacing); }
+@mixin typo-mobile-body-md     { @include _typo($typo-mobile-body-md-size,     $typo-mobile-body-md-line,     $typo-mobile-body-md-weight,     $typo-mobile-body-md-spacing); }
+@mixin typo-mobile-body-sm     { @include _typo($typo-mobile-body-sm-size,     $typo-mobile-body-sm-line,     $typo-mobile-body-sm-weight,     $typo-mobile-body-sm-spacing); }
+@mixin typo-mobile-caption-md  { @include _typo($typo-mobile-caption-md-size,  $typo-mobile-caption-md-line,  $typo-mobile-caption-md-weight,  $typo-mobile-caption-md-spacing); }
+@mixin typo-mobile-caption-sm  { @include _typo($typo-mobile-caption-sm-size,  $typo-mobile-caption-sm-line,  $typo-mobile-caption-sm-weight,  $typo-mobile-caption-sm-spacing); }
+@mixin typo-mobile-overline    { @include _typo($typo-mobile-overline-size,    $typo-mobile-overline-line,    $typo-mobile-overline-weight,    $typo-mobile-overline-spacing); }
+
+// ─── Responsive (mobile first: mobile by default, desktop from $typo-desktop-min) ───
+@mixin typo-heading-xl  { @include typo-mobile-heading-xl;  @media (min-width: $typo-desktop-min) { @include typo-desktop-heading-xl; } }
+@mixin typo-heading-lg  { @include typo-mobile-heading-lg;  @media (min-width: $typo-desktop-min) { @include typo-desktop-heading-lg; } }
+@mixin typo-heading-md  { @include typo-mobile-heading-md;  @media (min-width: $typo-desktop-min) { @include typo-desktop-heading-md; } }
+@mixin typo-heading-sm  { @include typo-mobile-heading-sm;  @media (min-width: $typo-desktop-min) { @include typo-desktop-heading-sm; } }
+@mixin typo-subtitle-lg { @include typo-mobile-subtitle-lg; @media (min-width: $typo-desktop-min) { @include typo-desktop-subtitle-lg; } }
+@mixin typo-subtitle-md { @include typo-mobile-subtitle-md; @media (min-width: $typo-desktop-min) { @include typo-desktop-subtitle-md; } }
+@mixin typo-body-lg     { @include typo-mobile-body-lg;     @media (min-width: $typo-desktop-min) { @include typo-desktop-body-lg; } }
+@mixin typo-body-md     { @include typo-mobile-body-md;     @media (min-width: $typo-desktop-min) { @include typo-desktop-body-md; } }
+@mixin typo-body-sm     { @include typo-mobile-body-sm;     @media (min-width: $typo-desktop-min) { @include typo-desktop-body-sm; } }
+@mixin typo-caption-md  { @include typo-mobile-caption-md;  @media (min-width: $typo-desktop-min) { @include typo-desktop-caption-md; } }
+@mixin typo-caption-sm  { @include typo-mobile-caption-sm;  @media (min-width: $typo-desktop-min) { @include typo-desktop-caption-sm; } }
+@mixin typo-overline    { @include typo-mobile-overline;    @media (min-width: $typo-desktop-min) { @include typo-desktop-overline; } }
+
+// ─── Button ───────────────────────────────────────────────────────────────
+@mixin typo-button-lg { @include _typo($typo-button-lg-size, $typo-button-lg-line, $typo-button-lg-weight, $typo-button-lg-spacing); }
+@mixin typo-button-md { @include _typo($typo-button-md-size, $typo-button-md-line, $typo-button-md-weight, $typo-button-md-spacing); }
+@mixin typo-button-sm { @include _typo($typo-button-sm-size, $typo-button-sm-line, $typo-button-sm-weight, $typo-button-sm-spacing); }

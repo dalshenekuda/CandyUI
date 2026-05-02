@@ -1,0 +1,172 @@
+// Typography tokens — standard modular scale (16px base, ~1.25 ratio between roles)
+// Distinct from work project; tuned for portfolio / showcase kit.
+// Breakpoint: mobile first, desktop from $typo-desktop-min
+
+$typo-desktop-min: 992px;
+$typo-font-weight-light: 300;
+$typo-font-weight-regular: 400;
+$typo-font-weight-medium: 500;
+$typo-font-weight-semibold: 600;
+$typo-font-weight-bold: 700;
+$typo-font-weight-black: 900;
+
+:root {
+  --font-weight-light:    #{$typo-font-weight-light};
+  --font-weight-regular:  #{$typo-font-weight-regular};
+  --font-weight-medium:   #{$typo-font-weight-medium};
+  --font-weight-semibold: #{$typo-font-weight-semibold};
+  --font-weight-bold:     #{$typo-font-weight-bold};
+  --font-weight-black:    #{$typo-font-weight-black};
+}
+
+$typo-spacing-0: 0;
+$typo-spacing-1: 0.02em;
+$typo-spacing-2: 0.05em;
+
+// ─── Desktop ─────────────────────────────────────────────────────────────
+// Headings (scale: 48 → 36 → 30 → 24)
+$typo-desktop-heading-xl-size: 48px;
+$typo-desktop-heading-xl-line: 56px;
+$typo-desktop-heading-xl-weight: $typo-font-weight-bold;
+$typo-desktop-heading-xl-spacing: $typo-spacing-0;
+
+$typo-desktop-heading-lg-size: 36px;
+$typo-desktop-heading-lg-line: 44px;
+$typo-desktop-heading-lg-weight: $typo-font-weight-bold;
+$typo-desktop-heading-lg-spacing: $typo-spacing-0;
+
+$typo-desktop-heading-md-size: 30px;
+$typo-desktop-heading-md-line: 38px;
+$typo-desktop-heading-md-weight: $typo-font-weight-bold;
+$typo-desktop-heading-md-spacing: $typo-spacing-0;
+
+$typo-desktop-heading-sm-size: 24px;
+$typo-desktop-heading-sm-line: 32px;
+$typo-desktop-heading-sm-weight: $typo-font-weight-semibold;
+$typo-desktop-heading-sm-spacing: $typo-spacing-0;
+
+// Subtitles
+$typo-desktop-subtitle-lg-size: 20px;
+$typo-desktop-subtitle-lg-line: 28px;
+$typo-desktop-subtitle-lg-weight: $typo-font-weight-medium;
+$typo-desktop-subtitle-lg-spacing: $typo-spacing-0;
+
+$typo-desktop-subtitle-md-size: 18px;
+$typo-desktop-subtitle-md-line: 28px;
+$typo-desktop-subtitle-md-weight: $typo-font-weight-medium;
+$typo-desktop-subtitle-md-spacing: $typo-spacing-0;
+
+// Body
+$typo-desktop-body-lg-size: 18px;
+$typo-desktop-body-lg-line: 28px;
+$typo-desktop-body-lg-weight: $typo-font-weight-regular;
+$typo-desktop-body-lg-spacing: $typo-spacing-0;
+
+$typo-desktop-body-md-size: 16px;
+$typo-desktop-body-md-line: 24px;
+$typo-desktop-body-md-weight: $typo-font-weight-regular;
+$typo-desktop-body-md-spacing: $typo-spacing-0;
+
+$typo-desktop-body-sm-size: 14px;
+$typo-desktop-body-sm-line: 20px;
+$typo-desktop-body-sm-weight: $typo-font-weight-regular;
+$typo-desktop-body-sm-spacing: $typo-spacing-0;
+
+// Caption
+$typo-desktop-caption-md-size: 14px;
+$typo-desktop-caption-md-line: 20px;
+$typo-desktop-caption-md-weight: $typo-font-weight-regular;
+$typo-desktop-caption-md-spacing: $typo-spacing-0;
+
+$typo-desktop-caption-sm-size: 12px;
+$typo-desktop-caption-sm-line: 16px;
+$typo-desktop-caption-sm-weight: $typo-font-weight-regular;
+$typo-desktop-caption-sm-spacing: $typo-spacing-0;
+
+// Overline (label / eyebrow)
+$typo-desktop-overline-size: 11px;
+$typo-desktop-overline-line: 16px;
+$typo-desktop-overline-weight: $typo-font-weight-semibold;
+$typo-desktop-overline-spacing: $typo-spacing-2;
+
+// ─── Mobile ───────────────────────────────────────────────────────────────
+// Headings (one step down: 36 → 30 → 24 → 20)
+$typo-mobile-heading-xl-size: 36px;
+$typo-mobile-heading-xl-line: 44px;
+$typo-mobile-heading-xl-weight: $typo-font-weight-bold;
+$typo-mobile-heading-xl-spacing: $typo-spacing-0;
+
+$typo-mobile-heading-lg-size: 30px;
+$typo-mobile-heading-lg-line: 38px;
+$typo-mobile-heading-lg-weight: $typo-font-weight-bold;
+$typo-mobile-heading-lg-spacing: $typo-spacing-0;
+
+$typo-mobile-heading-md-size: 24px;
+$typo-mobile-heading-md-line: 32px;
+$typo-mobile-heading-md-weight: $typo-font-weight-bold;
+$typo-mobile-heading-md-spacing: $typo-spacing-0;
+
+$typo-mobile-heading-sm-size: 20px;
+$typo-mobile-heading-sm-line: 28px;
+$typo-mobile-heading-sm-weight: $typo-font-weight-semibold;
+$typo-mobile-heading-sm-spacing: $typo-spacing-0;
+
+// Subtitles
+$typo-mobile-subtitle-lg-size: 18px;
+$typo-mobile-subtitle-lg-line: 26px;
+$typo-mobile-subtitle-lg-weight: $typo-font-weight-medium;
+$typo-mobile-subtitle-lg-spacing: $typo-spacing-0;
+
+$typo-mobile-subtitle-md-size: 16px;
+$typo-mobile-subtitle-md-line: 24px;
+$typo-mobile-subtitle-md-weight: $typo-font-weight-medium;
+$typo-mobile-subtitle-md-spacing: $typo-spacing-0;
+
+// Body
+$typo-mobile-body-lg-size: 16px;
+$typo-mobile-body-lg-line: 26px;
+$typo-mobile-body-lg-weight: $typo-font-weight-regular;
+$typo-mobile-body-lg-spacing: $typo-spacing-0;
+
+$typo-mobile-body-md-size: 16px;
+$typo-mobile-body-md-line: 24px;
+$typo-mobile-body-md-weight: $typo-font-weight-regular;
+$typo-mobile-body-md-spacing: $typo-spacing-0;
+
+$typo-mobile-body-sm-size: 14px;
+$typo-mobile-body-sm-line: 20px;
+$typo-mobile-body-sm-weight: $typo-font-weight-regular;
+$typo-mobile-body-sm-spacing: $typo-spacing-0;
+
+// Caption
+$typo-mobile-caption-md-size: 12px;
+$typo-mobile-caption-md-line: 16px;
+$typo-mobile-caption-md-weight: $typo-font-weight-regular;
+$typo-mobile-caption-md-spacing: $typo-spacing-0;
+
+$typo-mobile-caption-sm-size: 11px;
+$typo-mobile-caption-sm-line: 14px;
+$typo-mobile-caption-sm-weight: $typo-font-weight-regular;
+$typo-mobile-caption-sm-spacing: $typo-spacing-0;
+
+// Overline
+$typo-mobile-overline-size: 10px;
+$typo-mobile-overline-line: 14px;
+$typo-mobile-overline-weight: $typo-font-weight-semibold;
+$typo-mobile-overline-spacing: $typo-spacing-2;
+
+// ─── Button (same for desktop & mobile — matches common UI libs) ──────────
+$typo-button-lg-size: 16px;
+$typo-button-lg-line: 24px;
+$typo-button-lg-weight: $typo-font-weight-semibold;
+$typo-button-lg-spacing: $typo-spacing-0;
+
+$typo-button-md-size: 14px;
+$typo-button-md-line: 20px;
+$typo-button-md-weight: $typo-font-weight-semibold;
+$typo-button-md-spacing: $typo-spacing-0;
+
+$typo-button-sm-size: 12px;
+$typo-button-sm-line: 16px;
+$typo-button-sm-weight: $typo-font-weight-semibold;
+$typo-button-sm-spacing: $typo-spacing-0;

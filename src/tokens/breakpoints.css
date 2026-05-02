@@ -1,0 +1,28 @@
+/* ─── Breakpoint reference tokens ────────────────────────────────────────────
+   CSS custom properties CANNOT be used inside @media queries — this is a
+   known CSS limitation. These values exist as documentation and for use in
+   JavaScript (getComputedStyle / ResizeObserver comparisons).
+
+   For actual responsive styles use Tailwind classes:
+     sm:   640px  →  sm:flex, sm:hidden
+     md:   768px  →  md:grid-cols-2
+     lg:   1024px →  lg:text-xl
+     xl:   1280px →  xl:container
+     2xl:  1536px →  2xl:max-w-screen-xl
+   Custom:
+     desktop: 992px → desktop:flex  (matches $typo-desktop-min in typography)
+
+   JS usage example:
+     const bp = parseInt(getComputedStyle(document.documentElement)
+       .getPropertyValue('--bp-lg'));
+     if (window.innerWidth >= bp) { ... }
+   ─────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --bp-sm:      640px;
+  --bp-md:      768px;
+  --bp-lg:      1024px;
+  --bp-xl:      1280px;
+  --bp-2xl:     1536px;
+  --bp-desktop: 992px;  /* typography breakpoint — matches typo-desktop-min */
+}
