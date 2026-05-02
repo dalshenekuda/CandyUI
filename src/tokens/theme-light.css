@@ -1,0 +1,45 @@
+/* ─── Semantic tokens — Light theme ─────────────────────────────────────────
+   Maps palette primitives to UI roles.
+   Components use only these --color-* tokens, never --palette-* directly.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Backgrounds */
+  --color-bg:             var(--palette-cream-50);
+  --color-surface:        var(--palette-cream-100);
+  --color-surface-raised: var(--palette-white-100);
+
+  /* Text */
+  --color-text:           var(--palette-cream-ink);
+  --color-text-muted:     var(--palette-grey-700);
+  --color-text-subtle:    var(--palette-grey-500);
+  --color-text-on-brand:  var(--palette-cream-50);
+
+  /* Brand (teal) */
+  --color-brand:          var(--palette-teal-600);
+  --color-brand-dark:     var(--palette-teal-900);
+  --color-brand-light:    var(--palette-teal-400);
+
+  /* Accent (coral) */
+  --color-accent:         var(--palette-coral-500);
+  --color-accent-dark:    var(--palette-coral-700);
+  --color-accent-light:   var(--palette-coral-300);
+
+  /* Warm accent (amber) */
+  --color-accent-warm:    var(--palette-amber-500);
+
+  /* Borders */
+  --color-border:         var(--palette-grey-300);
+  --color-border-subtle:  var(--palette-grey-200);
+
+  /* Status */
+  --color-danger:         var(--palette-coral-700);
+  --color-danger-bg:      var(--palette-coral-300);
+  --color-success:        var(--palette-olive-500);
+  --color-success-bg:     var(--palette-olive-300);
+  --color-warning:        var(--palette-amber-500);
+  --color-warning-bg:     var(--palette-amber-300);
+
+  /* Overlay */
+  --color-overlay:        rgba(30, 18, 8, 0.5);
+}
