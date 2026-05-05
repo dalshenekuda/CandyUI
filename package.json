@@ -1,5 +1,5 @@
 {
-  "name": "candy-ui",
+  "name": "@dalshenekuda/candy-ui",
   "version": "1.4.3",
   "description": "A React UI components library with Tailwind CSS",
   "type": "module",
