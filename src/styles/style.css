@@ -2,9 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Design tokens ── order matters: palette first, then semantic, then base ─ */
+@import '../tokens/colors/palette.css';
+@import '../tokens/colors/theme-light.css';
+@import '../tokens/colors/theme-dark.css';
+@import '../tokens/spacing/spacing.css';
+@import '../tokens/base.css';
+@import '../tokens/breakpoints.css';
+@import '../tokens/typography/typography-variables.scss';
+@import '../tokens/typography/typography-classes.scss';
+
+/* ─── shadcn/ui required variables ────────────────────────────────────────── */
 @layer base {
   :root {
-    /* shadcn/ui variables */
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -38,34 +48,5 @@
     --sidebar-accent-foreground: 0 0% 9%;
     --sidebar-border: 0 0% 89.8%;
     --sidebar-ring: 0 0% 3.9%;
-    /* Border Radius */
-    --radius-none: 0;
-    --radius-xs: 4px;
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 20px;
-    --radius-full: 9999px;
-
-    /* Transitions */
-    --transition-fast: 150ms;
-    --transition-base: 200ms;
-    --transition-slow: 300ms;
-
-    /* Z-index — shared layer for all modal/overlay elements */
-    --z-popup: 9999;
-
-    /* Overlay */
-    --overlay-bg: rgba(0, 0, 0, 0.5);
-
-    /* Modal shadow */
-    --shadow-modal: 0 3px 18px 0 rgba(82, 132, 132, 0.12);
-
-    /* BottomActionBar shadows */
-    --shadow-bar-desktop: 0px 6px 20px 0px rgba(82, 83, 83, 0.15);
-    --shadow-bar-mobile: 0px -14px 39px 0px rgba(10, 69, 132, 0.06);
-
-    /* Product card shadow */
-    --shadow-card: 0 0 32px rgba(0, 0, 0, 0.13);
   }
 }
