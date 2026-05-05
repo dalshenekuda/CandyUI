@@ -11,6 +11,8 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --max-old-space-size=4096
 
     steps:
       - uses: actions/checkout@v6
@@ -23,6 +25,10 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      # Same as CI: ensure Rollup native binary on Linux so Vite build does not fail
+      - name: Ensure Rollup native binary
+        run: npm install @rollup/rollup-linux-x64-gnu --no-save
 
       - name: Create release PR or publish
         uses: changesets/action@v1
