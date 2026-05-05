@@ -80,7 +80,7 @@ npm run build
 npm link
 
 # 3. In the consuming project
-npm link candy-ui
+npm link @dalshenekuda/candy-ui
 ```
 
 Or use `npm pack` to create a `.tgz` and install from file.
