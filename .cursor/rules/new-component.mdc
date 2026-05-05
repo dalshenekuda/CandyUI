@@ -9,14 +9,72 @@ alwaysApply: true
 
 | Type | Location |
 |------|----------|
-| Simple presentational (Text, Button, Tag) | `primitives/` — `<style lang="scss">` only, no Tailwind |
-| Complex interactive / animated (Modal, Tooltip) | `patterns/` — Tailwind + Reka UI (already bundled) |
+| New React component (any complexity) | `src/components/<Name>/` — React + TSX + CVA + Tailwind |
+| Legacy Vue primitive (Text, Tag) | `src/primitives/` — `<style lang="scss">` only |
+| Legacy Vue interactive (Modal, Tooltip) | `src/patterns/` — Tailwind + Reka UI |
 | Business-domain atoms/molecules | `domain-level/entity/<domain>/ui/<Name>/` |
 | Business-domain composite widgets | `domain-level/widgets/<Name>/` |
 
-## 2. Component Folder Structure (Mandatory)
+## 2. React Component Folder Structure
 
-Every component (Primitive, Pattern, Entity UI, Icon, or Widget) must reside in its own directory.
+```
+src/components/<ComponentName>/
+  <ComponentName>.tsx           ← component + types inline
+  <ComponentName>.stories.ts    ← Storybook stories
+```
+
+- Types live **inline** in the `.tsx` file — no separate `types.ts` unless the types need to be exported for consumers.
+- Always use `@/` alias: `import { cn } from '@/lib/utils'`.
+- Use `cn()` (clsx + tailwind-merge) for all className composition.
+- Use `cva` from `class-variance-authority` for variant logic.
+
+### CVA pattern:
+```tsx
+import { cva, type VariantProps } from 'class-variance-authority'
+import { cn } from '@/lib/utils'
+
+const componentVariants = cva('base-classes', {
+  variants: {
+    variant: {
+      default: 'bg-brand text-text-on-brand hover:bg-brand-dark',
+      outline: 'border border-border bg-surface hover:bg-surface-raised text-text',
+      ghost:   'hover:bg-surface-raised text-text-muted',
+      danger:  'bg-danger text-text-on-brand hover:opacity-90',
+    },
+    size: {
+      sm: 'h-8 px-sm text-sm',
+      md: 'h-10 px-md',
+      lg: 'h-12 px-lg text-lg',
+    },
+  },
+  defaultVariants: { variant: 'default', size: 'md' },
+})
+
+interface ComponentProps
+  extends React.HTMLAttributes<HTMLElement>,
+    VariantProps<typeof componentVariants> {}
+```
+
+### shadcn → our tokens mapping (MANDATORY — never use shadcn defaults):
+| shadcn class | our class |
+|---|---|
+| `bg-primary` | `bg-brand` |
+| `text-primary-foreground` | `text-text-on-brand` |
+| `bg-destructive` | `bg-danger` |
+| `bg-background` | `bg-surface` |
+| `bg-secondary` | `bg-surface-raised` |
+| `text-foreground` | `text-text` |
+| `text-muted-foreground` | `text-text-muted` |
+| `bg-accent` (hover) | `bg-surface-raised` |
+| `text-primary` (link) | `text-brand` |
+| `border-input` | `border-border` |
+| `ring-ring` | `ring-brand` |
+| `fill-muted-foreground` | `fill-text-muted` |
+| `fill-muted` | `fill-surface` |
+
+## 3. Vue Component Folder Structure (legacy, Mandatory)
+
+Every Vue component must reside in its own directory.
 
 ```
 path/to/<ComponentName>/
@@ -63,7 +121,9 @@ SCSS mixins (`@include typo-b2`) are for **typography** in `<style>` blocks.
 ## 4. Token flow — single source of truth
 
 ```
-src/brand-variables.scss      ← hex values ONLY here
+src/tokens/palette.css        ← hex values ONLY here (--palette-*)
+src/tokens/theme-light.css    ← semantic tokens (--color-*) for light theme
+src/tokens/theme-dark.css     ← semantic tokens for dark theme (.dark selector)
 src/spacing-variables.scss    ← spacing scale ONLY here
 src/typography-variables.scss ← font sizes/weights ONLY here
 src/styles/style.css          ← radius + transitions ONLY here

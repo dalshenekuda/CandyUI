@@ -42,7 +42,7 @@ const bgStyle = computed(() => ({
 </script>
 
 <style scoped lang="scss">
-@use '../../typography-mixins' as *;
+@use '../../tokens/typography/typography-mixins' as *;
 
 .tag {
   display: inline-flex;

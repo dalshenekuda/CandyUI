@@ -6,7 +6,10 @@ This file helps AI assistants (Claude, Copilot, etc.) understand the project str
 
 ## What this project is
 
-A Vue 3 component library published as `@boaideas/ui-kit`. It builds to `build/ui-kit.js` + `build/style.css` and is consumed by external Vue apps.
+A UI kit published as `@boaideas/ui-kit`. The project currently contains both **Vue 3** legacy components and **React** new components. New components are written in React; existing Vue components remain in place.
+
+**React stack:** React + TypeScript + Tailwind CSS + Radix UI (via shadcn) + CVA + `cn()` (clsx + tailwind-merge).
+**Vue stack (legacy):** Vue 3 + TypeScript + SCSS + Tailwind CSS.
 
 ---
 
@@ -15,7 +18,9 @@ A Vue 3 component library published as `@boaideas/ui-kit`. It builds to `build/u
 Every value traces back to a single source file. Understand this chain and you understand the whole project.
 
 ```
-src/brand-variables.scss          ← hex values live here ONLY
+src/tokens/palette.css             ← hex values live here ONLY (--palette-*)
+src/tokens/theme-light.css         ← semantic tokens for light theme (--color-*)
+src/tokens/theme-dark.css          ← semantic tokens for dark theme (.dark { --color-* })
   └─→ :root { --primary-color-1: #002349 ... }
         ├─→ Vue components         (var(--primary-color-1) in <style>)
         ├─→ Tailwind config        ('primary': 'var(--primary-color-1)')
@@ -51,42 +56,67 @@ src/
 ├── index.ts                    ← library entry; exports all components and types
 ├── main.ts                     ← dev-only app entry
 ├── types.ts                    ← global shared interfaces
-├── brand-variables.scss        ← colors source of truth
-├── spacing-variables.scss      ← spacing source of truth
-├── typography-variables.scss   ← font sizes/weights source of truth
+├── lib/
+│   └── utils.ts                ← cn() helper (clsx + tailwind-merge)
+├── tokens/
+│   ├── palette.css             ← raw hex values (--palette-*)
+│   ├── theme-light.css         ← semantic roles, light theme (--color-*)
+│   ├── theme-dark.css          ← semantic roles, dark theme (.dark { --color-* })
+│   ├── spacing.css             ← spacing scale (--spacing-*)
+│   └── base.css                ← radius, shadows, transitions
 │
-├── composables/                ← shared UI logic (useToggle, etc.)
+├── components/                 ← React components (new, flat structure)
+│   └── <ComponentName>/
+│       ├── <ComponentName>.tsx        ← component + inline types
+│       └── <ComponentName>.stories.ts ← Storybook stories
 │
-├── design-system/              ← Storybook-only documentation pages
-│   └── tokens/                 ← design token shadow objects for Tailwind
-│
-├── primitives/                 ← Simple UI atoms (Button, Tag, ContentPlate)
+├── primitives/                 ← Vue primitives (legacy, keep as-is)
 │   └── <ComponentName>/
 │       ├── <ComponentName>.vue
-│       ├── types.ts            ← Mandatory
+│       ├── types.ts            ← Mandatory (Vue convention)
 │       ├── index.ts            ← Mandatory (barrel export)
 │       └── <ComponentName>.stories.ts
 │
-├── patterns/                   ← Complex Reka UI components (Modal, Tooltip)
+├── patterns/                   ← Complex Vue components (legacy)
 │
-├── domain-level/               ← Business-logic components
-│   ├── entity/                 ← Domain atoms (product, subscription)
-│   ├── features/               ← Logic-heavy features (filterBy)
-│   ├── utils/                  ← Business utils (money.ts)
-│   └── widgets/                ← Composite UI (CylinderSelection, PriceBlock)
+├── domain-level/               ← Business-logic Vue components (legacy)
 │
-├── ui/                         ← Internal UI framework
-│   ├── tokens/                 ← Type definitions for tokens
-│   └── components/             ← Polymorphic <Text> component
-│
-└── styles/                     ← Tailwind entry and global CSS (radius, transitions)
+└── styles/                     ← Global CSS entry
 ```
 
 ---
 
 ## Key conventions
 
-### Mandatory Component Structure
+### React Component Structure (new components in `src/components/`)
+```
+src/components/<ComponentName>/
+  <ComponentName>.tsx           ← component logic + inline types (no separate types.ts)
+  <ComponentName>.stories.ts    ← Storybook stories
+```
+- Types live inline in the `.tsx` file. Add a separate `types.ts` only if types are exported for consumers.
+- Use `cn()` from `@/lib/utils` for class merging.
+- Use CVA (`cva` from `class-variance-authority`) for variant logic.
+- All Tailwind classes must use token-mapped utilities — **never** shadcn defaults (`bg-primary`, `bg-background`, etc.).
+
+**shadcn → our tokens mapping:**
+| shadcn class | our class |
+|---|---|
+| `bg-primary` | `bg-brand` |
+| `text-primary-foreground` | `text-text-on-brand` |
+| `bg-destructive` | `bg-danger` |
+| `bg-background` | `bg-surface` |
+| `bg-secondary` | `bg-surface-raised` |
+| `text-foreground` | `text-text` |
+| `text-muted-foreground` | `text-text-muted` |
+| `bg-accent` (hover) | `bg-surface-raised` |
+| `text-primary` (link) | `text-brand` |
+| `border-input` | `border-border` |
+| `ring-ring` | `ring-brand` |
+| `fill-muted-foreground` | `fill-text-muted` |
+| `fill-muted` | `fill-surface` |
+
+### Vue Component Structure (legacy, `src/primitives/` and `src/patterns/`)
 Every component MUST reside in its own directory:
 ```
 path/to/<ComponentName>/

@@ -1,0 +1,31 @@
+/* ─── Spacing tokens ─────────────────────────────────────────────────────────
+   4px base grid. Use via Tailwind utilities (p-sm, gap-lg) or var(--spacing-*).
+   In React components prefer Tailwind classes — CSS vars are for edge cases.
+
+   Scale:
+   none  =  0px
+   px    =  2px   (hairline gaps, fine borders)
+   2xs   =  4px   (1 × 4)
+   xs    =  8px   (2 × 4)
+   sm    = 12px   (3 × 4)
+   md    = 16px   (4 × 4)  ← default inline padding
+   lg    = 24px   (6 × 4)  ← default block padding
+   xl    = 32px   (8 × 4)
+   2xl   = 40px  (10 × 4)
+   3xl   = 48px  (12 × 4)
+   4xl   = 56px  (14 × 4)
+   ─────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --spacing-none: 0px;
+  --spacing-px:   2px;
+  --spacing-2xs:  4px;
+  --spacing-xs:   8px;
+  --spacing-sm:   12px;
+  --spacing-md:   16px;
+  --spacing-lg:   24px;
+  --spacing-xl:   32px;
+  --spacing-2xl:  40px;
+  --spacing-3xl:  48px;
+  --spacing-4xl:  56px;
+}
