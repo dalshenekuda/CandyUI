@@ -1,12 +1,12 @@
 {
-  "name": "@boaideas/ui-kit",
+  "name": "candy-ui",
   "version": "1.4.3",
-  "description": "A Vue 3 UI components library with Reka UI and Tailwind CSS",
+  "description": "A React UI components library with Tailwind CSS",
   "type": "module",
   "main": "./build/ui-kit.js",
   "types": "./types/index.d.ts",
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "exports": {
     ".": {
@@ -23,33 +23,31 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc -p tsconfig.build.json",
+    "build": "vite build",
     "preview": "vite preview",
-    "type-check": "vue-tsc --noEmit",
-    "lint": "eslint \"src/**/*.{ts,tsx,vue}\"",
-    "lint:fix": "eslint \"src/**/*.{ts,tsx,vue}\" --fix",
-    "format": "prettier --write \"src/**/*.{ts,tsx,vue,js,json,css}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,vue,js,json,css}\"",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,json,css}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,json,css}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "build:watch": "vite build --watch"
+    "build:watch": "vite build --watch",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "npm run build && changeset publish"
   },
   "keywords": [
-    "vue",
-    "vue3",
+    "react",
     "ui-kit",
     "components",
     "button",
     "dialog",
-    "tooltip",
-    "dropdown",
-    "reka-ui",
     "tailwindcss",
-    "headless-ui",
     "design-system",
     "accessible",
     "typescript"
@@ -61,44 +59,41 @@
   "author": "",
   "license": "ISC",
   "peerDependencies": {
-    "vue": "^3.4.0"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "overrides": {
     "minimatch": "^10.2.3",
     "esbuild": ">=0.25.0"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.31.0",
     "@chromatic-com/storybook": "^5.0.1",
     "@eslint/js": "^10.0.1",
-    "@storybook/addon-docs": "10.2.15",
-    "@storybook/vue3-vite": "10.2.15",
+    "@storybook/addon-docs": "^10.3.6",
+    "@storybook/react-vite": "^10.3.6",
     "@types/node": "^24.10.1",
     "@typescript-eslint/parser": "^8.0.0",
-    "@vitejs/plugin-vue": "^5.2.4",
+    "@vitejs/plugin-react": "^6.0.1",
     "@vitest/ui": "^4.0.14",
-    "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.22",
     "eslint": "^10.0.2",
     "eslint-config-prettier": "^10.1.0",
-    "eslint-plugin-vue": "^10.8.0",
     "jsdom": "^27.2.0",
     "minimatch": "^10.2.3",
     "postcss": "^8.5.6",
     "prettier": "^3.0.0",
-    "reka-ui": "^2.0.0",
     "rollup": "^4.59.0",
-    "sass": "^1.97.3",
-    "storybook": "10.2.15",
+    "sass": "^1.99.0",
+    "storybook": "^10.3.6",
     "tailwindcss": "^3.4.18",
     "tailwindcss-animate": "^1.0.7",
+    "terser": "^5.46.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.0.0",
-    "vite": "^5.4.21",
-    "vite-plugin-dts": "^4.5.4",
-    "vitest": "^4.0.14",
-    "vue": "^3.5.24",
-    "vue-eslint-parser": "^10.4.0",
-    "vue-tsc": "^3.1.4"
+    "unplugin-dts": "^1.0.0",
+    "vite": "^8.0.10",
+    "vitest": "^4.0.14"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
@@ -108,8 +103,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.14.0",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
     "recharts": "^2.15.4",
     "tailwind-merge": "^3.5.0"
   }

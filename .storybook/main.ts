@@ -1,10 +1,10 @@
-import type { StorybookConfig } from '@storybook/vue3-vite';
+import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@chromatic-com/storybook', '@storybook/addon-docs'],
   framework: {
-    name: '@storybook/vue3-vite',
+    name: '@storybook/react-vite',
     options: {},
   },
   docs: {},

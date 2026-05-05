@@ -1,7 +1,7 @@
 // Typography mixins – apply styles by role and viewport
 // Usage: @use 'typography-mixins' as *; then @include typo-heading-xl
 
-@use 'typography/typography-variables' as *;
+@use './typography-variables' as *;
 
 @mixin _typo($size, $line, $weight, $spacing) {
   font-size: $size;
