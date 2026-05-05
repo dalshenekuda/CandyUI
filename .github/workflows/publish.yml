@@ -28,9 +28,7 @@ jobs:
         uses: changesets/action@v1
         with:
           version: npm run version-packages
-          # publish: npm run release
-          # Temporarily disabled npm publishing
-          publish: echo "NPM publish is temporarily disabled"
+          publish: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
