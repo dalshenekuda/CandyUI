@@ -1,8 +1,8 @@
 /**
- * Tailwind preset for @boaideas/ui-kit consumers.
+ * Tailwind preset for candy-ui consumers.
  *
  * Import in your tailwind.config.js:
- *   import uiKitPreset from '@boaideas/ui-kit/tailwind.preset';
+ *   import uiKitPreset from 'candy-ui/tailwind.preset';
  *   export default { presets: [uiKitPreset], content: [...] };
  *
  * All values reference CSS custom properties from src/tokens/*.css.

@@ -1,7 +1,7 @@
 // Typography utility classes – import after variables & mixins
 // Usage: className="typo-heading-xl", "typo-body-md", "typo-button-lg", etc.
 
-@use 'typography/typography-mixins' as *;
+@use './typography-mixins' as *;
 
 .typo-heading-xl  { @include typo-heading-xl; }
 .typo-heading-lg  { @include typo-heading-lg; }

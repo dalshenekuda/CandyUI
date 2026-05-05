@@ -1,17 +1,40 @@
 ---
-description: Conventions for adding new components to @boaideas/ui-kit
+description: Conventions for adding new components to candy-ui
 alwaysApply: true
 ---
 
-# @boaideas/ui-kit — Adding New Components
+# candy-ui — Adding New Components
+
+## 0. Project overview
+
+A UI kit published as `candy-ui`. The project currently contains both **React 3** legacy components and **React** new components. New components are written in React; existing React components remain in place.
+
+- **React stack:** React + TypeScript + Tailwind CSS + Radix UI (via shadcn) + CVA + `cn()` (clsx + tailwind-merge).
+- **React stack (legacy):** React 3 + TypeScript + SCSS + Tailwind CSS.
+
+### File structure
+
+```
+src/
+├── index.ts                  library entry; exports all components and types
+├── main.ts                   dev-only app entry
+├── types.ts                  global shared interfaces
+├── lib/utils.ts              cn() helper (clsx + tailwind-merge)
+├── tokens/                   palette.css, theme-light.css, theme-dark.css, spacing.css, base.css
+├── components/<Name>/        React components (new) — <Name>.tsx + <Name>.stories.ts
+├── primitives/<Name>/        React primitives (legacy) — .tsx + types.ts + index.ts
+├── patterns/<Name>/          Complex React components (legacy)
+├── domain-level/             Business-logic React components (legacy)
+└── styles/                   global CSS entry
+```
 
 ## 1. Where to place a component
 
 | Type | Location |
 |------|----------|
 | New React component (any complexity) | `src/components/<Name>/` — React + TSX + CVA + Tailwind |
-| Legacy Vue primitive (Text, Tag) | `src/primitives/` — `<style lang="scss">` only |
-| Legacy Vue interactive (Modal, Tooltip) | `src/patterns/` — Tailwind + Reka UI |
+| Legacy React primitive (Text, Tag) | `src/primitives/` — `<style lang="scss">` only |
+| Legacy React interactive (Modal, Tooltip) | `src/patterns/` — Tailwind + Reka UI |
 | Business-domain atoms/molecules | `domain-level/entity/<domain>/ui/<Name>/` |
 | Business-domain composite widgets | `domain-level/widgets/<Name>/` |
 
@@ -72,13 +95,13 @@ interface ComponentProps
 | `fill-muted-foreground` | `fill-text-muted` |
 | `fill-muted` | `fill-surface` |
 
-## 3. Vue Component Folder Structure (legacy, Mandatory)
+## 3. React Component Folder Structure (legacy, Mandatory)
 
-Every Vue component must reside in its own directory.
+Every React component must reside in its own directory.
 
 ```
 path/to/<ComponentName>/
-  <ComponentName>.vue        ← component logic and template
+  <ComponentName>.tsx        ← component logic and template
   types.ts                  ← prop, emit, and translation interfaces
   index.ts                  ← clean exports (component + types)
   <ComponentName>.stories.ts ← (optional) Storybook stories
@@ -87,13 +110,13 @@ path/to/<ComponentName>/
 
 ### index.ts pattern:
 ```ts
-export { default as <ComponentName> } from './<ComponentName>.vue';
+export { default as <ComponentName> } from './<ComponentName>.tsx';
 export * from './types';
 ```
 
 ### types.ts guidelines:
 - Name the file `types.ts` exactly.
-- **Always use `@/` alias** for all imports — both in `.vue` files and `.ts` files (e.g., `import type { Price } from '@/domain-level/types'`). Never use deep relative paths like `../../../../types`.
+- **Always use `@/` alias** for all imports — both in `.tsx` files and `.ts` files (e.g., `import type { Price } from '@/domain-level/types'`). Never use deep relative paths like `../../../../types`.
 - **No Duplication:** Do not redefine common interfaces (like `Price`, `Variant`). Import them from `@/domain-level/types`.
 - **`tsconfig.build.json` must mirror the alias:** The build tsconfig must include `"baseUrl": "."` and `"paths": { "@/*": ["src/*"] }` so that `tsc -p tsconfig.build.json` can resolve `@/` in plain `.ts` files. Without this, `tsc` fails even though Vite and `vite-plugin-dts` handle it correctly via `vite.config.ts`.
 
@@ -139,7 +162,7 @@ Never add raw values to `design-tokens.ts` or `ui/tokens/` — those files conta
 
 ## 6. Text component API
 
-```vue
+```tsx
 <Text variant="b2" weight="semibold" color="primary-color-1" as="span">
   Label
 </Text>
@@ -154,11 +177,11 @@ Use `<Text>` for all visible text in domain-level components. Never use raw `<sp
 
 ## 6. ContentPlate
 
-Use `ContentPlate` from `@/primitives/ContentPlate/ContentPlate.vue` as the card background.
+Use `ContentPlate` from `@/primitives/ContentPlate/ContentPlate.tsx` as the card background.
 
 Embed it **inside** the component when the card appearance is part of the component contract:
 
-```vue
+```tsx
 <ContentPlate>
   <div class="flex flex-col gap-s px-m py-s">
     <!-- content -->

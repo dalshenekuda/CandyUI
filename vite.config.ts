@@ -1,28 +1,20 @@
 import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import dts from 'vite-plugin-dts';
+import react from '@vitejs/plugin-react';
+import dts from 'unplugin-dts/vite';
 import { resolve } from 'path';
 
 export default defineConfig(({ command }) => {
   const isProduction = command === 'build';
   
   return {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          api: 'modern-compiler',
-        },
-      },
-    },
     plugins: [
-      vue(),
+      react(),
       ...(isProduction ? [
         dts({
-          entryRoot: 'src',
-          outputDir: 'types',
-          insertTypesEntry: false,
-          include: ['src/**/*.ts', 'src/**/*.vue'],
-          exclude: ['src/**/*.stories.ts', 'src/main.ts']
+          tsconfigPath: './tsconfig.build.json',
+          outDirs: 'types',
+          include: ['src/**/*.ts', 'src/**/*.tsx'],
+          exclude: ['src/**/*.stories.ts', 'src/**/*.stories.tsx', 'src/main.ts'],
         })
       ] : [])
     ],
@@ -35,13 +27,10 @@ export default defineConfig(({ command }) => {
       },
       outDir: 'build',
       rollupOptions: {
-        external: ['vue'],
+        external: ['react', 'react-dom'],
         output: {
-          globals: {
-            vue: 'Vue'
-          },
           exports: 'named',
-          // Consuming app (my-account-proxy) imports build/style.css — ensure stable name
+          // Consuming app imports build/style.css — ensure stable name
           assetFileNames: (assetInfo) => {
             const name = assetInfo.name ?? '';
             return name.endsWith('.css') ? 'style.css' : '[name]-[hash][extname]';

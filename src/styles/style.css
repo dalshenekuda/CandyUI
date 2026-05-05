@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* ─── Design tokens ── order matters: palette first, then semantic, then base ─ */
 @import '../tokens/colors/palette.css';
 @import '../tokens/colors/theme-light.css';
@@ -11,6 +7,10 @@
 @import '../tokens/breakpoints.css';
 @import '../tokens/typography/typography-variables.scss';
 @import '../tokens/typography/typography-classes.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ─── shadcn/ui required variables ────────────────────────────────────────── */
 @layer base {

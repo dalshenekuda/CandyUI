@@ -1,4 +1,4 @@
-# @boaideas/ui-kit — Consumer Guide
+# CandyUI — Consumer Guide
 
 Copy this file into your project (e.g. as `UI_KIT_GUIDE.md`) to give your team and AI assistants context on how to use this library correctly.
 
@@ -7,14 +7,14 @@ Copy this file into your project (e.g. as `UI_KIT_GUIDE.md`) to give your team a
 ## Setup
 
 ```bash
-npm install @boaideas/ui-kit
+npm install candy-ui
 ```
 
 Import the stylesheet **once** in your app entry. This is required — it loads all colors, spacing, and font tokens as CSS custom properties.
 
 ```ts
 // main.ts
-import '@boaideas/ui-kit/style.css';
+import 'candy-ui/style.css';
 ```
 
 ---
@@ -23,9 +23,9 @@ import '@boaideas/ui-kit/style.css';
 
 The main typography component. Handles responsive font sizing automatically (mobile < 992px, desktop ≥ 992px).
 
-```vue
+```tsx
 <script setup>
-import { Text } from '@boaideas/ui-kit';
+import { Text } from 'candy-ui';
 </script>
 
 <template>
@@ -89,10 +89,10 @@ import { Text } from '@boaideas/ui-kit';
 
 A banner used for important notifications or error alerts.
 
-```vue
+```tsx
 <script setup>
-import { ref } from 'vue';
-import { AlertMessage } from '@boaideas/ui-kit';
+import { ref } from 'react';
+import { AlertMessage } from 'candy-ui';
 
 const isVisible = ref(true);
 </script>
@@ -310,9 +310,9 @@ All standard Tailwind spacing utilities work: `p-`, `px-`, `py-`, `pt-` / `pb-` 
 
 A general-purpose action button. `ActionButton` is an alias for `Button` kept for backwards compatibility.
 
-```vue
+```tsx
 <script setup>
-import { Button, ActionButton } from '@boaideas/ui-kit';
+import { Button, ActionButton } from 'candy-ui';
 </script>
 
 <template>
@@ -366,10 +366,10 @@ import { Button, ActionButton } from '@boaideas/ui-kit';
 
 A toggle button used for option selection within a group (e.g. size, plan tier).
 
-```vue
+```tsx
 <script setup>
-import { ref } from 'vue';
-import { SelectButton } from '@boaideas/ui-kit';
+import { ref } from 'react';
+import { SelectButton } from 'candy-ui';
 
 const selected = ref('monthly');
 </script>
@@ -424,9 +424,9 @@ const selected = ref('monthly');
 
 A small inline badge/label, typically used to highlight status or categories.
 
-```vue
+```tsx
 <script setup>
-import { Tag } from '@boaideas/ui-kit';
+import { Tag } from 'candy-ui';
 </script>
 
 <template>
@@ -466,9 +466,9 @@ import { Tag } from '@boaideas/ui-kit';
 
 A full-width horizontal rule using the light grey token.
 
-```vue
+```tsx
 <script setup>
-import { Divider } from '@boaideas/ui-kit';
+import { Divider } from 'candy-ui';
 </script>
 
 <template>
@@ -488,9 +488,9 @@ No props. Renders a 1px `--grey-100` horizontal line at full width.
 
 A simple container with a pale-blue background and rounded corners. Use it as a card surface.
 
-```vue
+```tsx
 <script setup>
-import { ContentPlate } from '@boaideas/ui-kit';
+import { ContentPlate } from 'candy-ui';
 </script>
 
 <template>
@@ -508,10 +508,10 @@ No props. Full-width, rounded-xl, pale blue (`--primary-color-6`) background.
 
 A dialog overlay built on Reka UI. Controlled via `v-model`.
 
-```vue
+```tsx
 <script setup>
-import { ref } from 'vue';
-import { Modal, Button } from '@boaideas/ui-kit';
+import { ref } from 'react';
+import { Modal, Button } from 'candy-ui';
 
 const isOpen = ref(false);
 </script>
@@ -578,9 +578,9 @@ const isOpen = ref(false);
 
 A hover/focus tooltip built on Reka UI. Wrap any trigger element as the default slot.
 
-```vue
+```tsx
 <script setup>
-import { Tooltip, Button } from '@boaideas/ui-kit';
+import { Tooltip, Button } from 'candy-ui';
 </script>
 
 <template>
@@ -616,7 +616,7 @@ import { Tooltip, Button } from '@boaideas/ui-kit';
 
 A composable dropdown built on Reka UI. Use the sub-components to build the menu items.
 
-```vue
+```tsx
 <script setup>
 import {
   DropdownMenu,
@@ -624,7 +624,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   Button,
-} from '@boaideas/ui-kit';
+} from 'candy-ui';
 
 function handleEdit() { /* ... */ }
 function handleDelete() { /* ... */ }
@@ -665,7 +665,7 @@ function handleDelete() { /* ... */ }
 |---|---|---|---|
 | `disabled` | `boolean` | `false` | Greys out the item and prevents selection |
 | `destructive` | `boolean` | `false` | Renders text in red |
-| `icon` | `Component` | — | Vue component rendered as a 20×20 icon |
+| `icon` | `Component` | — | ReactNode rendered as a 20×20 icon |
 | `shortcut` | `string` | — | Keyboard shortcut label shown on the right |
 
 ### Events
@@ -680,9 +680,9 @@ function handleDelete() { /* ... */ }
 
 A fixed bottom bar for page-level actions. Adapts layout between desktop and mobile.
 
-```vue
+```tsx
 <script setup>
-import { BottomActionBar, Button, Text } from '@boaideas/ui-kit';
+import { BottomActionBar, Button, Text } from 'candy-ui';
 </script>
 
 <template>
@@ -743,7 +743,7 @@ All are responsive (mobile-first, desktop styles apply at ≥ 992px).
 ## TypeScript types
 
 ```ts
-import type { TextVariant, TextColor, SpacingToken, FontWeight, ButtonProps } from '@boaideas/ui-kit';
+import type { TextVariant, TextColor, SpacingToken, FontWeight, ButtonProps } from 'candy-ui';
 
 // Useful for component props
 defineProps<{
@@ -778,7 +778,7 @@ import {
   ChangeQtyButton,
   ProductLine,
   ProductSummary,
-} from '@boaideas/ui-kit';
+} from 'candy-ui';
 ```
 
 ---
@@ -787,10 +787,10 @@ import {
 
 A selectable card displaying a single cylinder variant (type/size). Emits `select` when clicked.
 
-```vue
+```tsx
 <script setup>
-import { ref } from 'vue';
-import { CylinderCard } from '@boaideas/ui-kit';
+import { ref } from 'react';
+import { CylinderCard } from 'candy-ui';
 
 const selectedId = ref(null);
 
@@ -847,10 +847,10 @@ const variant = {
 
 Renders a row of `CylinderCard` components from a list of variants.
 
-```vue
+```tsx
 <script setup>
-import { ref } from 'vue';
-import { CylinderTypeSelector } from '@boaideas/ui-kit';
+import { ref } from 'react';
+import { CylinderTypeSelector } from 'candy-ui';
 
 const selectedId = ref(null);
 
@@ -891,10 +891,10 @@ const variants = [
 A selectable card showing a quantity, price, and optional shipping cost.
 Prices are in **cents** (e.g. `2999` = $29.99).
 
-```vue
+```tsx
 <script setup>
-import { ref } from 'vue';
-import { CylinderQuantityCard } from '@boaideas/ui-kit';
+import { ref } from 'react';
+import { CylinderQuantityCard } from 'candy-ui';
 
 const selectedQty = ref(0);
 </script>
@@ -953,10 +953,10 @@ const selectedQty = ref(0);
 
 A frequency picker in either **tile** (button) or **dropdown** mode.
 
-```vue
+```tsx
 <script setup>
-import { ref } from 'vue';
-import { FrequencySelector } from '@boaideas/ui-kit';
+import { ref } from 'react';
+import { FrequencySelector } from 'candy-ui';
 
 const selectedFrequency = ref(null);
 
@@ -1034,9 +1034,9 @@ const options = [
 
 A full cylinder subscription selection widget — combines type selector, quantity cards, and frequency selector into one self-contained flow.
 
-```vue
+```tsx
 <script setup>
-import { CylinderSelection } from '@boaideas/ui-kit';
+import { CylinderSelection } from 'candy-ui';
 
 const variants = [
   { id: 1, title: '60L', featured_image: { src: '/60l.png' } },
@@ -1136,9 +1136,9 @@ function onContinue({ cylinderId, qty, frequency }) {
 
 A discount-tier progress bar. Displays how many more items are needed to unlock the next discount, and turns green when the maximum is reached.
 
-```vue
+```tsx
 <script setup>
-import { ProgressBar } from '@boaideas/ui-kit';
+import { ProgressBar } from 'candy-ui';
 
 const tiers = [
   { min: 0, value: null },
@@ -1188,9 +1188,9 @@ const translations = {
 
 A bulleted notes/information list with a title. Reads up to 5 note strings from the translations object.
 
-```vue
+```tsx
 <script setup>
-import { SectionNotes } from '@boaideas/ui-kit';
+import { SectionNotes } from 'candy-ui';
 
 const translations = {
   section_notes_title: 'Important information',
@@ -1217,10 +1217,10 @@ const translations = {
 
 An add/remove quantity control with two display modes.
 
-```vue
+```tsx
 <script setup>
-import { ref } from 'vue';
-import { ChangeQtyButton } from '@boaideas/ui-kit';
+import { ref } from 'react';
+import { ChangeQtyButton } from 'candy-ui';
 
 const qty = ref(0);
 
@@ -1282,9 +1282,9 @@ function handleChange(direction) {
 
 A product row used in order summaries and subscription item lists.
 
-```vue
+```tsx
 <script setup>
-import { ProductLine } from '@boaideas/ui-kit';
+import { ProductLine } from 'candy-ui';
 </script>
 
 <template>
@@ -1345,9 +1345,9 @@ import { ProductLine } from '@boaideas/ui-kit';
 
 A collapsible summary row for a subscription line item (cylinders, flavours, etc.).
 
-```vue
+```tsx
 <script setup>
-import { ProductSummary, SummaryCylindersIcon } from '@boaideas/ui-kit';
+import { ProductSummary, SummaryCylindersIcon } from 'candy-ui';
 </script>
 
 <template>
@@ -1404,9 +1404,9 @@ import { ProductSummary, SummaryCylindersIcon } from '@boaideas/ui-kit';
 
 A summary block for prices, shipping, and total. Typically used in checkout or order review.
 
-```vue
+```tsx
 <script setup>
-import { PriceBlock } from '@boaideas/ui-kit';
+import { PriceBlock } from 'candy-ui';
 
 const subtotal = {
   original: 7497,
@@ -1468,7 +1468,7 @@ const translations = {
 
 ## Rules
 
-- Always import `@boaideas/ui-kit/style.css` — without it, no tokens or styles will work
+- Always import `candy-ui/style.css` — without it, no tokens or styles will work
 - Use CSS custom properties from this list — do not hardcode hex values or pixel sizes
 - The `Text` component handles responsive font sizing — use it for all text content instead of raw `<h1>`, `<p>` etc.
 - For text color overrides, use the `color` prop on `Text`, not a wrapping element with `style="color:..."`

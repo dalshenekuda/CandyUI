@@ -4,5 +4,5 @@ build
 types
 storybook-static
 coverage
-UI_KIT_CONSUMER_GUIDE.md
+docs/CONSUMER_GUIDE.md
 

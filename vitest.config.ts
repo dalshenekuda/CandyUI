@@ -1,9 +1,7 @@
 import { defineConfig } from 'vitest/config';
-import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
 
 export default defineConfig({
-  plugins: [vue()],
   test: {
     globals: true,
     environment: 'jsdom',
@@ -16,7 +14,6 @@ export default defineConfig({
         'types/',
         '**/*.stories.ts',
         'src/main.ts',
-        'src/vite-env.d.ts',
         '**/*.d.ts',
       ],
     },
