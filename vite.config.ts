@@ -7,6 +7,13 @@ export default defineConfig(({ command }) => {
   const isProduction = command === 'build';
   
   return {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+        },
+      },
+    },
     plugins: [
       react(),
       ...(isProduction ? [
@@ -27,7 +34,8 @@ export default defineConfig(({ command }) => {
       },
       outDir: 'build',
       rollupOptions: {
-        external: ['react', 'react-dom'],
+        // Keep react/jsx-runtime etc. external so CJS bundles are not inlined (breaks workerd/SSR).
+        external: ['react', 'react-dom', /^react\//, /^react-dom\//],
         output: {
           exports: 'named',
           // Consuming app imports build/style.css — ensure stable name
