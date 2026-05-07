@@ -22,6 +22,7 @@
     "tailwind.preset.js"
   ],
   "scripts": {
+    "all": "concurrently -n build,dev -c blue,green \"npm run build:watch\" \"npm run dev\"",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -77,6 +78,7 @@
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/ui": "^4.0.14",
     "autoprefixer": "^10.4.22",
+    "concurrently": "^9.2.1",
     "eslint": "^10.0.2",
     "eslint-config-prettier": "^10.1.0",
     "jsdom": "^27.2.0",
@@ -105,7 +107,6 @@
     "lucide-react": "^1.14.0",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0",
-    "recharts": "^2.15.4",
     "tailwind-merge": "^3.5.0"
   }
 }
