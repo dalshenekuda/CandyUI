@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import * as React from 'react'
+import { Button } from '@/components/Button/Button'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './Card'
 
 const meta: Meta<typeof Card> = {
@@ -19,6 +21,33 @@ export default meta
 type Story = StoryObj<typeof Card>
 
 /** Full card composition with header, content, and footer. */
-export const Default: Story = {}
+export const Default: Story = {
+  render: () =>
+    React.createElement(
+      Card,
+      { className: 'w-full max-w-md' },
+      React.createElement(
+        CardHeader,
+        null,
+        React.createElement(CardTitle, null, 'Card title'),
+        React.createElement(
+          CardDescription,
+          null,
+          'Short supporting description for this card.',
+        ),
+      ),
+      React.createElement(
+        CardContent,
+        null,
+        'Use Card as a surface for grouped content and actions.',
+      ),
+      React.createElement(
+        CardFooter,
+        { className: 'gap-sm' },
+        React.createElement(Button, { variant: 'outline', size: 'sm' }, 'Cancel'),
+        React.createElement(Button, { size: 'sm' }, 'Continue'),
+      ),
+    ),
+}
 
 export { CardHeader, CardTitle, CardDescription, CardContent, CardFooter }

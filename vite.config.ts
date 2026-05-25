@@ -52,7 +52,9 @@ export default defineConfig(({ command }) => {
         }
       },
       sourcemap: true,
-      emptyOutDir: true
+      // Keep existing artifacts during watch rebuilds so linked consumers
+      // (e.g. CandyArea via file:../CandyUI) can still resolve the package entry.
+      emptyOutDir: !process.env.VITE_BUILD_WATCH,
     } : {},
     server: {
       open: true,
