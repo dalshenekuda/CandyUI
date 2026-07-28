@@ -18,7 +18,9 @@ const meta: Meta<typeof Text> = {
       description: 'Typographic variant — maps to a responsive `typo-*` CSS class.',
       control: { type: 'select' },
       options: [
+        'display-2xl', 'display-xl', 'display-lg',
         'heading-xl', 'heading-lg', 'heading-md', 'heading-sm',
+        'meta-md', 'meta-sm',
         'subtitle-lg', 'subtitle-md',
         'body-lg', 'body-md', 'body-sm',
         'caption-md', 'caption-sm',
