@@ -1,0 +1,118 @@
+/* ─── Tone tokens — colored section fields ──────────────────────────────────
+   Usage:
+   - data-tone="blueras" on a section wrapper (immediate bg fill via base layer)
+   - data-tone-vars="blueras" on ProductCard (vars only; fill on hover/focus)
+   Light: pastel 200 step. Dark: deep 700 step.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+[data-tone='blueras'],
+[data-tone-vars='blueras'] {
+  --tone-bg:     var(--palette-blueras-200);
+  --tone-ink:    var(--palette-ink-1000);
+  --tone-border: var(--palette-blueras-500);
+  --tone-accent: var(--palette-blueras-500);
+}
+
+[data-tone='raspberry'],
+[data-tone-vars='raspberry'] {
+  --tone-bg:     var(--palette-raspberry-200);
+  --tone-ink:    var(--palette-ink-1000);
+  --tone-border: var(--palette-raspberry-600);
+  --tone-accent: var(--palette-raspberry-600);
+}
+
+[data-tone='spearmint'],
+[data-tone-vars='spearmint'] {
+  --tone-bg:     var(--palette-spearmint-200);
+  --tone-ink:    var(--palette-ink-1000);
+  --tone-border: var(--palette-spearmint-500);
+  --tone-accent: var(--palette-spearmint-700);
+}
+
+[data-tone='lemon'],
+[data-tone-vars='lemon'] {
+  --tone-bg:     var(--palette-lemon-200);
+  --tone-ink:    var(--palette-ink-1000);
+  --tone-border: var(--palette-lemon-600);
+  --tone-accent: var(--palette-lemon-700);
+}
+
+[data-tone='lime'],
+[data-tone-vars='lime'] {
+  --tone-bg:     var(--palette-lime-200);
+  --tone-ink:    var(--palette-ink-1000);
+  --tone-border: var(--palette-lime-500);
+  --tone-accent: var(--palette-lime-700);
+}
+
+[data-tone='ink'],
+[data-tone-vars='ink'] {
+  --tone-bg:     var(--palette-ink-1000);
+  --tone-ink:    var(--palette-paper);
+  --tone-border: var(--palette-ink-600);
+  --tone-accent: var(--palette-paper);
+}
+
+[data-tone='paper'],
+[data-tone-vars='paper'] {
+  --tone-bg:     var(--palette-paper);
+  --tone-ink:    var(--palette-ink-1000);
+  --tone-border: var(--palette-ink-200);
+  --tone-accent: var(--palette-blueras-500);
+}
+
+.dark [data-tone='blueras'],
+.dark [data-tone-vars='blueras'] {
+  --tone-bg:     var(--palette-blueras-700);
+  --tone-ink:    var(--palette-paper);
+  --tone-border: var(--palette-blueras-500);
+  --tone-accent: #6E86F0;
+}
+
+.dark [data-tone='raspberry'],
+.dark [data-tone-vars='raspberry'] {
+  --tone-bg:     var(--palette-raspberry-700);
+  --tone-ink:    var(--palette-paper);
+  --tone-border: var(--palette-raspberry-600);
+  --tone-accent: var(--palette-raspberry-200);
+}
+
+.dark [data-tone='spearmint'],
+.dark [data-tone-vars='spearmint'] {
+  --tone-bg:     var(--palette-spearmint-700);
+  --tone-ink:    var(--palette-paper);
+  --tone-border: var(--palette-spearmint-500);
+  --tone-accent: var(--palette-spearmint-200);
+}
+
+.dark [data-tone='lemon'],
+.dark [data-tone-vars='lemon'] {
+  --tone-bg:     var(--palette-lemon-700);
+  --tone-ink:    var(--palette-paper);
+  --tone-border: var(--palette-lemon-600);
+  --tone-accent: var(--palette-lemon-200);
+}
+
+.dark [data-tone='lime'],
+.dark [data-tone-vars='lime'] {
+  --tone-bg:     var(--palette-lime-700);
+  --tone-ink:    var(--palette-paper);
+  --tone-border: var(--palette-lime-500);
+  --tone-accent: var(--palette-lime-200);
+}
+
+.dark [data-tone='ink'],
+.dark [data-tone-vars='ink'] {
+  --tone-bg:     var(--palette-dark-base);
+  --tone-ink:    var(--palette-paper);
+  --tone-border: var(--palette-dark-border);
+  --tone-accent: var(--palette-paper);
+}
+
+.dark [data-tone='paper'],
+.dark [data-tone-vars='paper'] {
+  --tone-bg:     var(--palette-dark-surface);
+  --tone-ink:    var(--palette-paper);
+  --tone-border: var(--palette-dark-border);
+  --tone-accent: var(--palette-blueras-500);
+}
