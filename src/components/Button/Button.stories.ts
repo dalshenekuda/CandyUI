@@ -17,13 +17,13 @@ const meta: Meta<typeof Button> = {
     variant: {
       description: 'Visual style of the button.',
       control: { type: 'select' },
-      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'],
+      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link', 'tone'],
       table: { category: 'Appearance' },
     },
     size: {
       description: 'Size of the button.',
       control: { type: 'select' },
-      options: ['default', 'sm', 'lg', 'icon'],
+      options: ['default', 'sm', 'lg', 'xl', 'icon'],
       table: { category: 'Appearance' },
     },
     disabled: {
@@ -73,4 +73,12 @@ export const Link: Story = {
 /** Disabled state applies to all variants. */
 export const Disabled: Story = {
   args: { children: 'Disabled', disabled: true },
+}
+
+export const Loading: Story = {
+  args: { children: 'Adding…', loading: true },
+}
+
+export const ExtraLarge: Story = {
+  args: { children: 'Shop all', size: 'xl' },
 }

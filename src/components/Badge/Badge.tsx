@@ -4,20 +4,32 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 const badgeVariants = cva(
-  'inline-flex items-center rounded-full border px-xs py-[2px] text-xs font-semibold transition-colors duration-base focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2',
+  'inline-flex items-center rounded-xs px-xs py-[2px] typo-meta-sm font-medium transition-colors duration-base focus:outline-none focus:ring-2 focus:ring-accent-alt focus:ring-offset-2',
   {
     variants: {
       variant: {
-        default:     'border-transparent bg-brand text-text-on-brand hover:bg-brand/80',
-        secondary:   'border-transparent bg-surface-raised text-text hover:bg-surface-raised/80',
-        destructive: 'border-transparent bg-danger text-text-on-brand hover:bg-danger/80',
-        outline:     'border-border text-text',
-        success:     'border-transparent bg-success text-text-on-brand hover:bg-success/80',
-        warning:     'border-transparent bg-warning text-text hover:bg-warning/80',
+        default:     'border-transparent bg-brand text-text-on-brand',
+        secondary:   'border-transparent bg-surface-sunken text-text',
+        destructive: 'border-transparent bg-danger text-text-on-brand',
+        outline:     'border border-border text-text',
+        success:     'border-transparent bg-success text-text-on-brand',
+        warning:     'border-transparent bg-warning text-text',
+        sale:        'border-transparent bg-accent text-text-on-brand',
+        soldout:     'border border-border-strong bg-transparent text-text-muted',
+        new:         'border-transparent bg-accent-alt text-text-on-brand',
+        tone:        'border-transparent bg-[var(--tone-accent)] text-[var(--tone-ink)]',
+        ink:         'border-transparent bg-text text-bg',
+        print:       'border-[length:var(--border-hairline)] border-current bg-transparent text-current',
+      },
+      rotate: {
+        none: '',
+        left: '-rotate-2',
+        right: 'rotate-2',
       },
     },
     defaultVariants: {
       variant: 'default',
+      rotate: 'none',
     },
   },
 )
@@ -26,9 +38,9 @@ export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {}
 
-function Badge({ className, variant, ...props }: BadgeProps) {
+function Badge({ className, variant, rotate, ...props }: BadgeProps) {
   return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
+    <div className={cn(badgeVariants({ variant, rotate }), className)} {...props} />
   )
 }
 
