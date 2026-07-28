@@ -1,12 +1,18 @@
-// Typography utility classes – import after variables & mixins
-// Usage: className="typo-heading-xl", "typo-body-md", "typo-button-lg", etc.
+// Typography utility classes
 
 @use './typography-mixins' as *;
+
+.typo-display-2xl { @include typo-display-2xl; }
+.typo-display-xl  { @include typo-display-xl; }
+.typo-display-lg  { @include typo-display-lg; }
 
 .typo-heading-xl  { @include typo-heading-xl; }
 .typo-heading-lg  { @include typo-heading-lg; }
 .typo-heading-md  { @include typo-heading-md; }
 .typo-heading-sm  { @include typo-heading-sm; }
+
+.typo-meta-md     { @include typo-meta-md; }
+.typo-meta-sm     { @include typo-meta-sm; }
 
 .typo-subtitle-lg { @include typo-subtitle-lg; }
 .typo-subtitle-md { @include typo-subtitle-md; }
@@ -22,3 +28,7 @@
 .typo-button-lg { @include typo-button-lg; }
 .typo-button-md { @include typo-button-md; }
 .typo-button-sm { @include typo-button-sm; }
+
+.text-balance {
+  text-wrap: balance;
+}

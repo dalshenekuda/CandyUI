@@ -1,32 +1,48 @@
 :root {
   /* Border Radius */
   --radius-none: 0px;
-  --radius-xs:   4px;
-  --radius-sm:   8px;
-  --radius-md:   12px;
-  --radius-lg:   16px;
-  --radius-xl:   20px;
-  --radius-2xl:  28px;
+  --radius-xs:   2px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   24px;
+  --radius-2xl:  40px;
   --radius-full: 9999px;
 
-  /* Shadows (warm teal undertone — matches palette) */
-  --shadow-sm:  0 1px 3px 0 rgba(46, 107, 105, 0.08);
-  --shadow-md:  0 4px 12px 0 rgba(46, 107, 105, 0.12);
-  --shadow-lg:  0 8px 24px 0 rgba(46, 107, 105, 0.16);
-  --shadow-xl:  0 16px 48px 0 rgba(46, 107, 105, 0.20);
+  /* Shadows — neutral ink undertone */
+  --shadow-sm:  0 1px 3px 0 rgba(16, 14, 12, 0.06);
+  --shadow-md:  0 4px 12px 0 rgba(16, 14, 12, 0.10);
+  --shadow-lg:  0 8px 24px 0 rgba(16, 14, 12, 0.14);
+  --shadow-xl:  0 16px 48px 0 rgba(16, 14, 12, 0.18);
+
+  /* Interactive / overlay shadows */
+  --shadow-press:  0 2px 0 0 var(--color-border-strong);
+  --shadow-hover:  0 10px 24px -14px rgba(16, 14, 12, 0.30);
+  --shadow-lift:   0 24px 48px -16px rgba(16, 14, 12, 0.28);
+
+  /* Border widths */
+  --border-hairline: 1px;
+  --border-print:    1.5px;
 
   /* Transitions */
-  --transition-fast: 150ms;
-  --transition-base: 200ms;
-  --transition-slow: 300ms;
+  --transition-fast: 120ms;
+  --transition-base: 220ms;
+  --transition-slow: 420ms;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-spring:    cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Layout */
+  --container-max: 1440px;
+  --gutter-mobile: 20px;
+  --gutter-desktop: 32px;
 
   /* Z-index layers */
-  --z-base:    0;
-  --z-raised:  10;
+  --z-base:     0;
+  --z-raised:   10;
   --z-dropdown: 100;
-  --z-sticky:  200;
-  --z-overlay: 300;
-  --z-modal:   400;
-  --z-toast:   500;
-  --z-popup:   9999;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-popup:    9999;
 }

@@ -37,7 +37,7 @@
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "build:watch": "vite build --watch",
+    "build:watch": "VITE_BUILD_WATCH=true vite build --watch",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "npm run build && changeset publish"

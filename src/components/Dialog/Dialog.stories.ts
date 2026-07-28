@@ -20,7 +20,7 @@ const meta: Meta<typeof Dialog> = {
     docs: {
       description: {
         component:
-          'Accessible modal dialog built on Radix UI Dialog. Composed of Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, and DialogClose.',
+          'Accessible centered modal built on Radix UI Dialog. For side panels (cart, search, mobile menu), use Aside instead.',
       },
     },
   },
