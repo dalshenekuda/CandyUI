@@ -2,6 +2,8 @@
 @import '../tokens/colors/palette.css';
 @import '../tokens/colors/theme-light.css';
 @import '../tokens/colors/theme-dark.css';
+@import '../tokens/colors/tones.css';
+@import '../tokens/typography/fonts.css';
 @import '../tokens/spacing/spacing.css';
 @import '../tokens/base.css';
 @import '../tokens/breakpoints.css';
@@ -11,6 +13,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  [data-tone] {
+    background-color: var(--tone-bg);
+    color: var(--tone-ink);
+  }
+}
 
 /* ─── shadcn/ui required variables ────────────────────────────────────────── */
 @layer base {

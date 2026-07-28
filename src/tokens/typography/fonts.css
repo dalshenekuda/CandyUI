@@ -1,0 +1,23 @@
+/* ─── Font faces — Cabinet Grotesk (display + logo) + Switzer (body) ─────── */
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('../../assets/fonts/CabinetGrotesk-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('../../assets/fonts/Switzer-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-display: 'Cabinet Grotesk', system-ui, sans-serif;
+  --font-body:    'Switzer', system-ui, sans-serif;
+  --font-logo:    var(--font-display);
+}

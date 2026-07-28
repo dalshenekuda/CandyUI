@@ -1,6 +1,5 @@
-// Typography tokens — standard modular scale (16px base, ~1.25 ratio between roles)
-// Distinct from work project; tuned for portfolio / showcase kit.
-// Breakpoint: mobile first, desktop from $typo-desktop-min
+// Typography tokens — Sweet Shop Print
+// Display: Cabinet Grotesk. Body/meta: Switzer.
 
 $typo-desktop-min: 992px;
 $typo-font-weight-light: 300;
@@ -9,6 +8,9 @@ $typo-font-weight-medium: 500;
 $typo-font-weight-semibold: 600;
 $typo-font-weight-bold: 700;
 $typo-font-weight-black: 900;
+
+$typo-font-display: var(--font-display);
+$typo-font-body: var(--font-body);
 
 :root {
   --font-weight-light:    #{$typo-font-weight-light};
@@ -22,9 +24,30 @@ $typo-font-weight-black: 900;
 $typo-spacing-0: 0;
 $typo-spacing-1: 0.02em;
 $typo-spacing-2: 0.05em;
+$typo-spacing-meta-md: 0.08em;
+$typo-spacing-meta-sm: 0.1em;
+$typo-spacing-display-2xl: -0.03em;
+$typo-spacing-display-xl: -0.025em;
+$typo-spacing-display-lg: -0.02em;
 
 // ─── Desktop ─────────────────────────────────────────────────────────────
-// Headings (scale: 48 → 36 → 30 → 24)
+// Display (Cabinet Grotesk)
+$typo-desktop-display-2xl-size: 80px;
+$typo-desktop-display-2xl-line: 76px;
+$typo-desktop-display-2xl-weight: $typo-font-weight-bold;
+$typo-desktop-display-2xl-spacing: $typo-spacing-display-2xl;
+
+$typo-desktop-display-xl-size: 60px;
+$typo-desktop-display-xl-line: 58px;
+$typo-desktop-display-xl-weight: $typo-font-weight-bold;
+$typo-desktop-display-xl-spacing: $typo-spacing-display-xl;
+
+$typo-desktop-display-lg-size: 44px;
+$typo-desktop-display-lg-line: 46px;
+$typo-desktop-display-lg-weight: $typo-font-weight-bold;
+$typo-desktop-display-lg-spacing: $typo-spacing-display-lg;
+
+// Headings (display font)
 $typo-desktop-heading-xl-size: 48px;
 $typo-desktop-heading-xl-line: 56px;
 $typo-desktop-heading-xl-weight: $typo-font-weight-bold;
@@ -44,6 +67,17 @@ $typo-desktop-heading-sm-size: 24px;
 $typo-desktop-heading-sm-line: 32px;
 $typo-desktop-heading-sm-weight: $typo-font-weight-semibold;
 $typo-desktop-heading-sm-spacing: $typo-spacing-0;
+
+// Meta (Switzer uppercase)
+$typo-desktop-meta-md-size: 13px;
+$typo-desktop-meta-md-line: 18px;
+$typo-desktop-meta-md-weight: $typo-font-weight-medium;
+$typo-desktop-meta-md-spacing: $typo-spacing-meta-md;
+
+$typo-desktop-meta-sm-size: 11px;
+$typo-desktop-meta-sm-line: 15px;
+$typo-desktop-meta-sm-weight: $typo-font-weight-medium;
+$typo-desktop-meta-sm-spacing: $typo-spacing-meta-sm;
 
 // Subtitles
 $typo-desktop-subtitle-lg-size: 20px;
@@ -83,14 +117,28 @@ $typo-desktop-caption-sm-line: 16px;
 $typo-desktop-caption-sm-weight: $typo-font-weight-regular;
 $typo-desktop-caption-sm-spacing: $typo-spacing-0;
 
-// Overline (label / eyebrow)
+// Overline
 $typo-desktop-overline-size: 11px;
 $typo-desktop-overline-line: 16px;
 $typo-desktop-overline-weight: $typo-font-weight-semibold;
-$typo-desktop-overline-spacing: $typo-spacing-2;
+$typo-desktop-overline-spacing: $typo-spacing-meta-sm;
 
 // ─── Mobile ───────────────────────────────────────────────────────────────
-// Headings (one step down: 36 → 30 → 24 → 20)
+$typo-mobile-display-2xl-size: 44px;
+$typo-mobile-display-2xl-line: 44px;
+$typo-mobile-display-2xl-weight: $typo-font-weight-bold;
+$typo-mobile-display-2xl-spacing: $typo-spacing-display-2xl;
+
+$typo-mobile-display-xl-size: 36px;
+$typo-mobile-display-xl-line: 38px;
+$typo-mobile-display-xl-weight: $typo-font-weight-bold;
+$typo-mobile-display-xl-spacing: $typo-spacing-display-xl;
+
+$typo-mobile-display-lg-size: 30px;
+$typo-mobile-display-lg-line: 34px;
+$typo-mobile-display-lg-weight: $typo-font-weight-bold;
+$typo-mobile-display-lg-spacing: $typo-spacing-display-lg;
+
 $typo-mobile-heading-xl-size: 36px;
 $typo-mobile-heading-xl-line: 44px;
 $typo-mobile-heading-xl-weight: $typo-font-weight-bold;
@@ -111,7 +159,16 @@ $typo-mobile-heading-sm-line: 28px;
 $typo-mobile-heading-sm-weight: $typo-font-weight-semibold;
 $typo-mobile-heading-sm-spacing: $typo-spacing-0;
 
-// Subtitles
+$typo-mobile-meta-md-size: 12px;
+$typo-mobile-meta-md-line: 16px;
+$typo-mobile-meta-md-weight: $typo-font-weight-medium;
+$typo-mobile-meta-md-spacing: $typo-spacing-meta-md;
+
+$typo-mobile-meta-sm-size: 10px;
+$typo-mobile-meta-sm-line: 14px;
+$typo-mobile-meta-sm-weight: $typo-font-weight-medium;
+$typo-mobile-meta-sm-spacing: $typo-spacing-meta-sm;
+
 $typo-mobile-subtitle-lg-size: 18px;
 $typo-mobile-subtitle-lg-line: 26px;
 $typo-mobile-subtitle-lg-weight: $typo-font-weight-medium;
@@ -122,7 +179,6 @@ $typo-mobile-subtitle-md-line: 24px;
 $typo-mobile-subtitle-md-weight: $typo-font-weight-medium;
 $typo-mobile-subtitle-md-spacing: $typo-spacing-0;
 
-// Body
 $typo-mobile-body-lg-size: 16px;
 $typo-mobile-body-lg-line: 26px;
 $typo-mobile-body-lg-weight: $typo-font-weight-regular;
@@ -138,7 +194,6 @@ $typo-mobile-body-sm-line: 20px;
 $typo-mobile-body-sm-weight: $typo-font-weight-regular;
 $typo-mobile-body-sm-spacing: $typo-spacing-0;
 
-// Caption
 $typo-mobile-caption-md-size: 12px;
 $typo-mobile-caption-md-line: 16px;
 $typo-mobile-caption-md-weight: $typo-font-weight-regular;
@@ -149,13 +204,12 @@ $typo-mobile-caption-sm-line: 14px;
 $typo-mobile-caption-sm-weight: $typo-font-weight-regular;
 $typo-mobile-caption-sm-spacing: $typo-spacing-0;
 
-// Overline
 $typo-mobile-overline-size: 10px;
 $typo-mobile-overline-line: 14px;
 $typo-mobile-overline-weight: $typo-font-weight-semibold;
-$typo-mobile-overline-spacing: $typo-spacing-2;
+$typo-mobile-overline-spacing: $typo-spacing-meta-sm;
 
-// ─── Button (same for desktop & mobile — matches common UI libs) ──────────
+// ─── Button ───────────────────────────────────────────────────────────────
 $typo-button-lg-size: 16px;
 $typo-button-lg-line: 24px;
 $typo-button-lg-weight: $typo-font-weight-semibold;

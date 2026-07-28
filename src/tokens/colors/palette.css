@@ -1,69 +1,51 @@
-/* ─── Primitive palette tokens ───────────────────────────────────────────────
-   Raw hex values only. Never use these directly in components —
-   always reference via semantic tokens from theme-light.css / theme-dark.css.
+/* ─── Primitive palette — Sweet Shop Print ───────────────────────────────────
+   Raw hex values only. Components use semantic tokens from theme-light/dark.css.
    ─────────────────────────────────────────────────────────────────────────── */
 
 :root {
-  /* Teal family (brand hue) */
-  --palette-teal-900: #2e6b69;
-  --palette-teal-600: #4a8c8a;
-  --palette-teal-400: #8dbdbb;
-  --palette-teal-200: #c0dedd;
+  /* Ink scale (licorice + sugar paper) */
+  --palette-ink-1000: #100E0C;
+  --palette-ink-900:  #17140F;
+  --palette-ink-800:  #221E19;
+  --palette-ink-600:  #4A443D;
+  --palette-ink-500:  #6B635A;
+  --palette-ink-300:  #A79E93;
+  --palette-ink-200:  #D8D2C7;
+  --palette-ink-100:  #EDE9E1;
+  --palette-paper:    #F7F5F0;
+  --palette-white:    #FFFFFF;
 
-  /* Cream family (warm base) */
-  --palette-cream-ink:  #1e1208;  /* deep warm black — text on light */
-  --palette-cream-100:  #f5ecd7;  /* main warm surface */
-  --palette-cream-50:   #faf5ec;  /* lightest cream — page bg */
+  /* Blue Raspberry (signature) */
+  --palette-blueras-700: #1E3AA8;
+  --palette-blueras-500: #2E52D9;
+  --palette-blueras-200: #C7D2F7;
 
-  /* Warm grey scale (1000 = darkest, 100 = lightest) */
-  --palette-grey-1000: #2c2416;
-  --palette-grey-900:  #4a3d2e;
-  --palette-grey-800:  #625340;
-  --palette-grey-700:  #7a6a55;
-  --palette-grey-600:  #96867a;
-  --palette-grey-500:  #b0a494;
-  --palette-grey-400:  #c8beb0;
-  --palette-grey-300:  #ddd6ca;
-  --palette-grey-200:  #ede8e0;
-  --palette-grey-100:  #f5f2ec;
+  /* Raspberry */
+  --palette-raspberry-700: #C31840;
+  --palette-raspberry-600: #E23A5E;
+  --palette-raspberry-200: #F8C6D1;
 
-  /* Coral family (main accent — "10% pop") */
-  --palette-coral-700: #c43d1a;
-  --palette-coral-500: #e86040;
-  --palette-coral-300: #f5a78a;
-  --palette-coral-muted: #c45a40;   /* softer coral for dark backgrounds */
+  /* Spearmint */
+  --palette-spearmint-700: #0C6A57;
+  --palette-spearmint-500: #13957A;
+  --palette-spearmint-200: #B7E5D6;
 
-  /* Amber family (warm accent) */
-  --palette-amber-700: #c49a10;
-  --palette-amber-500: #e8c040;
-  --palette-amber-300: #f5dc88;
-  --palette-amber-muted: #d4a828;   /* less punchy on dark */
+  /* Lemon */
+  --palette-lemon-700: #E0A800;
+  --palette-lemon-600: #FFC72C;
+  --palette-lemon-200: #FFE9A8;
 
-  /* Olive family (natural green) */
-  --palette-olive-700: #3d6b20;
-  --palette-olive-500: #6a9b3a;
-  --palette-olive-300: #a8c878;
-  --palette-olive-muted: #7aaa48;   /* slightly lighter on dark */
+  /* Sour Lime */
+  --palette-lime-700: #6FA300;
+  --palette-lime-500: #96CE1E;
+  --palette-lime-200: #DCF0B0;
 
-  /* Sage family (muted green) */
-  --palette-sage-700: #2a5a40;
-  --palette-sage-500: #4a8a68;
-  --palette-sage-300: #88bba0;
-
-  /* Wine / burgundy family */
-  --palette-wine-700: #5c1b2b;
-  --palette-wine-500: #9b2d42;
-  --palette-wine-300: #c97089;
-
-  /* ─── Dark theme foundations (warm charcoals — Rubberhose feel) ─── */
-  --palette-dark-base:    #1a110a;   /* page bg in dark mode */
-  --palette-dark-surface: #2c1f14;   /* card / panel surface */
-  --palette-dark-raised:  #3d2d1e;   /* elevated surface (dropdown, tooltip) */
-  --palette-dark-border:  #4a3828;   /* subtle border on dark */
-  --palette-dark-border-subtle: #3a2a1c;
-
-  /* Teal adjusted for dark backgrounds (brighter to maintain contrast) */
-  --palette-teal-light:   #6fb5b2;
+  /* Dark foundations (neutral licorice) */
+  --palette-dark-base:    #0E0D0C;
+  --palette-dark-surface: #171614;
+  --palette-dark-raised:  #201E1B;
+  --palette-dark-border:  #2E2A26;
+  --palette-dark-border-subtle: #252320;
 
   /* White alpha scale */
   --palette-white-100: rgba(255, 255, 255, 1);
