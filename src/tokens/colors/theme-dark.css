@@ -1,7 +1,5 @@
-/* ─── Semantic tokens — Dark theme ──────────────────────────────────────────
-   Overrides --color-* for dark mode. Activate by adding class "dark" to <html>:
-     document.documentElement.classList.toggle('dark')
-   Same token names as theme-light.css — only values change.
+/* ─── Semantic tokens — Dark theme (night shop) ─────────────────────────────
+   Activate: class "dark" on <html>
    ─────────────────────────────────────────────────────────────────────────── */
 
 .dark {
@@ -9,38 +7,40 @@
   --color-bg:             var(--palette-dark-base);
   --color-surface:        var(--palette-dark-surface);
   --color-surface-raised: var(--palette-dark-raised);
+  --color-surface-sunken: var(--palette-dark-raised);
 
   /* Text */
-  --color-text:           var(--palette-grey-100);
-  --color-text-muted:     var(--palette-grey-400);
-  --color-text-subtle:    var(--palette-grey-500);
-  --color-text-on-brand:  var(--palette-cream-50);
+  --color-text:           #F4F1EA;
+  --color-text-muted:     var(--palette-ink-300);
+  --color-text-subtle:    var(--palette-ink-500);
+  --color-text-on-brand:  var(--palette-ink-1000);
 
-  /* Brand (teal — brighter to contrast against dark base) */
-  --color-brand:          var(--palette-teal-light);
-  --color-brand-dark:     var(--palette-teal-400);
-  --color-brand-light:    var(--palette-teal-200);
+  /* Brand (inverted — light button on dark) */
+  --color-brand:          var(--palette-paper);
+  --color-brand-hover:    var(--palette-ink-100);
+  --color-brand-dark:     var(--palette-ink-100);
+  --color-brand-light:    var(--palette-ink-200);
 
-  /* Accent (coral — slightly muted on dark) */
-  --color-accent:         var(--palette-coral-muted);
-  --color-accent-dark:    var(--palette-coral-700);
-  --color-accent-light:   var(--palette-coral-300);
-
-  /* Warm accent (amber — muted) */
-  --color-accent-warm:    var(--palette-amber-muted);
+  /* Accent */
+  --color-accent:         var(--palette-raspberry-600);
+  --color-accent-dark:    var(--palette-raspberry-700);
+  --color-accent-light:   var(--palette-raspberry-200);
+  --color-accent-alt:     #6E86F0;
+  --color-accent-warm:    var(--palette-lemon-600);
 
   /* Borders */
   --color-border:         var(--palette-dark-border);
   --color-border-subtle:  var(--palette-dark-border-subtle);
+  --color-border-strong:  #5A534A;
 
   /* Status */
-  --color-danger:         var(--palette-coral-500);
-  --color-danger-bg:      var(--palette-wine-700);
-  --color-success:        var(--palette-olive-muted);
-  --color-success-bg:     var(--palette-sage-700);
-  --color-warning:        var(--palette-amber-muted);
-  --color-warning-bg:     var(--palette-amber-700);
+  --color-danger:         var(--palette-raspberry-600);
+  --color-danger-bg:      var(--palette-raspberry-700);
+  --color-success:        var(--palette-spearmint-500);
+  --color-success-bg:     var(--palette-spearmint-700);
+  --color-warning:        var(--palette-lemon-600);
+  --color-warning-bg:     var(--palette-lemon-700);
 
   /* Overlay */
-  --color-overlay:        rgba(10, 6, 2, 0.65);
+  --color-overlay:        rgba(10, 8, 6, 0.65);
 }
