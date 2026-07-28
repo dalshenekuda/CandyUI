@@ -1,37 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import * as React from 'react'
-import { Button } from '@/components/Button/Button'
-import { ProductCard } from './ProductCard'
+import lindorTruffleImage from '@/assets/storybook/lindor-truffle.png'
+import { AddToCartStepper } from '@/components/AddToCartStepper/AddToCartStepper'
+import { Badge } from '@/components/Badge/Badge'
+import { ProductCard, type ProductCardTone } from './ProductCard'
 
-const SAMPLE_IMAGE =
-  'https://images.unsplash.com/photo-1606313564200-e75d5e30439c?auto=format&fit=crop&w=640&h=640&q=80'
+const TONES: ProductCardTone[] = ['blueras', 'raspberry', 'spearmint', 'lemon', 'lime']
 
 const meta: Meta<typeof ProductCard> = {
   title: 'Components/ProductCard',
   component: ProductCard,
   tags: ['autodocs'],
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Commerce-oriented card with a square media region and stacked text. Wraps the base Card primitive; use Card directly for generic layouts.',
-      },
-    },
-    layout: 'centered',
-  },
-  argTypes: {
-    imageSrc: { description: 'URL for the square product image.', table: { category: 'Content' } },
-    imageAlt: { description: 'Alt text for the image.', table: { category: 'Content' } },
-    title: { description: 'Product name.', table: { category: 'Content' } },
-    description: { description: 'Secondary line.', table: { category: 'Content' } },
-    price: { description: 'Price row.', table: { category: 'Content' } },
-    footer: { description: 'Optional actions block.', table: { category: 'Content' } },
-  },
+  parameters: { layout: 'centered' },
   decorators: [
     (Story) =>
       React.createElement(
         'div',
-        { className: 'w-full max-w-xs p-md' },
+        { className: 'group/card w-full max-w-xs bg-bg p-sm' },
         React.createElement(Story),
       ),
   ],
@@ -40,28 +25,166 @@ const meta: Meta<typeof ProductCard> = {
 export default meta
 type Story = StoryObj<typeof ProductCard>
 
-/** Typical product listing tile with photo, copy, price, and CTA. */
 export const Default: Story = {
   args: {
-    imageSrc: SAMPLE_IMAGE,
-    imageAlt: 'Assorted candies in glass jars',
-    title: 'Candy sampler box',
-    description: 'Eight flavors · 240 g',
-    price: '$24.00',
+    imageSrc: lindorTruffleImage,
+    imageAlt: 'LINDOR milk chocolate truffle',
+    title: 'LINDOR Milk Chocolate',
+    meta: 'Milk',
+    price: '$12.99',
+    tone: 'raspberry',
+    fit: 'contain',
   },
   render: (args) =>
     React.createElement(ProductCard, {
       ...args,
-      footer: React.createElement(Button, { className: 'w-full', size: 'sm' }, 'Add to cart'),
+      footer: React.createElement(AddToCartStepper, { quantity: 0 }),
     }),
 }
 
-/** Minimal copy-only variant without description or footer. */
-export const TitleAndPrice: Story = {
+export const RestState: Story = {
   args: {
-    imageSrc: SAMPLE_IMAGE,
-    imageAlt: 'Candies',
-    title: 'Gummy bears',
-    price: '$8.50',
+    imageSrc: lindorTruffleImage,
+    imageAlt: 'Blue Raspberry Drop',
+    title: 'Blue Raspberry Cluster',
+    meta: 'Fruity',
+    price: '$7.25',
+    tone: 'blueras',
+    toneMode: 'rest',
+    fit: 'contain',
+    footer: React.createElement(AddToCartStepper, { quantity: 0 }),
   },
+}
+
+export const WithBadges: Story = {
+  args: {
+    imageSrc: lindorTruffleImage,
+    imageAlt: 'Truffle',
+    title: 'Mixed Berry Gummies',
+    meta: 'Fruity',
+    price: '$14.00',
+    tone: 'raspberry',
+    fit: 'contain',
+    badgeTopLeft: React.createElement(Badge, { variant: 'ink', rotate: 'left', children: 'New' }),
+    footer: React.createElement(AddToCartStepper, { quantity: 0 }),
+  },
+}
+
+export const OnSale: Story = {
+  args: {
+    imageSrc: lindorTruffleImage,
+    imageAlt: 'Truffle',
+    title: 'Caramel Clusters',
+    meta: 'Milk',
+    price: '$9.99',
+    compareAtPrice: '$12.99',
+    tone: 'lemon',
+    toneMode: 'rest',
+    fit: 'contain',
+    badgeTopRight: React.createElement(Badge, { variant: 'ink', rotate: 'right', children: 'Sale' }),
+    footer: React.createElement(AddToCartStepper, { quantity: 1 }),
+  },
+}
+
+export const SoldOut: Story = {
+  args: {
+    imageSrc: lindorTruffleImage,
+    imageAlt: 'Truffle',
+    title: 'Licorice Twists',
+    meta: 'Sour',
+    price: '$6.50',
+    tone: 'lime',
+    toneMode: 'rest',
+    fit: 'contain',
+    badgeTopRight: React.createElement(Badge, { variant: 'print', children: 'Sold out' }),
+    footer: React.createElement(AddToCartStepper, { quantity: 0, disabled: true }),
+  },
+}
+
+export const ToneMatrix: Story = {
+  render: () =>
+    React.createElement(
+      'div',
+      {
+        className: 'grid grid-cols-2 gap-0 bg-bg desktop:grid-cols-5',
+        style: { maxWidth: 1200 },
+      },
+      ...TONES.map((tone) =>
+        React.createElement(
+          'div',
+          { key: tone, className: 'group/card border border-border-strong p-sm' },
+          React.createElement(ProductCard, {
+            imageSrc: lindorTruffleImage,
+            imageAlt: `${tone} candy`,
+            title: `${tone.charAt(0).toUpperCase()}${tone.slice(1)} Drop`,
+            meta: tone.toUpperCase(),
+            price: '$8.00',
+            tone,
+            fit: 'contain',
+            footer: React.createElement(AddToCartStepper, { quantity: 0 }),
+          }),
+        ),
+      ),
+    ),
+  parameters: { layout: 'fullscreen' },
+}
+
+export const GridOfFour: Story = {
+  render: () =>
+    React.createElement(
+      'div',
+      {
+        className: 'grid grid-cols-2 gap-0 bg-bg desktop:grid-cols-4',
+        style: { maxWidth: 960 },
+      },
+      ...TONES.slice(0, 4).map((tone, i) =>
+        React.createElement(
+          'div',
+          {
+            key: tone,
+            className:
+              'group/card border-b border-r border-border-strong [&:nth-child(2n)]:border-r-0 desktop:[&:nth-child(2n)]:border-r desktop:[&:nth-child(4n)]:border-r-0',
+          },
+          React.createElement(ProductCard, {
+            imageSrc: lindorTruffleImage,
+            imageAlt: `Product ${i + 1}`,
+            title: `Candy Pack ${i + 1}`,
+            meta: tone.toUpperCase(),
+            price: `$${(8 + i).toFixed(2)}`,
+            tone,
+            fit: 'contain',
+            badgeTopRight:
+              i === 0
+                ? React.createElement(Badge, { variant: 'ink', children: 'Sale' })
+                : undefined,
+            footer: React.createElement(AddToCartStepper, { quantity: i === 1 ? 2 : 0 }),
+          }),
+        ),
+      ),
+    ),
+  parameters: { layout: 'fullscreen' },
+}
+
+export const DarkTheme: Story = {
+  render: () =>
+    React.createElement(
+      'div',
+      { className: 'dark bg-bg p-md' },
+      React.createElement(
+        'div',
+        { className: 'group/card max-w-xs' },
+        React.createElement(ProductCard, {
+          imageSrc: lindorTruffleImage,
+          imageAlt: 'Dark theme card',
+          title: 'Mint Wheel',
+          meta: 'Mint',
+          price: '$6.50',
+          tone: 'spearmint',
+          toneMode: 'rest',
+          fit: 'contain',
+          footer: React.createElement(AddToCartStepper, { quantity: 0 }),
+        }),
+      ),
+    ),
+  parameters: { layout: 'fullscreen' },
 }
