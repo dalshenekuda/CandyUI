@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Button } from './Button'
+import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -9,7 +9,7 @@ const meta: Meta<typeof Button> = {
     docs: {
       description: {
         component:
-          'General-purpose action button. Supports six semantic variants and three sizes. Use `asChild` to render as a link or any other element via Radix Slot.',
+          'General-purpose action button. Supports eight semantic variants and six sizes. Use `asChild` to render as a link or any other element via Radix Slot.',
       },
     },
   },
@@ -17,13 +17,13 @@ const meta: Meta<typeof Button> = {
     variant: {
       description: 'Visual style of the button.',
       control: { type: 'select' },
-      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link', 'tone'],
+      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link', 'tone', 'cart'],
       table: { category: 'Appearance' },
     },
     size: {
       description: 'Size of the button.',
       control: { type: 'select' },
-      options: ['default', 'sm', 'lg', 'xl', 'icon'],
+      options: ['default', 'sm', 'lg', 'xl', 'icon', 'pill'],
       table: { category: 'Appearance' },
     },
     disabled: {
@@ -35,50 +35,63 @@ const meta: Meta<typeof Button> = {
       table: { category: 'Appearance' },
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Button>
+export default meta;
+type Story = StoryObj<typeof Button>;
 
 /** Default brand-colored CTA button. */
 export const Default: Story = {
   args: { children: 'Click me' },
-}
+};
 
 /** Use for destructive or irreversible actions. */
 export const Destructive: Story = {
   args: { variant: 'destructive', children: 'Delete' },
-}
+};
 
 /** Bordered button for secondary actions. */
 export const Outline: Story = {
   args: { variant: 'outline', children: 'Cancel' },
-}
+};
 
 /** Lower-emphasis alternative to Outline. */
 export const Secondary: Story = {
   args: { variant: 'secondary', children: 'Secondary' },
-}
+};
 
 /** Minimal button for inline or toolbar actions. */
 export const Ghost: Story = {
   args: { variant: 'ghost', children: 'Ghost' },
-}
+};
 
 /** Looks like a hyperlink; for navigation inside a form or card. */
 export const Link: Story = {
   args: { variant: 'link', children: 'Learn more' },
-}
+};
 
 /** Disabled state applies to all variants. */
 export const Disabled: Story = {
   args: { children: 'Disabled', disabled: true },
-}
+};
 
 export const Loading: Story = {
   args: { children: 'Adding…', loading: true },
-}
+};
 
 export const ExtraLarge: Story = {
   args: { children: 'Shop all', size: 'xl' },
-}
+};
+
+/** Store Add to cart / Checkout pill — red rest, blue hover (same in light and dark). */
+export const Cart: Story = {
+  args: { variant: 'cart', size: 'pill', children: 'Add to cart' },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Primary commerce CTA used in product grids and cart checkout. Red accent at rest, blue on hover — identical in light and dark themes.',
+      },
+    },
+  },
+};

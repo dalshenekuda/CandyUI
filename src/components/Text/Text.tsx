@@ -1,6 +1,6 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils';
 
 export type TextVariant =
   | 'display-2xl'
@@ -19,9 +19,9 @@ export type TextVariant =
   | 'body-sm'
   | 'caption-md'
   | 'caption-sm'
-  | 'overline'
+  | 'overline';
 
-export type FontWeight = 'light' | 'regular' | 'medium' | 'semibold' | 'bold' | 'black'
+export type FontWeight = 'light' | 'regular' | 'medium' | 'semibold' | 'bold' | 'black';
 
 export type TextColor =
   | 'color-text'
@@ -40,46 +40,49 @@ export type TextColor =
   | 'color-success'
   | 'color-warning'
   | 'tone-ink'
-  | 'tone-accent'
+  | 'tone-accent';
 
 const defaultTag: Record<TextVariant, React.ElementType> = {
   'display-2xl': 'h1',
-  'display-xl':  'h1',
-  'display-lg':  'h2',
-  'heading-xl':  'h1',
-  'heading-lg':  'h2',
-  'heading-md':  'h3',
-  'heading-sm':  'h4',
-  'meta-md':     'span',
-  'meta-sm':     'span',
+  'display-xl': 'h1',
+  'display-lg': 'h2',
+  'heading-xl': 'h1',
+  'heading-lg': 'h2',
+  'heading-md': 'h3',
+  'heading-sm': 'h4',
+  'meta-md': 'span',
+  'meta-sm': 'span',
   'subtitle-lg': 'p',
   'subtitle-md': 'p',
-  'body-lg':     'p',
-  'body-md':     'p',
-  'body-sm':     'p',
-  'caption-md':  'span',
-  'caption-sm':  'span',
-  overline:      'span',
-}
+  'body-lg': 'p',
+  'body-md': 'p',
+  'body-sm': 'p',
+  'caption-md': 'span',
+  'caption-sm': 'span',
+  overline: 'span',
+};
 
 export interface TextProps extends React.HTMLAttributes<HTMLElement> {
-  variant?: TextVariant
-  as?: React.ElementType
-  weight?: FontWeight
-  color?: TextColor
+  variant?: TextVariant;
+  as?: React.ElementType;
+  weight?: FontWeight;
+  color?: TextColor;
   /** Applies text-wrap: balance for display headings */
-  balance?: boolean
+  balance?: boolean;
 }
 
 const Text = React.forwardRef<HTMLElement, TextProps>(
-  ({ variant = 'body-md', as, weight, color, balance, className, style, children, ...props }, ref) => {
-    const Tag = as ?? defaultTag[variant]
+  (
+    { variant = 'body-md', as, weight, color, balance, className, style, children, ...props },
+    ref
+  ) => {
+    const Tag = as ?? defaultTag[variant];
 
     const overrideStyle: React.CSSProperties = {
       ...(weight ? { fontWeight: `var(--font-weight-${weight})` } : {}),
-      ...(color  ? { color: `var(--${color})` } : {}),
+      ...(color ? { color: `var(--${color})` } : {}),
       ...style,
-    }
+    };
 
     return (
       <Tag
@@ -90,9 +93,9 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
       >
         {children}
       </Tag>
-    )
-  },
-)
-Text.displayName = 'Text'
+    );
+  }
+);
+Text.displayName = 'Text';
 
-export { Text }
+export { Text };
