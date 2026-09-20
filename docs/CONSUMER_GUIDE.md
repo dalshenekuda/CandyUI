@@ -1,5 +1,7 @@
 # CandyUI — Consumer Guide
 
+> **Legacy / outdated.** This guide describes Vue-era syntax, the old `candy-ui` package name, and typography variants that no longer match the React library. For React integration use **[REACT.md](./REACT.md)** and Storybook (see README **Live demo**).
+
 Copy this file into your project (e.g. as `UI_KIT_GUIDE.md`) to give your team and AI assistants context on how to use this library correctly.
 
 ---
