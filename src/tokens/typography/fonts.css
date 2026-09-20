@@ -18,6 +18,6 @@
 
 :root {
   --font-display: 'Cabinet Grotesk', system-ui, sans-serif;
-  --font-body:    'Switzer', system-ui, sans-serif;
-  --font-logo:    var(--font-display);
+  --font-body: 'Switzer', system-ui, sans-serif;
+  --font-logo: var(--font-display);
 }
