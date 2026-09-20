@@ -1,62 +1,86 @@
 # CandyUI
 
-React component library with a built-in design system. Exports components, CSS custom properties, and TypeScript types.
+React component library and design system for **headless commerce** storefronts—built for Hydrogen, custom Shopify stacks, and any React app that needs accessible, token-driven UI primitives.
 
-For full API and design token reference, see [docs/CONSUMER_GUIDE.md](./docs/CONSUMER_GUIDE.md).
+**Live demo:** TBD — after Chromatic setup, paste the public Storybook URL here. Steps: [docs/CHROMATIC_DEPLOY.md](./docs/CHROMATIC_DEPLOY.md).
 
 ---
 
 ## Install
 
-
-test
-
 ```bash
-npm install candy-ui
+npm install @dalshenekuda/candy-ui
 ```
 
-**Required:** import the stylesheet in your app entry once:
+**Required:** import the stylesheet once in your app entry:
 
 ```ts
-import 'candy-ui/style.css';
+import '@dalshenekuda/candy-ui/style.css';
 ```
 
-This loads all brand colors, spacing, font weights as CSS custom properties and Tailwind utility classes.
+This loads semantic colors, spacing, typography, and Tailwind utility classes aligned with the library tokens.
+
+**Optional:** extend Tailwind in your app with the published preset:
+
+```js
+// tailwind.config.js
+export default {
+  presets: [require('@dalshenekuda/candy-ui/tailwind.preset')],
+};
+```
+
+Package entry points: `@dalshenekuda/candy-ui`, `@dalshenekuda/candy-ui/style.css`, `@dalshenekuda/candy-ui/tailwind.preset`.
 
 ---
 
 ## Components
 
-| Component | Import name | Description |
+| Component | Import | Description |
 |---|---|---|
-| `Text` | `Text` | Polymorphic text with responsive typography |
-| `Button` / `ActionButton` | `Button`, `ActionButton` | Filled / transparent button |
-| `SelectButton` | `SelectButton` | Toggle-style button |
-| `Modal` | `Modal` | Accessible dialog |
-| `Tooltip` | `Tooltip` | Hover tooltip |
-| `DropdownMenu` | `DropdownMenu`, `DropdownMenuItem`, `DropdownMenuLabel`, `DropdownMenuSeparator` | Dropdown menu |
-| `Tag` | `Tag` | Label tag |
-| `Divider` | `Divider` | Horizontal rule |
+| `Text` | `Text` | Responsive typography with semantic color tokens |
+| `Button` | `Button` | Primary actions (variants: default, outline, cart, tone, …) |
+| `ActionButton` | `ActionButton` | Alias for `Button` (same API) |
+| `Badge` | `Badge` | Labels and status chips |
+| `Card` | `Card` | Surface container for content |
+| `ProductCard` | `ProductCard` | Commerce product tile (image, price, footer slot) |
+| `AddToCartStepper` | `AddToCartStepper` | Quantity / add-to-cart control |
+| `Dialog` | `Dialog` | Centered modal (Radix) |
+| `Aside` | `Aside` | Side drawer / panel (cart, nav) |
+
+---
 
 ## Quick example
 
 ```tsx
-import { Text, Button } from 'candy-ui';
+import { Text, Button, Card } from '@dalshenekuda/candy-ui';
+import '@dalshenekuda/candy-ui/style.css';
 
 export function Example() {
   return (
-    <>
-      <Text variant="h1">Page title</Text>
-      <Text variant="body" color="grey-900">
-        Body copy
+    <Card>
+      <Text variant="heading-lg" color="color-text">
+        Featured sweets
       </Text>
-      <Button onClick={() => console.log('Clicked')}>Click me</Button>
-    </>
+      <Text variant="body-md" color="color-text-muted">
+        Token-driven typography for storefront copy.
+      </Text>
+      <Button variant="default" onClick={() => console.log('Clicked')}>
+        Shop now
+      </Button>
+    </Card>
   );
 }
 ```
 
-See [docs/CONSUMER_GUIDE.md](./docs/CONSUMER_GUIDE.md) for all components, props, slots, design tokens and TypeScript types.
+---
+
+## Documentation
+
+- **Getting started (React):** [docs/REACT.md](./docs/REACT.md)
+- **Interactive API:** Storybook (URL in Live demo once deployed)
+- **Legacy note:** [docs/CONSUMER_GUIDE.md](./docs/CONSUMER_GUIDE.md) is outdated (Vue-era); do not use for React integration.
+
+See also CandyArea (companion storefront project, not linked here).
 
 ---
 
@@ -64,26 +88,26 @@ See [docs/CONSUMER_GUIDE.md](./docs/CONSUMER_GUIDE.md) for all components, props
 
 ```bash
 npm install          # install dependencies
-npm run dev          # dev server
-npm run storybook    # component explorer
+npm run dev          # Vite dev server
+npm run storybook    # component explorer (local)
 npm run build        # production build → build/
+npm run build-storybook  # static Storybook → storybook-static/
 npm run build:watch  # production build in watch mode
-npm run test:run     # run tests
-npm run format       # format with Prettier
+npm run test:run     # unit tests
+npm run format       # Prettier write
+npm run format:check # Prettier check
 npm run lint         # ESLint
+npm run type-check   # TypeScript
 ```
 
 ### Local install in another project
 
 ```bash
-# 1. Build
 npm run build
-
-# 2. Link globally
 npm link
 
-# 3. In the consuming project
-npm link @dalshenekuda/candy-ui 
+# In the consuming project
+npm link @dalshenekuda/candy-ui
 ```
 
 Or use `npm pack` to create a `.tgz` and install from file.
