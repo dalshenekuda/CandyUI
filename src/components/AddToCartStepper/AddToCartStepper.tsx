@@ -1,36 +1,36 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import { Button } from '@/components/Button/Button'
-import { cn } from '@/lib/utils'
+import { Button } from '@/components/Button/Button';
+import { cn } from '@/lib/utils';
 
-export type AddToCartStepperVariant = 'default' | 'compact' | 'compact-pill'
+export type AddToCartStepperVariant = 'default' | 'compact' | 'compact-pill';
 
 export interface AddToCartStepperProps {
-  quantity: number
-  onAdd?: () => void
-  onIncrease?: () => void
-  onDecrease?: () => void
-  addButton?: React.ReactNode
-  decreaseButton?: React.ReactNode
-  increaseButton?: React.ReactNode
-  disabled?: boolean
-  loading?: boolean
-  addLabel?: string
-  size?: 'sm' | 'default' | 'lg'
-  variant?: AddToCartStepperVariant
-  className?: string
+  quantity: number;
+  onAdd?: () => void;
+  onIncrease?: () => void;
+  onDecrease?: () => void;
+  addButton?: React.ReactNode;
+  decreaseButton?: React.ReactNode;
+  increaseButton?: React.ReactNode;
+  disabled?: boolean;
+  loading?: boolean;
+  addLabel?: string;
+  size?: 'sm' | 'default' | 'lg';
+  variant?: AddToCartStepperVariant;
+  className?: string;
 }
 
-type StepperSize = NonNullable<AddToCartStepperProps['size']>
+type StepperSize = NonNullable<AddToCartStepperProps['size']>;
 
 const SIZE_CONFIG: Record<
   StepperSize,
   {
-    height: string
-    iconWidth: string
-    maxWidth: string
-    qtyText: string
-    glyphText: string
+    height: string;
+    iconWidth: string;
+    maxWidth: string;
+    qtyText: string;
+    glyphText: string;
   }
 > = {
   sm: {
@@ -54,17 +54,16 @@ const SIZE_CONFIG: Record<
     qtyText: 'text-base',
     glyphText: 'text-base',
   },
-}
+};
 
 const COMPACT_PILL = {
   height: 'h-8',
   iconWidth: 'w-8 min-w-8',
   qtyText: 'text-sm',
   glyphText: 'text-sm',
-} as const
+} as const;
 
-const SEGMENT_BASE =
-  'flex shrink-0 items-center justify-center self-stretch leading-none'
+const SEGMENT_BASE = 'flex shrink-0 items-center justify-center self-stretch leading-none';
 
 function SegmentedControl({
   children,
@@ -72,10 +71,10 @@ function SegmentedControl({
   variant,
   height,
 }: {
-  children: React.ReactNode
-  className?: string
-  variant: AddToCartStepperVariant
-  height: string
+  children: React.ReactNode;
+  className?: string;
+  variant: AddToCartStepperVariant;
+  height: string;
 }) {
   return (
     <div
@@ -84,13 +83,13 @@ function SegmentedControl({
         variant === 'compact' && 'h-8 rounded-md',
         variant === 'compact-pill' && 'h-8 rounded-full',
         variant === 'default' && cn(height, 'rounded-full'),
-        className,
+        className
       )}
       role="group"
     >
       {children}
     </div>
-  )
+  );
 }
 
 function SegmentedButton({
@@ -101,9 +100,9 @@ function SegmentedButton({
   glyphText,
   ...props
 }: React.ComponentProps<typeof Button> & {
-  compactSized?: boolean
-  iconWidth: string
-  glyphText: string
+  compactSized?: boolean;
+  iconWidth: string;
+  glyphText: string;
 }) {
   return (
     <Button
@@ -114,7 +113,7 @@ function SegmentedButton({
         'h-full rounded-none border-0 p-0 font-semibold text-text shadow-none hover:bg-surface-sunken hover:text-text active:translate-y-0 active:shadow-none [&]:leading-none',
         compactSized ? COMPACT_PILL.iconWidth : iconWidth,
         compactSized ? COMPACT_PILL.glyphText : glyphText,
-        className,
+        className
       )}
       {...props}
     >
@@ -122,7 +121,7 @@ function SegmentedButton({
         {children}
       </span>
     </Button>
-  )
+  );
 }
 
 function QuantityDisplay({
@@ -131,22 +130,22 @@ function QuantityDisplay({
   loading,
   qtyText,
 }: {
-  quantity: number
-  compactSized?: boolean
-  loading?: boolean
-  qtyText: string
+  quantity: number;
+  compactSized?: boolean;
+  loading?: boolean;
+  qtyText: string;
 }) {
-  const [displayQty, setDisplayQty] = React.useState(quantity)
-  const [animating, setAnimating] = React.useState(false)
+  const [displayQty, setDisplayQty] = React.useState(quantity);
+  const [animating, setAnimating] = React.useState(false);
 
   React.useEffect(() => {
     if (quantity !== displayQty) {
-      setAnimating(true)
-      setDisplayQty(quantity)
-      const t = window.setTimeout(() => setAnimating(false), 220)
-      return () => window.clearTimeout(t)
+      setAnimating(true);
+      setDisplayQty(quantity);
+      const t = window.setTimeout(() => setAnimating(false), 220);
+      return () => window.clearTimeout(t);
     }
-  }, [quantity, displayQty])
+  }, [quantity, displayQty]);
 
   return (
     <span
@@ -156,12 +155,12 @@ function QuantityDisplay({
         'min-w-[2.5ch] flex-1 border-x border-border px-xs tabular-nums font-semibold text-text transition-transform duration-base',
         compactSized ? COMPACT_PILL.qtyText : qtyText,
         animating && 'scale-110 ease-spring',
-        loading && 'opacity-60',
+        loading && 'opacity-60'
       )}
     >
       {displayQty}
     </span>
-  )
+  );
 }
 
 export function AddToCartStepper({
@@ -179,24 +178,21 @@ export function AddToCartStepper({
   variant = 'default',
   className,
 }: AddToCartStepperProps) {
-  const isDisabled = disabled || loading
-  const isCompactVariant = variant === 'compact' || variant === 'compact-pill'
-  const resolvedAddLabel = addLabel ?? (isCompactVariant ? 'Add' : 'Add to cart')
-  const addButtonSize = isCompactVariant ? 'sm' : 'pill'
-  const config = SIZE_CONFIG[size]
-  const controlWidth = cn('w-full', config.maxWidth)
-  const displayHeight =
-    variant === 'compact-pill' ? COMPACT_PILL.height : config.height
-  const displayQtyText =
-    variant === 'compact-pill' ? COMPACT_PILL.qtyText : config.qtyText
-  const displayGlyphText =
-    variant === 'compact-pill' ? COMPACT_PILL.glyphText : config.glyphText
-  const displayIconWidth =
-    variant === 'compact-pill' ? COMPACT_PILL.iconWidth : config.iconWidth
+  const isDisabled = disabled || loading;
+  const isCompactVariant = variant === 'compact' || variant === 'compact-pill';
+  const resolvedAddLabel = addLabel ?? (isCompactVariant ? 'Add' : 'Add to cart');
+  const addButtonSize = isCompactVariant ? 'sm' : 'pill';
+  const config = SIZE_CONFIG[size];
+  const displayHeight = variant === 'compact-pill' ? COMPACT_PILL.height : config.height;
+  const displayQtyText = variant === 'compact-pill' ? COMPACT_PILL.qtyText : config.qtyText;
+  const displayGlyphText = variant === 'compact-pill' ? COMPACT_PILL.glyphText : config.glyphText;
+  const displayIconWidth = variant === 'compact-pill' ? COMPACT_PILL.iconWidth : config.iconWidth;
+
+  const rootWidth = cn('mx-auto w-full', !isCompactVariant && config.maxWidth, className);
 
   if (quantity === 0) {
     return (
-      <div className={cn('flex w-full', className)}>
+      <div className={rootWidth}>
         {addButton ?? (
           <Button
             type="button"
@@ -205,7 +201,7 @@ export function AddToCartStepper({
             className={cn(
               isCompactVariant
                 ? 'h-8 w-full px-sm typo-button-sm'
-                : cn(controlWidth, config.height, 'rounded-full'),
+                : cn(config.height, 'w-full rounded-full')
             )}
             disabled={isDisabled}
             loading={loading}
@@ -215,17 +211,14 @@ export function AddToCartStepper({
           </Button>
         )}
       </div>
-    )
+    );
   }
 
   return (
     <SegmentedControl
       variant={variant}
       height={displayHeight}
-      className={cn(
-        isCompactVariant ? 'w-fit max-w-full' : controlWidth,
-        className,
-      )}
+      className={cn(rootWidth, isCompactVariant && 'w-fit max-w-full')}
     >
       {decreaseButton ?? (
         <SegmentedButton
@@ -258,5 +251,5 @@ export function AddToCartStepper({
         </SegmentedButton>
       )}
     </SegmentedControl>
-  )
+  );
 }

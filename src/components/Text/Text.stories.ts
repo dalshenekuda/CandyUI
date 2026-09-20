@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Text } from './Text'
+import type { Meta, StoryObj } from '@storybook/react';
+import { Text } from './Text';
 
 const meta: Meta<typeof Text> = {
   title: 'Components/Text',
@@ -18,12 +18,22 @@ const meta: Meta<typeof Text> = {
       description: 'Typographic variant — maps to a responsive `typo-*` CSS class.',
       control: { type: 'select' },
       options: [
-        'display-2xl', 'display-xl', 'display-lg',
-        'heading-xl', 'heading-lg', 'heading-md', 'heading-sm',
-        'meta-md', 'meta-sm',
-        'subtitle-lg', 'subtitle-md',
-        'body-lg', 'body-md', 'body-sm',
-        'caption-md', 'caption-sm',
+        'display-2xl',
+        'display-xl',
+        'display-lg',
+        'heading-xl',
+        'heading-lg',
+        'heading-md',
+        'heading-sm',
+        'meta-md',
+        'meta-sm',
+        'subtitle-lg',
+        'subtitle-md',
+        'body-lg',
+        'body-md',
+        'body-sm',
+        'caption-md',
+        'caption-sm',
         'overline',
       ],
       table: { category: 'Appearance' },
@@ -61,70 +71,77 @@ const meta: Meta<typeof Text> = {
     variant: 'body-md',
     children: 'The quick brown fox jumps over the lazy dog.',
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Text>
+export default meta;
+type Story = StoryObj<typeof Text>;
 
 /** Interactive playground — adjust all controls in the panel. */
-export const Default: Story = {}
+export const Default: Story = {};
 
 /** Large display heading. */
 export const HeadingXL: Story = {
   args: { variant: 'heading-xl', children: 'Heading XL' },
-}
+};
 
 /** Section heading. */
 export const HeadingLG: Story = {
   args: { variant: 'heading-lg', children: 'Heading LG' },
-}
+};
 
 /** Card or modal title. */
 export const HeadingMD: Story = {
   args: { variant: 'heading-md', children: 'Heading MD' },
-}
+};
 
 /** Small heading or label header. */
 export const HeadingSM: Story = {
   args: { variant: 'heading-sm', children: 'Heading SM' },
-}
+};
 
 /** Large subtitle or lead paragraph. */
 export const SubtitleLG: Story = {
   args: { variant: 'subtitle-lg', children: 'Subtitle LG — lorem ipsum dolor sit amet.' },
-}
+};
 
 /** Standard body paragraph. */
 export const BodyMD: Story = {
-  args: { variant: 'body-md', children: 'Body MD — lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-}
+  args: {
+    variant: 'body-md',
+    children: 'Body MD — lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  },
+};
 
 /** Small body text for dense UIs. */
 export const BodySM: Story = {
   args: { variant: 'body-sm', children: 'Body SM — supplementary detail text.' },
-}
+};
 
 /** Caption for images or fine print. */
 export const CaptionMD: Story = {
   args: { variant: 'caption-md', children: 'Caption MD — small hint text.' },
-}
+};
 
 /** Uppercase category label. */
 export const Overline: Story = {
   args: { variant: 'overline', children: 'OVERLINE — CATEGORY LABEL' },
-}
+};
 
 /** Semibold weight override applied to body-md. */
 export const WeightSemibold: Story = {
   args: { variant: 'body-md', weight: 'semibold', children: 'Semibold body text.' },
-}
+};
 
 /** Muted text color for secondary content. */
 export const ColorMuted: Story = {
-  args: { variant: 'body-md', color: 'color-text-muted', children: 'Muted text — secondary information.' },
-}
+  args: {
+    variant: 'body-md',
+    color: 'color-text-muted',
+    children: 'Muted text — secondary information.',
+  },
+};
 
 /** Brand color for highlighted or linked text. */
 export const ColorBrand: Story = {
   args: { variant: 'body-md', color: 'color-brand', children: 'Brand-colored text.' },
-}
+};
