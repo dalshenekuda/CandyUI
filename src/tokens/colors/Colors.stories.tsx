@@ -54,19 +54,49 @@ const labelStyle: CSSProperties = {
 };
 
 const semanticColors = [
-  'color-bg', 'color-surface', 'color-surface-raised', 'color-surface-sunken',
-  'color-text', 'color-text-muted', 'color-text-subtle',
-  'color-brand', 'color-brand-hover', 'color-brand-dark',
-  'color-accent', 'color-accent-alt', 'color-accent-warm',
-  'color-border', 'color-border-strong',
-  'color-danger', 'color-success', 'color-warning',
+  'color-bg',
+  'color-surface',
+  'color-surface-raised',
+  'color-surface-sunken',
+  'color-text',
+  'color-text-muted',
+  'color-text-subtle',
+  'color-brand',
+  'color-brand-hover',
+  'color-brand-dark',
+  'color-accent',
+  'color-accent-alt',
+  'color-accent-warm',
+  'color-border',
+  'color-border-strong',
+  'color-danger',
+  'color-success',
+  'color-warning',
 ];
 
 const paletteGroups = [
-  { label: 'Ink', tokens: ['palette-ink-1000','palette-ink-800','palette-ink-500','palette-ink-200','palette-paper'] },
-  { label: 'Blue Raspberry', tokens: ['palette-blueras-700', 'palette-blueras-500', 'palette-blueras-200'] },
-  { label: 'Raspberry', tokens: ['palette-raspberry-700', 'palette-raspberry-600', 'palette-raspberry-200'] },
-  { label: 'Spearmint', tokens: ['palette-spearmint-700', 'palette-spearmint-500', 'palette-spearmint-200'] },
+  {
+    label: 'Ink',
+    tokens: [
+      'palette-ink-1000',
+      'palette-ink-800',
+      'palette-ink-500',
+      'palette-ink-200',
+      'palette-paper',
+    ],
+  },
+  {
+    label: 'Blue Raspberry',
+    tokens: ['palette-blueras-700', 'palette-blueras-500', 'palette-blueras-200'],
+  },
+  {
+    label: 'Raspberry',
+    tokens: ['palette-raspberry-700', 'palette-raspberry-600', 'palette-raspberry-200'],
+  },
+  {
+    label: 'Spearmint',
+    tokens: ['palette-spearmint-700', 'palette-spearmint-500', 'palette-spearmint-200'],
+  },
   { label: 'Lemon', tokens: ['palette-lemon-700', 'palette-lemon-600', 'palette-lemon-200'] },
   { label: 'Lime', tokens: ['palette-lime-700', 'palette-lime-500', 'palette-lime-200'] },
 ];

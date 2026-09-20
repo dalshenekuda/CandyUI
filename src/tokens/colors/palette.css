@@ -4,58 +4,58 @@
 
 :root {
   /* Ink scale (licorice + sugar paper) */
-  --palette-ink-1000: #100E0C;
-  --palette-ink-900:  #17140F;
-  --palette-ink-800:  #221E19;
-  --palette-ink-600:  #4A443D;
-  --palette-ink-500:  #6B635A;
-  --palette-ink-300:  #A79E93;
-  --palette-ink-200:  #D8D2C7;
-  --palette-ink-100:  #EDE9E1;
-  --palette-paper:    #F7F5F0;
-  --palette-white:    #FFFFFF;
+  --palette-ink-1000: #100e0c;
+  --palette-ink-900: #17140f;
+  --palette-ink-800: #221e19;
+  --palette-ink-600: #4a443d;
+  --palette-ink-500: #6b635a;
+  --palette-ink-300: #a79e93;
+  --palette-ink-200: #d8d2c7;
+  --palette-ink-100: #ede9e1;
+  --palette-paper: #f7f5f0;
+  --palette-white: #ffffff;
 
   /* Blue Raspberry (signature) */
-  --palette-blueras-700: #1E3AA8;
-  --palette-blueras-500: #2E52D9;
-  --palette-blueras-200: #C7D2F7;
+  --palette-blueras-700: #1e3aa8;
+  --palette-blueras-500: #2e52d9;
+  --palette-blueras-200: #c7d2f7;
 
   /* Raspberry */
-  --palette-raspberry-700: #C31840;
-  --palette-raspberry-600: #E23A5E;
-  --palette-raspberry-200: #F8C6D1;
+  --palette-raspberry-700: #c31840;
+  --palette-raspberry-600: #e23a5e;
+  --palette-raspberry-200: #f8c6d1;
 
   /* Spearmint */
-  --palette-spearmint-700: #0C6A57;
-  --palette-spearmint-500: #13957A;
-  --palette-spearmint-200: #B7E5D6;
+  --palette-spearmint-700: #0c6a57;
+  --palette-spearmint-500: #13957a;
+  --palette-spearmint-200: #b7e5d6;
 
   /* Lemon */
-  --palette-lemon-700: #E0A800;
-  --palette-lemon-600: #FFC72C;
-  --palette-lemon-200: #FFE9A8;
+  --palette-lemon-700: #e0a800;
+  --palette-lemon-600: #ffc72c;
+  --palette-lemon-200: #ffe9a8;
 
   /* Sour Lime */
-  --palette-lime-700: #6FA300;
-  --palette-lime-500: #96CE1E;
-  --palette-lime-200: #DCF0B0;
+  --palette-lime-700: #6fa300;
+  --palette-lime-500: #96ce1e;
+  --palette-lime-200: #dcf0b0;
 
   /* Dark foundations (neutral licorice) */
-  --palette-dark-base:    #0E0D0C;
+  --palette-dark-base: #0e0d0c;
   --palette-dark-surface: #171614;
-  --palette-dark-raised:  #201E1B;
-  --palette-dark-border:  #2E2A26;
+  --palette-dark-raised: #201e1b;
+  --palette-dark-border: #2e2a26;
   --palette-dark-border-subtle: #252320;
 
   /* White alpha scale */
   --palette-white-100: rgba(255, 255, 255, 1);
-  --palette-white-90:  rgba(255, 255, 255, 0.9);
-  --palette-white-80:  rgba(255, 255, 255, 0.8);
-  --palette-white-70:  rgba(255, 255, 255, 0.7);
-  --palette-white-60:  rgba(255, 255, 255, 0.6);
-  --palette-white-50:  rgba(255, 255, 255, 0.5);
-  --palette-white-40:  rgba(255, 255, 255, 0.4);
-  --palette-white-30:  rgba(255, 255, 255, 0.3);
-  --palette-white-20:  rgba(255, 255, 255, 0.2);
-  --palette-white-10:  rgba(255, 255, 255, 0.1);
+  --palette-white-90: rgba(255, 255, 255, 0.9);
+  --palette-white-80: rgba(255, 255, 255, 0.8);
+  --palette-white-70: rgba(255, 255, 255, 0.7);
+  --palette-white-60: rgba(255, 255, 255, 0.6);
+  --palette-white-50: rgba(255, 255, 255, 0.5);
+  --palette-white-40: rgba(255, 255, 255, 0.4);
+  --palette-white-30: rgba(255, 255, 255, 0.3);
+  --palette-white-20: rgba(255, 255, 255, 0.2);
+  --palette-white-10: rgba(255, 255, 255, 0.1);
 }

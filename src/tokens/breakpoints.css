@@ -19,10 +19,10 @@
    ─────────────────────────────────────────────────────────────────────────── */
 
 :root {
-  --bp-sm:      640px;
-  --bp-md:      768px;
-  --bp-lg:      1024px;
-  --bp-xl:      1280px;
-  --bp-2xl:     1536px;
-  --bp-desktop: 992px;  /* typography breakpoint — matches typo-desktop-min */
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl: 1536px;
+  --bp-desktop: 992px; /* typography breakpoint — matches typo-desktop-min */
 }
