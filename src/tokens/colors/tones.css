@@ -66,7 +66,7 @@
   --tone-bg: var(--palette-blueras-700);
   --tone-ink: var(--palette-paper);
   --tone-border: var(--palette-blueras-500);
-  --tone-accent: #6e86f0;
+  --tone-accent: var(--palette-blueras-400);
 }
 
 .dark [data-tone='raspberry'],

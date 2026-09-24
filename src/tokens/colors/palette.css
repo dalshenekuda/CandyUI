@@ -18,6 +18,7 @@
   /* Blue Raspberry (signature) */
   --palette-blueras-700: #1e3aa8;
   --palette-blueras-500: #2e52d9;
+  --palette-blueras-400: #6e86f0;
   --palette-blueras-200: #c7d2f7;
 
   /* Raspberry */
@@ -46,6 +47,8 @@
   --palette-dark-raised: #201e1b;
   --palette-dark-border: #2e2a26;
   --palette-dark-border-subtle: #252320;
+  --palette-night-text: #f4f1ea;
+  --palette-night-border-strong: #5a534a;
 
   /* White alpha scale */
   --palette-white-100: rgba(255, 255, 255, 1);
