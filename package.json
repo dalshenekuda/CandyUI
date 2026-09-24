@@ -40,7 +40,8 @@
     "build:watch": "VITE_BUILD_WATCH=true vite build --watch",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "npm run build && changeset publish"
+    "release": "npm run build && changeset publish",
+    "chromatic": "node --env-file-if-exists=.env.local ./node_modules/chromatic/dist/bin.js"
   },
   "keywords": [
     "react",
@@ -73,11 +74,14 @@
     "@eslint/js": "^10.0.1",
     "@storybook/addon-docs": "^10.3.6",
     "@storybook/react-vite": "^10.3.6",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
     "@types/node": "^24.10.1",
     "@typescript-eslint/parser": "^8.0.0",
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/ui": "^4.0.14",
     "autoprefixer": "^10.4.22",
+    "chromatic": "^13.3.5",
     "concurrently": "^9.2.1",
     "eslint": "^10.0.2",
     "eslint-config-prettier": "^10.1.0",
