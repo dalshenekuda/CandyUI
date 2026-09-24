@@ -37,11 +37,13 @@ const swatchWrapStyle: CSSProperties = {
   minWidth: '80px',
 };
 
-const colorBoxStyle = (token: string): CSSProperties => ({
+const colorBoxStyle = (token: string, onDark?: boolean): CSSProperties => ({
   width: '72px',
   height: '56px',
   borderRadius: '8px',
-  background: `var(--${token})`,
+  background: onDark
+    ? `linear-gradient(var(--${token}), var(--${token})), var(--palette-ink-1000)`
+    : `var(--${token})`,
   border: '1px solid var(--color-border)',
 });
 
@@ -61,33 +63,59 @@ const semanticColors = [
   'color-text',
   'color-text-muted',
   'color-text-subtle',
+  'color-text-on-brand',
   'color-brand',
   'color-brand-hover',
   'color-brand-dark',
+  'color-brand-light',
   'color-accent',
+  'color-accent-dark',
+  'color-accent-light',
   'color-accent-alt',
   'color-accent-warm',
   'color-border',
+  'color-border-subtle',
   'color-border-strong',
   'color-danger',
+  'color-danger-bg',
   'color-success',
+  'color-success-bg',
   'color-warning',
+  'color-warning-bg',
+  'color-overlay',
 ];
 
-const paletteGroups = [
+type PaletteGroup = {
+  label: string;
+  tokens: string[];
+  /** Show swatch on ink-1000 so transparent white-alpha reads correctly */
+  onDark?: boolean;
+};
+
+const paletteGroups: PaletteGroup[] = [
   {
     label: 'Ink',
     tokens: [
       'palette-ink-1000',
+      'palette-ink-900',
       'palette-ink-800',
+      'palette-ink-600',
       'palette-ink-500',
+      'palette-ink-300',
       'palette-ink-200',
+      'palette-ink-100',
       'palette-paper',
+      'palette-white',
     ],
   },
   {
     label: 'Blue Raspberry',
-    tokens: ['palette-blueras-700', 'palette-blueras-500', 'palette-blueras-200'],
+    tokens: [
+      'palette-blueras-700',
+      'palette-blueras-500',
+      'palette-blueras-400',
+      'palette-blueras-200',
+    ],
   },
   {
     label: 'Raspberry',
@@ -99,6 +127,34 @@ const paletteGroups = [
   },
   { label: 'Lemon', tokens: ['palette-lemon-700', 'palette-lemon-600', 'palette-lemon-200'] },
   { label: 'Lime', tokens: ['palette-lime-700', 'palette-lime-500', 'palette-lime-200'] },
+  {
+    label: 'Night (dark theme primitives)',
+    tokens: [
+      'palette-dark-base',
+      'palette-dark-surface',
+      'palette-dark-raised',
+      'palette-dark-border',
+      'palette-dark-border-subtle',
+      'palette-night-text',
+      'palette-night-border-strong',
+    ],
+  },
+  {
+    label: 'White alpha',
+    onDark: true,
+    tokens: [
+      'palette-white-100',
+      'palette-white-90',
+      'palette-white-80',
+      'palette-white-70',
+      'palette-white-60',
+      'palette-white-50',
+      'palette-white-40',
+      'palette-white-30',
+      'palette-white-20',
+      'palette-white-10',
+    ],
+  },
 ];
 
 const toneNames = ['blueras', 'raspberry', 'spearmint', 'lemon', 'lime', 'ink', 'paper'] as const;
@@ -128,7 +184,7 @@ export const Palette: StoryObj = {
           <div style={swatchGridStyle}>
             {group.tokens.map((token) => (
               <div key={token} style={swatchWrapStyle}>
-                <div style={colorBoxStyle(token)} />
+                <div style={colorBoxStyle(token, group.onDark)} />
                 <span style={labelStyle}>{token}</span>
               </div>
             ))}
