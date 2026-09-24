@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'unplugin-dts/vite';
 import { resolve } from 'path';
+import { externalFonts } from './scripts/vite-plugin-external-fonts';
 
 export default defineConfig(({ command }) => {
   const isProduction = command === 'build';
@@ -30,7 +31,8 @@ export default defineConfig(({ command }) => {
             'src/**/*.spec.tsx',
             'src/main.ts',
           ],
-        })
+        }),
+        externalFonts(),
       ] : [])
     ],
     build: isProduction ? {

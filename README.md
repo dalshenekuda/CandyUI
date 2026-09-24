@@ -79,7 +79,7 @@ export function Example() {
 - **Install, exports, dark mode, preset:** [docs/CONSUMER_GUIDE.md](./docs/CONSUMER_GUIDE.md) (index — details in REACT.md)
 - **Interactive API:** [Storybook](https://main--6ab56ef1aed13efbc107d427.chromatic.com/)
 
-See also CandyArea (companion storefront project, not linked here).
+See also [CandyArea](https://github.com/dalshenekuda/CandyArea) — a Hydrogen storefront demo built on this kit.
 
 ---
 
