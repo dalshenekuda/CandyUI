@@ -18,6 +18,51 @@ const meta: Meta<typeof AddToCartStepper> = {
     (Story) =>
       React.createElement('div', { className: 'w-full max-w-xs p-md' }, React.createElement(Story)),
   ],
+  argTypes: {
+    quantity: {
+      description: 'Current line quantity; 0 shows the add button, >0 shows the stepper.',
+      table: { category: 'Data' },
+    },
+    variant: {
+      description: 'default = full-width cart pill; compact / compact-pill = outline add + segmented control.',
+      control: { type: 'select' },
+      options: ['default', 'compact', 'compact-pill'],
+      table: { category: 'Appearance' },
+    },
+    size: {
+      description: 'Stepper dimensions for variant default only (compact variants use fixed h-8).',
+      control: { type: 'select' },
+      options: ['default', 'sm'],
+      table: { category: 'Appearance' },
+    },
+    disabled: { description: 'Disables add and +/- controls.', table: { category: 'State' } },
+    loading: {
+      description: 'Spinner on add button and dimmed quantity; disables interaction.',
+      table: { category: 'State' },
+    },
+    addLabel: {
+      description: 'Add button label; defaults to "Add to cart" or "Add" for compact.',
+      table: { category: 'Data' },
+    },
+    onAdd: { action: 'add', table: { category: 'Events' } },
+    onIncrease: { action: 'increase', table: { category: 'Events' } },
+    onDecrease: { action: 'decrease', table: { category: 'Events' } },
+    addButton: {
+      description: 'Replace the default add button (e.g. form submit).',
+      table: { category: 'Slots', type: { summary: 'ReactNode' } },
+      control: false,
+    },
+    decreaseButton: {
+      description: 'Replace the default decrease control.',
+      table: { category: 'Slots', type: { summary: 'ReactNode' } },
+      control: false,
+    },
+    increaseButton: {
+      description: 'Replace the default increase control.',
+      table: { category: 'Slots', type: { summary: 'ReactNode' } },
+      control: false,
+    },
+  },
 };
 
 export default meta;

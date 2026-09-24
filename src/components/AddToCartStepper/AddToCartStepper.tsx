@@ -16,7 +16,8 @@ export interface AddToCartStepperProps {
   disabled?: boolean;
   loading?: boolean;
   addLabel?: string;
-  size?: 'sm' | 'default' | 'lg';
+  /** Height and max width for the default (full-width cart) layout; ignored for compact variants. */
+  size?: 'sm' | 'default';
   variant?: AddToCartStepperVariant;
   className?: string;
 }
@@ -44,13 +45,6 @@ const SIZE_CONFIG: Record<
     height: 'h-11',
     iconWidth: 'w-11 min-w-11',
     maxWidth: 'max-w-[14rem]',
-    qtyText: 'text-base',
-    glyphText: 'text-base',
-  },
-  lg: {
-    height: 'h-11',
-    iconWidth: 'w-11 min-w-11',
-    maxWidth: 'max-w-[16rem]',
     qtyText: 'text-base',
     glyphText: 'text-base',
   },
