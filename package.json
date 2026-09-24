@@ -2,6 +2,14 @@
   "name": "@dalshenekuda/candy-ui",
   "version": "2.1.0",
   "description": "A React UI components library with Tailwind CSS",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalshenekuda/CandyUI.git"
+  },
+  "homepage": "https://main--6ab56ef1aed13efbc107d427.chromatic.com/",
+  "bugs": {
+    "url": "https://github.com/dalshenekuda/CandyUI/issues"
+  },
   "type": "module",
   "main": "./build/ui-kit.js",
   "types": "./types/index.d.ts",
