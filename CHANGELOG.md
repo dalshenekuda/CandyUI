@@ -1,5 +1,11 @@
 # @dalshenekuda/candy-ui
 
+## 2.1.0
+
+### Minor Changes
+
+- Add Aside and AddToCartStepper, refresh the print tokens, and align ProductCard, Button, Badge, Card, and Text with the updated kit.
+
 ## 2.0.1
 
 ### Patch Changes
