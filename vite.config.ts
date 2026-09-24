@@ -21,7 +21,15 @@ export default defineConfig(({ command }) => {
           tsconfigPath: './tsconfig.build.json',
           outDirs: 'types',
           include: ['src/**/*.ts', 'src/**/*.tsx'],
-          exclude: ['src/**/*.stories.ts', 'src/**/*.stories.tsx', 'src/main.ts'],
+          exclude: [
+            'src/**/*.stories.ts',
+            'src/**/*.stories.tsx',
+            'src/**/*.test.ts',
+            'src/**/*.test.tsx',
+            'src/**/*.spec.ts',
+            'src/**/*.spec.tsx',
+            'src/main.ts',
+          ],
         })
       ] : [])
     ],

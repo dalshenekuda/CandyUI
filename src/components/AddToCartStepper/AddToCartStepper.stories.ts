@@ -24,7 +24,8 @@ const meta: Meta<typeof AddToCartStepper> = {
       table: { category: 'Data' },
     },
     variant: {
-      description: 'default = full-width cart pill; compact / compact-pill = outline add + segmented control.',
+      description:
+        'default = full-width cart pill; compact / compact-pill = outline add + segmented control.',
       control: { type: 'select' },
       options: ['default', 'compact', 'compact-pill'],
       table: { category: 'Appearance' },

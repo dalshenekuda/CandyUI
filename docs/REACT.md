@@ -32,7 +32,6 @@ Main import:
 import {
   Text,
   Button,
-  ActionButton,
   Badge,
   Card,
   CardHeader,
@@ -60,8 +59,6 @@ import {
   AsideCloseButton,
 } from '@dalshenekuda/candy-ui';
 ```
-
-`ActionButton` is an alias for `Button` (same props).
 
 ---
 
