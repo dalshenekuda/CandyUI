@@ -6,22 +6,27 @@ Public Storybook for CandyUI is published via [Chromatic](https://www.chromatic.
 
 1. Sign in at [chromatic.com](https://www.chromatic.com/) and **Add project** → link GitHub repo `dalshenekuda/CandyUI`.
 2. Copy the **Project token** from Chromatic project settings.
-3. In GitHub: **Settings → Secrets and variables → Actions → New repository secret**
+3. Locally, create `.env.local` (gitignored) with:
+
+   ```bash
+   CHROMATIC_PROJECT_TOKEN=your-token
+   ```
+
+4. In GitHub: **Settings → Secrets and variables → Actions → New repository secret**
    - Name: `CHROMATIC_PROJECT_TOKEN`
-   - Value: paste the project token (never commit this to the repo).
-4. Push to `main` or run locally:
+   - Value: the same token (never commit it).
+5. Publish once locally:
 
    ```bash
    npm ci
-   npm run build-storybook
-   npx chromatic --project-token=YOUR_TOKEN_HERE
+   npm run chromatic
    ```
 
-5. In Chromatic, open **Manage → Storybook** (or the latest build) and copy the **public Storybook URL**.
-6. Update README **Live demo** with that URL.
+6. In Chromatic, open the build URL printed by the CLI and copy the **public Storybook URL**.
+7. Update README **Live demo** with that URL.
 
 ## Workflow
 
-[`.github/workflows/deploy-storybook.yml`](../.github/workflows/deploy-storybook.yml) runs `npx chromatic` with `--exit-zero-on-changes` so visual diffs do not fail the workflow on first runs.
+[`.github/workflows/deploy-storybook.yml`](../.github/workflows/deploy-storybook.yml) publishes on every push to `main`. The token comes from the `CHROMATIC_PROJECT_TOKEN` secret, not the command line. `--only-changed` enables TurboSnap, and `--auto-accept-changes=main` updates the baseline on `main`.
 
 If the secret is missing, the workflow fails until `CHROMATIC_PROJECT_TOKEN` is set.

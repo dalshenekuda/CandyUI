@@ -12,6 +12,7 @@ dist
 dist-ssr
 build
 storybook-static
+build-storybook.log
 types
 *.local
 

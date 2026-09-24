@@ -28,4 +28,4 @@ jobs:
       - name: Publish to Chromatic
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-        run: npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes
+        run: npx chromatic --only-changed --auto-accept-changes=main --exit-zero-on-changes
