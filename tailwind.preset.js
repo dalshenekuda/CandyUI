@@ -1,6 +1,6 @@
 /**
- * Tailwind preset for candy-ui consumers.
- * Import src/styles/style.css once in your app entry.
+ * Tailwind preset for @dalshenekuda/candy-ui consumers.
+ * Import '@dalshenekuda/candy-ui/style.css' once in your app entry.
  */
 
 /** @type {import('tailwindcss').Config} */
