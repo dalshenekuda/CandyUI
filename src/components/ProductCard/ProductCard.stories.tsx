@@ -11,13 +11,75 @@ const meta: Meta<typeof ProductCard> = {
   title: 'Components/ProductCard',
   component: ProductCard,
   tags: ['autodocs'],
-  parameters: { layout: 'centered' },
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Catalog product tile with tone field on hover (store default) or at rest (Storybook). Price sticker top-left; badges and footer slots for stepper or links.',
+      },
+    },
+  },
+  argTypes: {
+    imageSrc: { description: 'Product image URL.', table: { category: 'Data' } },
+    imageAlt: { description: 'Accessible image description.', table: { category: 'Data' } },
+    imageLoading: {
+      description: 'Native img loading hint.',
+      control: { type: 'select' },
+      options: ['lazy', 'eager'],
+      table: { category: 'Appearance' },
+    },
+    fit: {
+      description: 'cover fills the square; contain pads for cutout on tone (store PLP).',
+      control: { type: 'select' },
+      options: ['cover', 'contain'],
+      table: { category: 'Appearance' },
+    },
+    tone: {
+      description: 'Flavor tone — sets data-tone-vars for bg/ink on hover or rest.',
+      control: { type: 'select' },
+      options: ['blueras', 'raspberry', 'spearmint', 'lemon', 'lime', null],
+      table: { category: 'Appearance' },
+    },
+    toneMode: {
+      description: 'hover = store PLP (fill on card hover); rest = always filled tone field.',
+      control: { type: 'select' },
+      options: ['hover', 'rest'],
+      table: { category: 'Appearance' },
+    },
+    title: { description: 'Product name.', table: { category: 'Data' } },
+    meta: { description: 'Uppercase flavor or category line.', table: { category: 'Data' } },
+    description: { description: 'Optional secondary copy under the title.', table: { category: 'Data' } },
+    price: { description: 'Price sticker on the media (top-left).', table: { category: 'Data' } },
+    compareAtPrice: {
+      description: 'Struck-through compare-at price when on sale.',
+      table: { category: 'Data' },
+    },
+    badgeTopLeft: {
+      description: 'Overlay top-left when price is not set.',
+      table: { category: 'Slots', type: { summary: 'ReactNode' } },
+      control: false,
+    },
+    badgeTopRight: {
+      description: 'Promo badge on the image (e.g. Sale).',
+      table: { category: 'Slots', type: { summary: 'ReactNode' } },
+      control: false,
+    },
+    footer: {
+      description: 'Actions below title (typically AddToCartStepper).',
+      table: { category: 'Slots', type: { summary: 'ReactNode' } },
+      control: false,
+    },
+  },
   decorators: [
-    (Story) => (
-      <div className="group/card w-full max-w-xs bg-bg p-sm">
-        <Story />
-      </div>
-    ),
+    (Story, context) => {
+      const isGrid = context.name === 'Grid';
+      return (
+        <div className={isGrid ? 'bg-bg p-sm' : 'group/card w-full max-w-xs bg-bg p-sm'}>
+          <Story />
+        </div>
+      );
+    },
   ],
 };
 
@@ -97,7 +159,7 @@ export const SoldOut: Story = {
 /** Four-card catalog grid — all blueras, matching Candy Area store. */
 export const Grid: Story = {
   render: () => (
-    <div className="grid grid-cols-2 gap-0 bg-bg desktop:grid-cols-4" style={{ maxWidth: 960 }}>
+    <div className="grid w-full max-w-[960px] grid-cols-2 gap-0 bg-bg desktop:grid-cols-4">
       {[
         {
           imageSrc: candyLollipop,

@@ -45,7 +45,8 @@ const meta: Meta<typeof Text> = {
       table: { category: 'Appearance' },
     },
     color: {
-      description: 'Text color from semantic design tokens via `--color-*` CSS variable.',
+      description:
+        'Text color via CSS variables (`--color-*` semantic tokens or `--tone-*` on tone fields).',
       control: { type: 'select' },
       options: [
         undefined,
@@ -54,11 +55,23 @@ const meta: Meta<typeof Text> = {
         'color-text-subtle',
         'color-text-on-brand',
         'color-brand',
+        'color-brand-dark',
+        'color-brand-light',
         'color-accent',
+        'color-accent-dark',
+        'color-accent-light',
+        'color-accent-alt',
+        'color-accent-warm',
         'color-danger',
         'color-success',
         'color-warning',
+        'tone-ink',
+        'tone-accent',
       ],
+      table: { category: 'Appearance' },
+    },
+    balance: {
+      description: 'Applies `text-wrap: balance` for display headings.',
       table: { category: 'Appearance' },
     },
     as: {
@@ -102,14 +115,6 @@ export const HeadingSM: Story = {
 /** Large subtitle or lead paragraph. */
 export const SubtitleLG: Story = {
   args: { variant: 'subtitle-lg', children: 'Subtitle LG — lorem ipsum dolor sit amet.' },
-};
-
-/** Standard body paragraph. */
-export const BodyMD: Story = {
-  args: {
-    variant: 'body-md',
-    children: 'Body MD — lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
 };
 
 /** Small body text for dense UIs. */

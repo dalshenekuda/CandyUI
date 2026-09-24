@@ -24,9 +24,38 @@ const meta: Meta<typeof Aside> = {
     docs: {
       description: {
         component:
-          'Accessible side panel (drawer) built on Radix UI Dialog. Use for cart, search, or navigation panels. For centered modals, use Dialog instead. Candy Area uses controlled open state without AsideTrigger or AsideFooter.',
+          'Accessible side panel (drawer) built on Radix UI Dialog. Use for cart, search, or navigation panels. For centered modals, use Dialog instead. Candy Area uses controlled open state without AsideTrigger or AsideFooter. `AsideContent` accepts `side`: `left` | `right` (default `right`).',
       },
     },
+  },
+  argTypes: {
+    open: {
+      description: 'Controlled open state (Radix Dialog root).',
+      table: { category: 'State' },
+    },
+    defaultOpen: {
+      description: 'Initial open state when uncontrolled.',
+      table: { category: 'State' },
+    },
+    onOpenChange: {
+      action: 'openChange',
+      description: 'Fired when open state changes.',
+      table: { category: 'Events', type: { summary: '(open: boolean) => void' } },
+    },
+    modal: {
+      description: 'When false, focus is not trapped (rare for drawers).',
+      table: { category: 'Behavior' },
+    },
+  },
+  subcomponents: {
+    AsideContent,
+    AsideHeader,
+    AsideBody,
+    AsideFooter,
+    AsideTitle,
+    AsideDescription,
+    AsideTrigger,
+    AsideCloseButton,
   },
 };
 

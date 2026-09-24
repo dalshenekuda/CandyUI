@@ -11,8 +11,14 @@ const meta: Meta<typeof Card> = {
     docs: {
       description: {
         component:
-          'Surface container with a border, background, and shadow. Composed of Card, CardHeader, CardTitle, CardDescription, CardContent, and CardFooter sub-components.',
+          'Surface container with border and background (no drop shadow). Composed of Card, CardHeader, CardTitle, CardDescription, CardContent, and CardFooter sub-components.',
       },
+    },
+  },
+  argTypes: {
+    className: {
+      description: 'Additional Tailwind classes on the Card root.',
+      table: { category: 'Appearance' },
     },
   },
 };

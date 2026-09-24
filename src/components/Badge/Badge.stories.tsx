@@ -5,8 +5,17 @@ const meta: Meta<typeof Badge> = {
   title: 'Components/Badge',
   component: Badge,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Small status or promo label. Store patterns use `ink` + rotate for sale on product cards and `print` on tone fields for sold out; PDP uses `destructive` for sold out.',
+      },
+    },
+  },
   argTypes: {
     variant: {
+      description: 'Visual style — ink/print match Candy Area product cards; sale/soldout/new are alternate accents.',
       control: { type: 'select' },
       options: [
         'default',
@@ -22,10 +31,17 @@ const meta: Meta<typeof Badge> = {
         'ink',
         'print',
       ],
+      table: { category: 'Appearance' },
     },
     rotate: {
+      description: 'Slight tilt for promo badges on product imagery.',
       control: { type: 'select' },
       options: ['none', 'left', 'right'],
+      table: { category: 'Appearance' },
+    },
+    children: {
+      description: 'Badge label text.',
+      table: { category: 'Data' },
     },
   },
 };
@@ -89,19 +105,4 @@ export const OnToneField: Story = {
     ),
   ],
   args: { variant: 'tone', children: 'Best seller' },
-};
-
-export const Ink: Story = {
-  args: { variant: 'ink', rotate: 'left', children: 'Sale' },
-};
-
-export const Print: Story = {
-  decorators: [
-    (Story) => (
-      <div data-tone-vars="blueras" className="rounded-xs bg-tone-bg p-md text-tone-ink">
-        <Story />
-      </div>
-    ),
-  ],
-  args: { variant: 'print', children: 'Sold out' },
 };

@@ -24,12 +24,21 @@ const meta: Meta<typeof Dialog> = {
       },
     },
   },
+  argTypes: {
+    open: { description: 'Controlled open state.', table: { category: 'State' } },
+    defaultOpen: { description: 'Initial open when uncontrolled.', table: { category: 'State' } },
+    onOpenChange: {
+      action: 'openChange',
+      description: 'Fired when open state changes.',
+      table: { category: 'Events', type: { summary: '(open: boolean) => void' } },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Dialog>;
 
-/** Basic dialog shell — wire up a DialogTrigger to open. */
+/** Opens from the trigger button; includes header, description, and footer actions. */
 export const Default: Story = {
   render: () =>
     React.createElement(

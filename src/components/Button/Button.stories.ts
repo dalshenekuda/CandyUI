@@ -30,6 +30,10 @@ const meta: Meta<typeof Button> = {
       description: 'Disables the button and prevents interaction.',
       table: { category: 'State' },
     },
+    loading: {
+      description: 'Shows a spinner, sets aria-busy, and disables interaction.',
+      table: { category: 'State' },
+    },
     asChild: {
       description: 'Renders button as the child element via Radix Slot (e.g. `<a>`).',
       table: { category: 'Appearance' },
