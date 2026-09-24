@@ -51,7 +51,8 @@ export const Fonts: StoryObj = {
   render: () => (
     <div className="flex flex-col gap-xl p-lg text-text">
       <p className="typo-body-md text-text-muted max-w-2xl">
-        Display and heading styles use Cabinet Grotesk (<code className="typo-body-sm">--font-display</code>
+        Display and heading styles use Cabinet Grotesk (
+        <code className="typo-body-sm">--font-display</code>
         ). Body, meta, caption, overline, and button type use Switzer (
         <code className="typo-body-sm">--font-body</code>). Logo uses the display stack (
         <code className="typo-body-sm">--font-logo</code>).

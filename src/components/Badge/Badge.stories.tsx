@@ -15,7 +15,8 @@ const meta: Meta<typeof Badge> = {
   },
   argTypes: {
     variant: {
-      description: 'Visual style — ink/print match Candy Area product cards; sale/soldout/new are alternate accents.',
+      description:
+        'Visual style — ink/print match Candy Area product cards; sale/soldout/new are alternate accents.',
       control: { type: 'select' },
       options: [
         'default',

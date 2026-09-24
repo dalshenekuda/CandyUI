@@ -49,7 +49,10 @@ const meta: Meta<typeof ProductCard> = {
     },
     title: { description: 'Product name.', table: { category: 'Data' } },
     meta: { description: 'Uppercase flavor or category line.', table: { category: 'Data' } },
-    description: { description: 'Optional secondary copy under the title.', table: { category: 'Data' } },
+    description: {
+      description: 'Optional secondary copy under the title.',
+      table: { category: 'Data' },
+    },
     price: { description: 'Price sticker on the media (top-left).', table: { category: 'Data' } },
     compareAtPrice: {
       description: 'Struck-through compare-at price when on sale.',
