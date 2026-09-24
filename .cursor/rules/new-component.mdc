@@ -1,5 +1,5 @@
 ---
-description: Conventions for adding new components to candy-ui
+description: Conventions for adding new components to @dalshenekuda/candy-ui
 alwaysApply: true
 ---
 
@@ -7,51 +7,46 @@ alwaysApply: true
 
 ## 0. Project overview
 
-A UI kit published as `candy-ui`. The project currently contains both **React 3** legacy components and **React** new components. New components are written in React; existing React components remain in place.
+Published npm package **`@dalshenekuda/candy-ui`**: React 18+ UI kit for storefront apps (Hydrogen and any React stack).
 
-- **React stack:** React + TypeScript + Tailwind CSS + Radix UI (via shadcn) + CVA + `cn()` (clsx + tailwind-merge).
-- **React stack (legacy):** React 3 + TypeScript + SCSS + Tailwind CSS.
+- **Stack:** React + TypeScript + Tailwind CSS + Radix UI (Dialog, Aside, Slot on Button) + CVA + `cn()` (clsx + tailwind-merge).
+- **Typography scale:** SCSS generates `.typo-*` classes (responsive at 992px); prefer `<Text>` or existing `.typo-*` in components — do not add raw `font-size` in TSX.
 
 ### File structure
 
 ```
 src/
-├── index.ts                  library entry; exports all components and types
+├── index.ts                  library entry; side-effect CSS + named exports
 ├── main.ts                   dev-only app entry
-├── types.ts                  global shared interfaces
-├── lib/utils.ts              cn() helper (clsx + tailwind-merge)
-├── tokens/                   palette.css, theme-light.css, theme-dark.css, spacing.css, base.css
-├── components/<Name>/        React components (new) — <Name>.tsx + <Name>.stories.ts
-├── primitives/<Name>/        React primitives (legacy) — .tsx + types.ts + index.ts
-├── patterns/<Name>/          Complex React components (legacy)
-├── domain-level/             Business-logic React components (legacy)
-└── styles/                   global CSS entry
+├── lib/utils.ts              cn() helper
+├── tokens/                   CSS tokens (colors, spacing, typography SCSS)
+├── components/<Name>/        <Name>.tsx + <Name>.stories.ts(x)
+└── styles/                   style.css → imported by index.ts
 ```
 
 ## 1. Where to place a component
 
 | Type | Location |
 |------|----------|
-| New React component (any complexity) | `src/components/<Name>/` — React + TSX + CVA + Tailwind |
-| Legacy React primitive (Text, Tag) | `src/primitives/` — `<style lang="scss">` only |
-| Legacy React interactive (Modal, Tooltip) | `src/patterns/` — Tailwind + Reka UI |
-| Business-domain atoms/molecules | `domain-level/entity/<domain>/ui/<Name>/` |
-| Business-domain composite widgets | `domain-level/widgets/<Name>/` |
+| Any library component | `src/components/<Name>/` — TSX + CVA + Tailwind |
 
-## 2. React Component Folder Structure
+Do not add `src/primitives/`, `domain-level/`, per-component `index.ts`, or Vue-style `install()` registration.
+
+## 2. Component folder structure
 
 ```
 src/components/<ComponentName>/
   <ComponentName>.tsx           ← component + types inline
-  <ComponentName>.stories.ts    ← Storybook stories
+  <ComponentName>.stories.ts    ← Storybook (or .tsx if JSX in stories)
 ```
 
-- Types live **inline** in the `.tsx` file — no separate `types.ts` unless the types need to be exported for consumers.
+- Types live **inline** in the `.tsx` file unless types must be exported for consumers.
 - Always use `@/` alias: `import { cn } from '@/lib/utils'`.
-- Use `cn()` (clsx + tailwind-merge) for all className composition.
+- Use `cn()` for all className composition.
 - Use `cva` from `class-variance-authority` for variant logic.
 
-### CVA pattern:
+### CVA pattern
+
 ```tsx
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
@@ -59,15 +54,15 @@ import { cn } from '@/lib/utils'
 const componentVariants = cva('base-classes', {
   variants: {
     variant: {
-      default: 'bg-brand text-text-on-brand hover:bg-brand-dark',
+      default: 'bg-brand text-text-on-brand hover:bg-brand-hover',
       outline: 'border border-border bg-surface hover:bg-surface-raised text-text',
-      ghost:   'hover:bg-surface-raised text-text-muted',
-      danger:  'bg-danger text-text-on-brand hover:opacity-90',
+      ghost: 'hover:bg-surface-raised text-text-muted',
+      danger: 'bg-danger text-text-on-brand hover:opacity-90',
     },
     size: {
-      sm: 'h-8 px-sm text-sm',
+      sm: 'h-8 px-sm',
       md: 'h-10 px-md',
-      lg: 'h-12 px-lg text-lg',
+      lg: 'h-12 px-lg',
     },
   },
   defaultVariants: { variant: 'default', size: 'md' },
@@ -78,7 +73,8 @@ interface ComponentProps
     VariantProps<typeof componentVariants> {}
 ```
 
-### shadcn → our tokens mapping (MANDATORY — never use shadcn defaults):
+### shadcn → our tokens mapping (MANDATORY — never use shadcn defaults)
+
 | shadcn class | our class |
 |---|---|
 | `bg-primary` | `bg-brand` |
@@ -95,168 +91,123 @@ interface ComponentProps
 | `fill-muted-foreground` | `fill-text-muted` |
 | `fill-muted` | `fill-surface` |
 
-## 3. React Component Folder Structure (legacy, Mandatory)
-
-Every React component must reside in its own directory.
-
-```
-path/to/<ComponentName>/
-  <ComponentName>.tsx        ← component logic and template
-  types.ts                  ← prop, emit, and translation interfaces
-  index.ts                  ← clean exports (component + types)
-  <ComponentName>.stories.ts ← (optional) Storybook stories
-  assets/                   ← (optional) component-specific images/icons
-```
-
-### index.ts pattern:
-```ts
-export { default as <ComponentName> } from './<ComponentName>.tsx';
-export * from './types';
-```
-
-### types.ts guidelines:
-- Name the file `types.ts` exactly.
-- **Always use `@/` alias** for all imports — both in `.tsx` files and `.ts` files (e.g., `import type { Price } from '@/domain-level/types'`). Never use deep relative paths like `../../../../types`.
-- **No Duplication:** Do not redefine common interfaces (like `Price`, `Variant`). Import them from `@/domain-level/types`.
-- **`tsconfig.build.json` must mirror the alias:** The build tsconfig must include `"baseUrl": "."` and `"paths": { "@/*": ["src/*"] }` so that `tsc -p tsconfig.build.json` can resolve `@/` in plain `.ts` files. Without this, `tsc` fails even though Vite and `vite-plugin-dts` handle it correctly via `vite.config.ts`.
-
-
 ## 3. Styling — NEVER use Bootstrap or hardcoded values
 
 **No Bootstrap classes** (`d-flex`, `col-*`, `px-3`, `mb-2`, etc.) — use Tailwind utilities instead.
-**No custom `@media` queries** in SCSS — use Tailwind breakpoints defined in `tailwind.preset.js` (e.g., `desktop:`).
-- **Mobile First:** The default view is considered mobile up to `991px`.
-- **Desktop Breakpoint:** From `992px` and above, the view is considered desktop. Use the `desktop:` prefix (e.g., `desktop:flex-row`).
+
+**No new custom `@media` queries** in component SCSS — use Tailwind breakpoints from `tailwind.preset.js` (e.g. `desktop:`).
+
+- **Mobile first:** default styles up to `991px`.
+- **Desktop:** from `992px`, use the `desktop:` prefix (e.g. `desktop:flex-row`).
 
 | What | Do | Never |
 |------|----|-------|
-| Colors | `var(--primary-color-1)` or `text-primary-1` | `#002349` or Bootstrap `text-primary` |
-| Spacing | `var(--spacing-m)` or Tailwind `p-m` | `16px` or Bootstrap `p-3` |
-| Font size | `<Text variant="b2">` or `@include typo-b2` | `font-size: 16px` |
-| Font weight | `var(--font-weight-semibold)` or `font-semibold` | `font-weight: 600` |
-| Border radius | `var(--radius-md)` or `rounded-md` | `12px` |
-| Transitions | `var(--transition-base)` or `duration-base` | `200ms` |
-| Breakpoints | `desktop:max-w-[345px]` or `desktop:block` | `@media (min-width: 992px)` in `<style>` |
+| Colors | `var(--color-text)` or Tailwind `text-text`, `bg-brand` | raw hex or Bootstrap `text-primary` |
+| Spacing | `var(--spacing-md)` or Tailwind `p-md`, `gap-sm` | `16px` or Bootstrap `p-3` |
+| Font size | `<Text variant="body-md">` or class `typo-body-md` | `font-size: 16px` in component CSS |
+| Font weight | `weight` on Text or `font-semibold` | hardcoded `font-weight: 600` |
+| Border radius | `rounded-md` / `var(--radius-md)` | `12px` |
+| Transitions | `duration-base` / `var(--transition-base)` | `200ms` |
+| Breakpoints | `desktop:block` | new `@media (min-width: 992px)` in components |
 
-Tailwind is for **layout** (`flex`, `gap-s`, `px-m`, `items-center`).
-SCSS mixins (`@include typo-b2`) are for **typography** in `<style>` blocks.
+Tailwind is for **layout** (`flex`, `gap-sm`, `px-md`, `items-center`).
 
 ## 4. Token flow — single source of truth
 
 ```
-src/tokens/palette.css        ← hex values ONLY here (--palette-*)
-src/tokens/theme-light.css    ← semantic tokens (--color-*) for light theme
-src/tokens/theme-dark.css     ← semantic tokens for dark theme (.dark selector)
-src/spacing-variables.scss    ← spacing scale ONLY here
-src/typography-variables.scss ← font sizes/weights ONLY here
-src/styles/style.css          ← radius + transitions ONLY here
+src/tokens/colors/palette.css           ← hex ONLY (--palette-*)
+src/tokens/colors/theme-light.css       ← semantic (--color-*) light
+src/tokens/colors/theme-dark.css        ← semantic dark (.dark on <html>)
+src/tokens/colors/tones.css             ← flavor tones (data-tone / data-tone-vars)
+src/tokens/spacing/spacing.css          ← --spacing-*
+src/tokens/base.css                     ← radius, shadows, transitions
+src/tokens/typography/*.scss            ← font scale → .typo-* classes
+src/styles/style.css                    ← imports tokens + @tailwind
+tailwind.preset.js                      ← maps CSS vars to Tailwind theme (consumers)
 ```
 
-Never add raw values to `design-tokens.ts` or `ui/tokens/` — those files contain **type names only**.
+Do not add hex to TS token files for runtime colors. Do not reference removed paths like `src/ui/tokens/` or `design-tokens.ts`.
 
-## 5. API Design & Prop Naming
+**Dark theme:** consumers toggle `class="dark"` on `<html>` (`darkMode: 'class'` in preset).
 
-**State Props:** Avoid abstract names like `modelValue` for UI components (modals, alerts, dropdowns) unless it's a form input.
-- **Do:** Use semantic names like `visible`, `isOpen`, `isActive` and emit matching events (`update:visible`).
-- **Never:** Use `modelValue` for visibility toggles.
+## 5. API design (React)
+
+- Use standard React patterns: `open` / `onOpenChange` for Radix roots where applicable, or uncontrolled Radix defaults.
+- Do not use Vue names (`modelValue`, `update:modelValue`, emits, slots in docs).
 
 ## 6. Text component API
 
 ```tsx
-<Text variant="b2" weight="semibold" color="primary-color-1" as="span">
+<Text variant="body-md" weight="semibold" color="color-text" as="span">
   Label
 </Text>
 ```
 
-- `variant` → `h1–h4`, `s1–s2`, `b1–b3`, `body`, `caption`, `credit`
-- `color` → any key from `src/ui/tokens/colors.ts` (e.g. `primary-color-1`, `grey-700`)
-- `weight` → `light` | `regular` | `medium` | `semibold` | `bold`
-- `as` → overrides HTML tag; use `as="span"` for inline, `as="s"` for strikethrough
+- `variant` → `display-2xl` … `overline` (see `src/components/Text/Text.tsx`)
+- `color` → semantic token **name without `--`**: `color-text`, `color-text-muted`, `color-brand`, `tone-ink`, etc.
+- `weight` → `light` | `regular` | `medium` | `semibold` | `bold` | `black`
+- `as` → override HTML tag; `balance` → `text-balance` on display headings
 
-Use `<Text>` for all visible text in domain-level components. Never use raw `<span>` or `<p>` with hardcoded styles.
+Use `<Text>` for visible copy in components. Avoid raw `<span>` / `<p>` with inline font sizes.
 
-## 6. ContentPlate
+## 7. Surfaces and commerce helpers
 
-Use `ContentPlate` from `@/primitives/ContentPlate/ContentPlate.tsx` as the card background.
+- **Card:** use `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter` — not a separate ContentPlate primitive.
+- **ProductCard:** `price` / `compareAtPrice` are **`ReactNode`** (app formats money); do not assume cents inside the kit.
+- Do not add component aliases in `src/index.ts`.
 
-Embed it **inside** the component when the card appearance is part of the component contract:
+## 8. Exports — mandatory after adding a component
 
-```tsx
-<ContentPlate>
-  <div class="flex flex-col gap-s px-m py-s">
-    <!-- content -->
-  </div>
-</ContentPlate>
-```
-
-## 7. Exports — mandatory after adding a component
-
-1. Export from the relevant barrel — component default + named types:
+1. Add a named re-export in `src/index.ts`:
 
 ```ts
-// domain-level/widgets/index.ts
-export * from './MyWidget';
+export * from './components/MyComponent/MyComponent';
 ```
 
-2. Register in `install()` in `src/index.ts`:
+2. Do **not** register via `app.component()` or a plugin `install()`.
+
+**`tsconfig.build.json`** must keep `"paths": { "@/*": ["src/*"] }` for alias resolution in declarations.
+
+## 9. Stories structure and documentation
+
+Every component MUST document behavior in `.stories.ts` / `.stories.tsx`:
+
+1. **`parameters.docs.description.component`** — purpose and responsive behavior.
+2. **`argTypes`** — props with `table.category`: `'Data' | 'Appearance' | 'State'` (and `'Slots'` for `ReactNode` props like `footer`).
+3. Use **`Meta` / `StoryObj` from `@storybook/react`**, title prefix **`Components/<Name>`** (or `Tokens/…` for token stories).
 
 ```ts
-app.component('MyWidget', MyWidget);
-```
-
-## 9. Stories structure & Documentation
-
-Every component MUST have comprehensive documentation in its `.stories.ts` file via the `meta` object:
-1. **Component Description:** Add `parameters.docs.description.component` explaining its purpose and responsive behavior.
-2. **Prop Definitions:** Provide detailed descriptions in `argTypes`, categorized via `table.category` ('Data' | 'Appearance' | 'State').
-3. **Events (Emits):** Document all emitted events in `argTypes` under the 'Emits' category. Include an `action` and specify the payload type using `table.type.summary` (e.g., `void`, `boolean`).
-4. **Slots:** Document supported slots in `argTypes` under the 'Slots' category.
-
-```ts
-const meta: Meta<typeof MyWidget> = {
-  title: 'Domain/Widgets/MyWidget',
-  component: MyWidget,
+const meta: Meta<typeof MyComponent> = {
+  title: 'Components/MyComponent',
+  component: MyComponent,
   tags: ['autodocs'],
-  decorators: [cardDecorator],
   parameters: {
     docs: {
-      description: { component: 'Describe what it is and how it behaves responsively.' },
+      description: { component: 'What it does and how it behaves on mobile vs desktop.' },
     },
   },
   argTypes: {
-    visible: { 
-      description: 'Controls component visibility.', 
-      table: { category: 'State' } 
+    disabled: {
+      description: 'Disables interaction.',
+      table: { category: 'State' },
     },
-    'onUpdate:visible': { 
-      action: 'update:visible', 
-      description: 'Fired on close.', 
-      table: { category: 'Emits', type: { summary: 'boolean' } } 
+    footer: {
+      description: 'Optional footer slot content.',
+      table: { category: 'Slots', type: { summary: 'ReactNode' } },
+      control: false,
     },
-    default: { 
-      description: 'Default content slot.', 
-      table: { category: 'Slots', type: { summary: 'VNode | string' } } 
-    }
   },
 };
 ```
 
-- One named export per meaningful state (e.g. `WithDiscount`, `NoDiscount`)
-- JSDoc comment above each story explaining what it demonstrates
-- All mock data in named constants at the top of the file (amounts in **cents/minor units**)
-- `translations` object in a named `TRANSLATIONS` constant
+- One named export per meaningful state (e.g. `OnSale`, `Loading`).
+- Mock data in named constants at the top of the file when needed.
 
-## 10. Money formatting
-
-Always use `moneyDisplay` from `@/domain-level/utils/money` — never format amounts manually.
-All price values are in **minor units (cents)**: `1699` → `$16.99`.
-
-## 11. What NOT to do
+## 10. What NOT to do
 
 - ALL code comments MUST be in English
-- Do not hardcode hex colors, px sizes, ms durations in `<style>` blocks
-- Do not use Bootstrap (`d-flex`, `col-*`, `px-3`, `mb-2`, etc.) anywhere
-- Do not add raw token values to `design-tokens.ts` or `ui/tokens/*.ts`
-- Do not add font sizes in component CSS — use `@include typo-*`
-- Do not add `reka-ui` to `peerDependencies` (it is intentionally bundled)
-- Do not use `<span style="font-size: 14px">` — use `<Text variant="b3">`
+- Do not hardcode hex colors, px sizes, or ms durations in component styles
+- Do not use Bootstrap anywhere
+- Do not add `reka-ui` — Radix packages used directly are bundled dependencies
+- Do not use legacy typography variants (`h1`, `b2`, `primary-color-1`)
+- Do not document or implement Vue SFC / `<script setup>` patterns in this repo

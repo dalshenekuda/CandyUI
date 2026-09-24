@@ -2,7 +2,7 @@
 
 React component library and design system for **headless commerce** storefronts—built for Hydrogen, custom Shopify stacks, and any React app that needs accessible, token-driven UI primitives.
 
-**Live demo:** TBD — after Chromatic setup, paste the public Storybook URL here. Steps: [docs/CHROMATIC_DEPLOY.md](./docs/CHROMATIC_DEPLOY.md).
+**Live demo:** [Storybook on Chromatic](https://main--6ab56ef1aed13efbc107d427.chromatic.com/)
 
 ---
 
@@ -39,7 +39,6 @@ Package entry points: `@dalshenekuda/candy-ui`, `@dalshenekuda/candy-ui/style.cs
 |---|---|---|
 | `Text` | `Text` | Responsive typography with semantic color tokens |
 | `Button` | `Button` | Primary actions (variants: default, outline, cart, tone, …) |
-| `ActionButton` | `ActionButton` | Alias for `Button` (same API) |
 | `Badge` | `Badge` | Labels and status chips |
 | `Card` | `Card` | Surface container for content |
 | `ProductCard` | `ProductCard` | Commerce product tile (image, price, footer slot) |
@@ -76,9 +75,9 @@ export function Example() {
 
 ## Documentation
 
-- **Getting started (React):** [docs/REACT.md](./docs/REACT.md)
-- **Interactive API:** Storybook (URL in Live demo once deployed)
-- **Legacy note:** [docs/CONSUMER_GUIDE.md](./docs/CONSUMER_GUIDE.md) is outdated (Vue-era); do not use for React integration.
+- **Component API and examples:** [docs/REACT.md](./docs/REACT.md)
+- **Install, exports, dark mode, preset:** [docs/CONSUMER_GUIDE.md](./docs/CONSUMER_GUIDE.md) (index — details in REACT.md)
+- **Interactive API:** [Storybook](https://main--6ab56ef1aed13efbc107d427.chromatic.com/)
 
 See also CandyArea (companion storefront project, not linked here).
 
